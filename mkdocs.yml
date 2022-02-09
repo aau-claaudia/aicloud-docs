@@ -1,6 +1,6 @@
 site_name: AI Cloud Documentation
 nav:
-  - Home:
+  - Introduction:
     - "Introduction": index.md
 
   - "Additional examples":

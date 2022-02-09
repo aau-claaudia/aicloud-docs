@@ -3,7 +3,7 @@ This README contains information for getting started with the "AI Cloud II" syst
 
 For new users, we recommend reading the [Introduction](#introduction) and [Getting started](#getting-started) section plus the section on [Fair usage](#fair-usage)
 
-*New to AI Cloud II compared to old AI Cloud*
+## New to AI Cloud II compared to old AI Cloud
 
 The most important update:
 
@@ -11,11 +11,13 @@ The most important update:
 
 This has some consequences across the system as we will describe in this documentation.
 
-# Introduction
+## Overview
 
 Working on AI Cloud II is based on a combination of two different mechanisms, [Singularity](https://www.sylabs.io/docs/) and [Slurm](https://slurm.schedmd.com/documentation.html), which are used for the following purposes:
+
 - **Singularity** is a container framework which serves to provide you with the necessary software environment to run your computational workloads. Different researchers may have widely different software stacks or perhaps versions of the same software stack that you need for your work. In order to provide maximum flexibility to you as users and to minimise potential compatibility problems between different software installed on the compute nodes, each user's software environment(s) is defined and provisioned as Singularity containers. You can both download pre-defined container images or configure or modify them yourself according to your needs.  
   See details on container images from NGC [further down](#a-few-words-on-container-images).
+
 - **Slurm** is a queueing system that manages resource sharing in the AI Cloud. Slurm makes sure that all users get a fair share of the resources and get served in turn. Computational work in the AI Cloud can *only* be carried out through Slurm. This means you can only run your jobs on the compute nodes by submitting them to the Slurm queueing system. It is also through Slurm that you request the amount of ressources your job requires, such as amount of RAM, number of CPU cores, number of GPUs etc.  
   See how to get started with Slurm [further down](#slurm-basics).
 
