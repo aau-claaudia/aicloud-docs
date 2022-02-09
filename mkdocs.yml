@@ -1,6 +1,7 @@
 site_name: AI Cloud Documentation
 nav:
-  - Home: index.md
+  - Home:
+    - "Introduction": index.md
 
   - "Additional examples":
     - "Interactive TensorFlow": examples/interactive_tensorflow.md
