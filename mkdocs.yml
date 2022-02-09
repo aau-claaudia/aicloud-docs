@@ -2,7 +2,7 @@ site_name: AI Cloud Documentation
 nav:
   - Home: index.md
 
-  - "Additional examples": examples/examples.md
+  - "Additional examples":
     - "Interactive TensorFlow": examples/interactive_tensorflow.md
     - "Jupyter notebook using TensorFlow container": examples/jupyter.md
     - "PyTorch and Anaconda": examples/pytorch_anaconda.md
