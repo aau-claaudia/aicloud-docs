@@ -1,4 +1,3 @@
-## Interactive TensorFlow
 First we pull a TensorFlow image
 
 ```console

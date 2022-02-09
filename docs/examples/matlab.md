@@ -1,4 +1,3 @@
-## Matlab
 It is possible to run Matlab both with and without GUI
 
 First, build your Matlab image, e.g. like

@@ -11,38 +11,6 @@ The most important update:
 
 This has some consequences across the system as we will describe in this documentation.
 
-**Table of Contents**
-- [Introduction](#introduction)
-- [Getting started](#getting-started)
-    - [Logging in](#logging-in)
-    - [Slurm basics](#slurm-basics)
-    - [Slurm allocate resources](#slurm-allocate-resources)
-    - [Slurm QoS](#slurm-qos)
-	- [Getting your (Singularity) environment up](#getting-your-singularity-environment-up)
-	- [A few words on container images](#a-few-words-on-container-images)
-    - [Where to save your files](#where-to-save-your-files)
-    - [Using the scratch space](#using-the-scratch-space)
-        - [Via interactive bash session:](#via-interactive-bash-session)
-        - [Via sbatch job script](#via-sbatch-job-script)
-    - [Transferring files](#transferring-files)
-	- [Ways of using Slurm](#ways-of-using-slurm)
-    - [Inspecting your utilization](#inspecting-your-utilization)
-    - [Fair usage](#fair-usage)
-    - [Do you have an upcoming deadline?](#do-you-have-an-upcoming-deadline)
-    - [Workshop introduction](#workshop-introduction)
-    - [Data deletion](#data-deletion)
-- Additional examples
-    - [Interactive TensorFlow](./examples/interactive_tensorflow.md)
-    - [Jupyter notebook using TensorFlow container](./examples/jupyter.md)
-    - [PyTorch and Anaconda](./examples/pytorch_anaconda.md)
-    - [Matlab](./examples/matlab.md)	
-    - [PyTorch and multi-precision training](./torch_amp_example/README.md)
-    - [Multi-GPU data parallelism training with Horovod and Keras](./multi_gpu_keras/README.md)
-    - [Python pip in containters](./examples/pip_in_containers.md)
-    
-- [Additional resources](#additional-resources)
-
-
 # Introduction
 
 Working on AI Cloud II is based on a combination of two different mechanisms, [Singularity](https://www.sylabs.io/docs/) and [Slurm](https://slurm.schedmd.com/documentation.html), which are used for the following purposes:
@@ -533,23 +501,7 @@ ITS/CLAAUDIA will keep analysing and observing the usage of the system to make t
 ## Do you have an upcoming deadline?
 If you are working towards an upcoming deadline, and find it difficult to have the resources you need, then please send an email to support@its.aau.dk with a URL (call for papers etc.) stating the deadline. We can provide some hints, help and possibly additional resources to help you meet your deadline.
 
-## Workshop introduction
-Twice a year (~April and November) we do a 2h training session covering Slurm and Singularity. You can obtain the material [here](./workshop/SlurmAndSingularityTraining.pdf). We have a recording of such a training session that you can obtain upon request by sending an email to support@its.aau.dk.
 
 ## Data deletion
 From time to time we observe if users no longer are listed in the central database. Users can be removed when the studies or employment ends. We will as a last option try to reach you by email. If this fails, we reserve the right to delete data in your home directory and on the compute node, e.g. /raid.
 
-# Additional resources
-[Trouble Shooting](./TroubleShooting.md)
-
-[Workshop introduction](./workshop/SlurmAndSingularityTraining.pdf)
-
-[Docker and singularity on an HPC system](http://alex88ridolfi.altervista.org/pulsar_tutorials_material/Sep26_How_to_use_Docker_and_Singularity/Hilmarsson_How_to_use_Docker_and_Singularity.pdf)
-
-[NVIDIA note on singularity](https://devblogs.nvidia.com/docker-compatibility-singularity-hpc/)
-
-[SLURM and singularity presentation](https://slurm.schedmd.com/SLUG17/SLUG_Bull_Singularity.pdf)
-
-
-
-[Slurm Definition File](https://www.sylabs.io/guides/3.8/user-guide/definition_files.html)

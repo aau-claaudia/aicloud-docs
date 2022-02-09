@@ -1,5 +1,3 @@
-## PyTorch and multi-precision training
-
 The NVIDIA Tesla V100 comes with specialized hardware for tensor operations called tensor cores. For the V100, the tensor cores work on integers or half-precision floats and the default in many DNN frameworks is single precision. Additional changes to the code are then necessary to activate half-precision models in cuDNN and utilize the tensor core hardware for:
 
 1. Faster execution

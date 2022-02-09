@@ -1,5 +1,3 @@
-## Jupyter notebook using TensorFlow container
-
 *This section needs an update*
 
 We have provided a script for this. You can do the following and type in a password

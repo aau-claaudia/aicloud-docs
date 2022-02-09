@@ -1,4 +1,3 @@
-# Installing Python packages with pip in Singularity containers
 
 ## The Challenge
 

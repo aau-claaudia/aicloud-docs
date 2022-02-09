@@ -1,5 +1,3 @@
-## PyTorch and Anaconda
-
 Some images, like the PyTorch images from NGC, come with [Anaconda](https://anaconda.org/), which is a widely used Python distribution. In this example we will build a PyTorch image and install additional Anaconda packages in the image.
 
 First build our Singularity image from a Docker PyTorch image and install additional conda packages. The Singularity file is
