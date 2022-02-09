@@ -2,7 +2,22 @@ site_name: AI Cloud Documentation
 nav:
   - Home: index.md
 
-  - Additional examples
+  - "OpenStack Guides":
+    - guides/openstack_guides/index.md
+    - "Copy data from the old strato to new strato": guides/openstack_guides/Move_To_strato.md
+    - "CLI": guides/openstack_guides/openstack_CLI.md
+    - "Stop, pause & delete instances": guides/openstack_guides/Pause_shutdown_delete_instances.md
+    - "Custom volume size": guides/openstack_guides/diffrent_volume_size.md
+
+  - "OpenStack Guides":
+    - guides/openstack_guides/index.md
+    - "Copy data from the old strato to new strato": guides/openstack_guides/Move_To_strato.md
+    - "CLI": guides/openstack_guides/openstack_CLI.md
+    - "Stop, pause & delete instances": guides/openstack_guides/Pause_shutdown_delete_instances.md
+    - "Custom volume size": guides/openstack_guides/diffrent_volume_size.md
+
+  - "Additional examples":
+    - examples/examples.md
     - "Interactive TensorFlow": examples/interactive_tensorflow.md
     - "Jupyter notebook using TensorFlow container": examples/jupyter.md
     - "PyTorch and Anaconda": examples/pytorch_anaconda.md
