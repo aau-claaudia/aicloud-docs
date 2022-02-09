@@ -35,7 +35,7 @@ The AI Cloud II will consist of the following compute nodes
  
 CephFS is a shared filesystem that allow access to data in the home directory all both front-end and compute nodes. All users can allocate jobs on all nodes, but certain users from CREATE have priority on the DGX A100 node nv-ai-04.srv.aau.dk.
 
-# Getting started
+## Getting started
 
 An alternative [workshop version](./workshop/SlurmAndSingularityTraining.pdf) intro to the system is also available. 
 
