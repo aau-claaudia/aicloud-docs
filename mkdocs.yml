@@ -3,33 +3,6 @@ nav:
   - Home: index.md
   - "Quick start": guides/quick-start.md
 
-  - "Image Guides":
-    - guides/Image-guides/index.md
-    - "Ubuntu":
-      - "Ubuntu 18.04": guides/Image-guides/ubuntu/ubuntu_18-04.md
-      - "Ubuntu 20.04": guides/Image-guides/ubuntu/ubuntu_20-04.md
-    - "Matlab":
-      - "Matlab 2019b": guides/Image-guides/matlab/matlab.md
-    - "Anaconda":
-      - "Anaconda3": guides/Image-guides/anaconda/anaconda.md
-    - "The littlest jupyterhub":
-      - "The littlest jupyterhub": guides/Image-guides/the-littlest-jupyterhub/the-littlest-jupyterhub.md
-
-  - "OpenStack Guides":
-    - guides/openstack_guides/index.md
-    - "Copy data from the old strato to new strato": guides/openstack_guides/Move_To_strato.md
-    - "CLI": guides/openstack_guides/openstack_CLI.md
-    - "Stop, pause & delete instances": guides/openstack_guides/Pause_shutdown_delete_instances.md
-    - "Custom volume size": guides/openstack_guides/diffrent_volume_size.md
-    - "Custom security groups": guides/openstack_guides/Access_to_instance.md
-    - "Save instances as image": guides/openstack_guides/save_image.md
-    - "Using Windows Command Prompt": guides/openstack_guides/wcmd.md
-    - "Attaching a volume for additional storage": guides/openstack_guides/attach_volume.md
-    - "Resizing an instance": guides/openstack_guides/resize.md
-    - "Running long simulations": guides/openstack_guides/running_simulations.md
-    - "Remote desktop using X2Go and Xfce": guides/openstack_guides/remote_desktop_xfce.md
-
-  - "Cloud glossary": cloud_glossary.md
   - About: about.md
 
 theme:
