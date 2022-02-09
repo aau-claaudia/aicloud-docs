@@ -1,0 +1,5 @@
+BootStrap: docker
+From: nvcr.io/nvidia/pytorch:18.12-py3
+
+%post
+  /opt/conda/bin/conda install -c conda-forge keras

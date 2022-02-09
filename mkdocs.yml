@@ -1,7 +1,6 @@
 site_name: Strato Documentation
 nav:
   - Home: index.md
-  - "Quick start": guides/quick-start.md
 
   - About: about.md
 
