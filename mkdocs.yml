@@ -9,6 +9,7 @@ nav:
     - "Matlab": examples/matlab.md
     - "PyTorch and multi-precision training": torch_amp_example/README.md
     - "Multi-GPU data parallelism training with Horovod and Keras": multi_gpu_keras/README.md
+    - "PyTorch and automatic mixed precision with APEX": torch_amp_example/README.md
     - "Python pip in containters": examples/pip_in_containers.md
     
   - "Workshop": workshop/workshop.md

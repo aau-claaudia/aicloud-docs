@@ -3,7 +3,7 @@ The NVIDIA Tesla V100 comes with specialized hardware for tensor operations call
 1. Faster execution
 2. Lower memory footprint that allows for an increased batch size.
 
-An example on how to adapt your PyTorch code is provided [here](https://git.its.aau.dk/CLAAUDIA/docs_aicloud/src/branch/master/aicloud_slurm/torch_amp_example). The example uses [APEX](https://nvidia.github.io/apex/) automatic multi precision [AMP](https://nvidia.github.io/apex/amp.html) and native [Torch AMP](https://pytorch.org/docs/stable/amp.html) available in NGC from version 20.06.
+An example on how to adapt your PyTorch code is provided [here](https://github.com/aau-claaudia/aicloud-docs/tree/master/docs/torch_amp_example). The example uses [APEX](https://nvidia.github.io/apex/) automatic multi precision [AMP](https://nvidia.github.io/apex/amp.html) and native [Torch AMP](https://pytorch.org/docs/stable/amp.html) available in NGC from version 20.06.
 
 ## PyTorch and automatic mixed precision with APEX
 
