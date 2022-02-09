@@ -1,0 +1,15 @@
+# Installing Anaconda
+
+We will install a version of Anaconda by downloading 
+
+anacondaType=Anaconda3-20211.1-Linux-x86_64.sh
+echo "$anacondaType" 
+wget -q https://repo.anaconda.com/archive/$anacondaType
+chmod +x $anacondaType
+
+./$anacondaType -b -p
+sudo rm -f $anacondaType
+
+export PATH="$HOME/anaconda3/bin:$PATH"
+
+conda init bash
