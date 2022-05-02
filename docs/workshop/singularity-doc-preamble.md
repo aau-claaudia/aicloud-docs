@@ -1,12 +1,12 @@
 ---
-title: Slurm and Singularity Training 
-subtitle: for AI cloud II
-date: Jan 2022
+title: Introduction to AI Cloud 
+subtitle: Slurm and Singularity Training
+date: May 2022
 theme: AAUsimple
-# aspectratio: 169
+aspectratio: 169
 header-includes: |
   ```{=latex}
-  \author[TARI]{Thomas Arildsen and Tobias Jensen}
+  \author[TARI]{Thomas Arildsen}
 
   \institute[CLAAUDIA]{CLAAUDIA, Aalborg University}
 
