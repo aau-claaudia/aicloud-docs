@@ -21,13 +21,15 @@ AI Cloud is for GPU-accelerated computations.
    - Sliced (vitual machines). There are projects, and more are coming
      with requirements on data protection.
 - GPU system. CPU-primary computations should be done somewhere
-  else. [Cloud: Strato](https://strato-new.claaudia.aau.dk) or
-  [uCloud](https://cloud.sdu.dk).
+  else. [Strato](https://strato-new.claaudia.aau.dk),
+  [uCloud](https://cloud.sdu.dk), or [DeiC throughput HPC](https://www.deic.dk/en/Supercomputing/Instructions-and-Guides/How-to-get-access-to-HPC-Type-2).
 - A lot of things are happening both in
   [DK](https://www.deic.dk/da/Supercomputere/Nationale-HPC-anlog) and
   at [EU level](https://eurohpc-ju.europa.eu/). The HPC landscape is
-  being reshaped and it is possible to get access to much larger
-  facilities outside AAU. Email claaudia@aau.dk for more information.
+  being reshaped, for example with the new supercomputer
+  [LUMI](https://lumi-supercomputer.eu/). It is possible to get access
+  to much larger facilities outside AAU. Email claaudia@aau.dk for
+  more information.
 
 # System design
 
