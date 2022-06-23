@@ -1,5 +1,5 @@
 # Additional resources
-[Trouble Shooting](./TroubleShooting.md)
+[Trouble-shooting](./TroubleShooting.md)
 
 [Workshop introduction](./workshop/SlurmAndSingularityTraining.pdf)
 
