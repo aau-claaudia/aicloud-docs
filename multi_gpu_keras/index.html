@@ -1,0 +1,727 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+    
+    
+      
+        <title>Multi-GPU data parallelism training with Horovod and Keras - AI Cloud Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=barlow:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"barlow";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#multi-gpu-with-tensorflow-keras-and-horovod" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Cloud Documentation" class="md-header__button md-logo" aria-label="AI Cloud Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo_round.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Cloud Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Multi-GPU data parallelism training with Horovod and Keras
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../introduction/" class="md-tabs__link">
+      Introduction
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../examples/interactive_tensorflow/" class="md-tabs__link md-tabs__link--active">
+        Additional examples
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../workshop/workshop/" class="md-tabs__link">
+      Workshop
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../additional/" class="md-tabs__link">
+      Additional resources
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Cloud Documentation" class="md-nav__button md-logo" aria-label="AI Cloud Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo_round.png" alt="logo">
+
+    </a>
+    AI Cloud Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../torch_amp_example/">Additional examples</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Additional examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Additional examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/interactive_tensorflow/" class="md-nav__link">
+        Interactive TensorFlow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/jupyter/" class="md-nav__link">
+        Jupyter notebook using TensorFlow container
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/pytorch_anaconda/" class="md-nav__link">
+        PyTorch and Anaconda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/matlab/" class="md-nav__link">
+        Matlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Multi-GPU data parallelism training with Horovod and Keras
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Multi-GPU data parallelism training with Horovod and Keras
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#multi-gpu-with-tensorflow-keras-and-horovod" class="md-nav__link">
+    Multi-GPU with Tensorflow-Keras and Horovod
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torch_amp_example/" class="md-nav__link">
+        PyTorch and automatic mixed precision with APEX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/pip_in_containers/" class="md-nav__link">
+        Python pip in containters
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workshop/workshop/" class="md-nav__link">
+        Workshop
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional/" class="md-nav__link">
+        Additional resources
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Multi-GPU data parallelism training with Horovod and Keras</h1>
+
+<p>The NVIDIA DGX-2 comes with specialized hardware for moving data between GPUs: <a href="https://www.nvidia.com/en-us/data-center/nvlink/">NVLinks and NVSwitches</a>. One approach to utilizing these links is using the MVDIA Collective Communication Library (<a href="https://developer.nvidia.com/NCCL">NCCL</a>). NCCL is compatible with the Message Passing Interface (MPI) used in many HPC applications and facilities. This in turn is build into the Horovod framework for data parallelism training supporting many deep learning frameworks requiring only minor changes in the source code. In <a href="https://github.com/aau-claaudia/aicloud-docs/tree/master/docs/multi_gpu_keras">this example</a> we show how to run Horovod on our system, including Slurm settings. You can then adapt this example for you preferred framework as described in the <a href="https://horovod.readthedocs.io/en/stable/">Horovod documentation</a></p>
+<h2 id="multi-gpu-with-tensorflow-keras-and-horovod">Multi-GPU with Tensorflow-Keras and Horovod</h2>
+<p>There several methods to perform multi-GPU training. In this example we consider a example with Keras bundled with TensorFlow and Horovod.</p>
+<p>https://horovod.readthedocs.io/en/stable/</p>
+<p>Horovod is a distributed deep learning data parallelism framework that supports Keras, PyTorch, MXNet and TensorFlow. In this example we will look at training on a single node using Keras with OpenMPI, NCCL and NVLink behind the scenes.</p>
+<p>Newer images from NGC <a href="https://on-demand.gputechconf.com/gtc-cn/2018/pdf/CH8209.pdf">come with Horovod</a> leveraging a number of features on the system, so in this example we first build a standard TensorFlow image (including Keras).</p>
+<div class="highlight"><pre><span></span><code>$ make build
+</code></pre></div>
+<p>You can see how it is built in the files Makefile and Singularity. Next we update a few lines in our code. Have a look at the <a href="https://horovod.readthedocs.io/en/stable/keras.html">Horovod-Keras</a> documentation or in <a href="example.py">example.py</a>.</p>
+<p>Next we build our setup as a Slurm batch script</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name MGPU</span>
+<span class="c1">#SBATCH --time=1:00:00</span>
+<span class="c1">#SBATCH --qos=allgpus</span>
+<span class="c1">#SBATCH --gres=gpu:4</span>
+<span class="c1">#SBATCH --mem=60G</span>
+<span class="c1">#SBATCH --cpus-per-gpu=4</span>
+<span class="c1">#SBATCH --ntasks=4</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Date              = </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Hostname          = </span><span class="k">$(</span>hostname -s<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Working Directory = </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;JOB ID            = </span><span class="nv">$SLURM_JOB_ID</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Hostname                       = </span><span class="nv">$SLURM_NODELIST</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Number of Tasks Allocated      = </span><span class="nv">$SLURM_NTASKS</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Number of CPUs on host         = </span><span class="nv">$SLURM_CPUS_ON_NODE</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;GPUs                           = </span><span class="nv">$GPU_DEVICE_ORDINAL</span><span class="s2">&quot;</span>
+
+nvidia-smi nvlink -gt d &gt; nvlink_start-<span class="nv">$SLURM_JOB_ID</span>.out
+nvidia-smi --query-gpu<span class="o">=</span>index,timestamp,utilization.gpu,utilization.memory,memory.total,memory.used,memory.free --format<span class="o">=</span>csv -l <span class="m">5</span> &gt; util-<span class="nv">$SLURM_JOB_ID</span>.csv <span class="p">&amp;</span>
+singularity <span class="nb">exec</span> --nv -B .:/code -B output_data:/output_data tensorflow_keras.sif horovodrun -np <span class="nv">$SLURM_NTASKS</span> --mpi-args<span class="o">=</span><span class="s2">&quot;-x NCCL_DEBUG=INFO&quot;</span> python /code/example.py
+nvidia-smi nvlink -gt d &gt; nvlink_end-<span class="nv">$SLURM_JOB_ID</span>.out
+</code></pre></div>
+<p>In this case we are allocating 4 GPUs. Note that we also select 4 tasks. We then proceed with recording a few pieces of information in our slurm-\&lt;jobid> output that could come in handy. Next we would like to collect a bit of information on the amount of data transferred over the NVLinks - we both do this at the start and end of the job such that we can see the difference. We also collect the GPU utilization in a file to see how well the GPU is utilized.</p>
+<p>The line</p>
+<div class="highlight"><pre><span></span><code>singularity <span class="nb">exec</span> --nv -B .:/code -B output_data:/output_data tensorflow_keras.sif horovodrun -np <span class="nv">$SLURM_NTASKS</span> --mpi-args<span class="o">=</span><span class="s2">&quot;-x NCCL_DEBUG=INFO&quot;</span> python /code/example.py
+</code></pre></div>
+<p>is the key line here. We use our TensorFlow/Keras image and run the <a href="https://horovod.readthedocs.io/en/stable/mpi_include.html">MPI wrapper</a> <code>horovodrun</code> using <code>SLURM_NTASKS=4</code> processes. We here use an <a href="https://developer.nvidia.com/blog/how-to-run-ngc-deep-learning-containers-with-singularity/">inside-out or self-contained</a> approach where we use <code>horovodrun</code>/<code>mpirun</code> from inside the container.</p>
+<p>We can also check the available <a href="https://horovod.readthedocs.io/en/stable/install_include.html#check-build">features</a> of Horovod from inside the container using:</p>
+<div class="highlight"><pre><span></span><code>horovodrun --check-build
+
+
+Available Frameworks:
+    <span class="o">[</span>X<span class="o">]</span> TensorFlow
+    <span class="o">[</span> <span class="o">]</span> PyTorch
+    <span class="o">[</span> <span class="o">]</span> MXNet
+
+Available Controllers:
+    <span class="o">[</span>X<span class="o">]</span> MPI
+    <span class="o">[</span>X<span class="o">]</span> Gloo
+
+Available Tensor Operations:
+    <span class="o">[</span>X<span class="o">]</span> NCCL
+    <span class="o">[</span> <span class="o">]</span> DDL
+    <span class="o">[</span> <span class="o">]</span> CCL
+    <span class="o">[</span>X<span class="o">]</span> MPI
+    <span class="o">[</span>X<span class="o">]</span> Gloo    
+</code></pre></div>
+<p>We can then have a look at the different solutions with say 1 and 4 GPUs using the Makefile running the batch scripts as</p>
+<div class="highlight"><pre><span></span><code>make run
+make runsingle
+</code></pre></div>
+<p>and investigate the runtime ('slurm-\&lt;jobid>'), GPU utilization ('util-\&lt;jobid>') and the amount of data moved during execution in 'nvlink_start-\&lt;jobid>' and 'nvlink_end-\&lt;jobid>'.</p>
+<p>First, we have a look in 'slurm-\&lt;jobid>' and observe lines with P2P <a href="https://on-demand.gputechconf.com/gtc-cn/2018/pdf/CH8209.pdf">indicating usage of NVLINK</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">1</span>,0<span class="o">]</span>&lt;stdout&gt;:nv-ai-03:62491:62509 <span class="o">[</span><span class="m">0</span><span class="o">]</span> NCCL INFO Channel <span class="m">11</span> : <span class="m">0</span><span class="o">[</span><span class="m">39000</span><span class="o">]</span> -&gt; <span class="m">1</span><span class="o">[</span><span class="m">57000</span><span class="o">]</span> via P2P/IPC
+....
+<span class="o">[</span><span class="m">1</span>,0<span class="o">]</span>&lt;stdout&gt;:nv-ai-03:62491:62509 <span class="o">[</span><span class="m">0</span><span class="o">]</span> NCCL INFO <span class="m">12</span> coll channels, <span class="m">16</span> p2p channels, <span class="m">16</span> p2p channels per peer
+</code></pre></div>
+<p>We can also have a look and compare 'nvlink_start-\&lt;jobid>' and 'nvlink_end-\&lt;jobid>' to see the delta between the two times.</p>
+<p>start:
+<div class="highlight"><pre><span></span><code>...
+GPU <span class="m">3</span>: Tesla V100-SXM3-32GB <span class="o">(</span>UUID: GPU-295726b4-8888-d1eb-5965-a70cbb91d136<span class="o">)</span>
+     Link <span class="m">0</span>: Data Tx: <span class="m">19241022</span> KiB
+     Link <span class="m">0</span>: Data Rx: <span class="m">19255516</span> KiB
+...
+</code></pre></div></p>
+<p>end:</p>
+<div class="highlight"><pre><span></span><code>...
+GPU <span class="m">3</span>: Tesla V100-SXM3-32GB <span class="o">(</span>UUID: GPU-295726b4-8888-d1eb-5965-a70cbb91d136<span class="o">)</span>
+     Link <span class="m">0</span>: Data Tx: <span class="m">20886285</span> KiB
+     Link <span class="m">0</span>: Data Rx: <span class="m">20904969</span> KiB
+...
+</code></pre></div>
+<p>For the single GPU job, the delta is zero.</p>
+<p>We can also observe the final outputs of the 4-GPU training</p>
+<div class="highlight"><pre><span></span><code>cat slurm-95659.out <span class="p">|</span> <span class="o">(</span>head -n <span class="m">10</span><span class="p">;</span> tail -n <span class="m">3</span><span class="o">)</span>
+<span class="nv">Date</span>              <span class="o">=</span> Wed  <span class="m">3</span> Feb <span class="m">10</span>:15:18 CET <span class="m">2021</span>
+<span class="nv">Hostname</span>          <span class="o">=</span> nv-ai-03
+Working <span class="nv">Directory</span> <span class="o">=</span> /user/its.aau.dk/tlj/docs_aicloud/aicloud_slurm/multi_gpu_keras
+JOB <span class="nv">ID</span>            <span class="o">=</span> <span class="m">95659</span>
+
+<span class="nv">Hostname</span>                       <span class="o">=</span> nv-ai-03.srv.aau.dk
+Number of Tasks <span class="nv">Allocated</span>      <span class="o">=</span> <span class="m">4</span>
+Number of CPUs on <span class="nv">host</span>         <span class="o">=</span> <span class="m">8</span>
+<span class="nv">GPUs</span>                           <span class="o">=</span> <span class="m">0</span>,1,2,3
+<span class="m">2021</span>-02-03 <span class="m">10</span>:15:23.012238: I tensorflow/stream_executor/platform/default/dso_loader.cc:49<span class="o">]</span> Successfully opened dynamic library libcudart.so.11.0
+<span class="o">[</span><span class="m">1</span>,0<span class="o">]</span>&lt;stdout&gt;:Test loss: <span class="m">0</span>.01960514299571514
+<span class="o">[</span><span class="m">1</span>,0<span class="o">]</span>&lt;stdout&gt;:Test accuracy: <span class="m">0</span>.9936000108718872
+<span class="o">[</span><span class="m">1</span>,0<span class="o">]</span>&lt;stdout&gt;:Train time: <span class="m">124</span>.74971508979797
+</code></pre></div>
+<p>and the single-GPU training</p>
+<div class="highlight"><pre><span></span><code>$ cat slurm-95660.out <span class="p">|</span> <span class="o">(</span>head -n <span class="m">10</span><span class="p">;</span> tail -n <span class="m">3</span><span class="o">)</span>
+<span class="nv">Date</span>              <span class="o">=</span> Wed  <span class="m">3</span> Feb <span class="m">10</span>:15:21 CET <span class="m">2021</span>
+<span class="nv">Hostname</span>          <span class="o">=</span> nv-ai-03
+Working <span class="nv">Directory</span> <span class="o">=</span> /user/its.aau.dk/tlj/docs_aicloud/aicloud_slurm/multi_gpu_keras
+JOB <span class="nv">ID</span>            <span class="o">=</span> <span class="m">95660</span>
+
+<span class="nv">Hostname</span>                       <span class="o">=</span> nv-ai-03.srv.aau.dk
+Number of Tasks <span class="nv">Allocated</span>      <span class="o">=</span> <span class="m">1</span>
+Number of CPUs on <span class="nv">host</span>         <span class="o">=</span> <span class="m">2</span>
+<span class="nv">GPUs</span>                           <span class="o">=</span> <span class="m">0</span>
+<span class="m">2021</span>-02-03 <span class="m">10</span>:15:24.461425: I tensorflow/stream_executor/platform/default/dso_loader.cc:49<span class="o">]</span> Successfully opened dynamic library libcudart.so.11.0
+<span class="o">[</span><span class="m">1</span>,0<span class="o">]</span>&lt;stdout&gt;:Test loss: <span class="m">0</span>.022991640493273735
+<span class="o">[</span><span class="m">1</span>,0<span class="o">]</span>&lt;stdout&gt;:Test accuracy: <span class="m">0</span>.9926000237464905
+<span class="o">[</span><span class="m">1</span>,0<span class="o">]</span>&lt;stdout&gt;:Train time: <span class="m">472</span>.6957468986511
+</code></pre></div>
+<p>Due to random start and change of effective batch size, we will not end at the exact same solution but we do observe comparable results, and that the 4-GPU solution is approximately x4 times faster.</p>
+<p>This job is with a small model and dataset, so it is difficult to achieve high utilization. This is an example to get started :-)</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../torch_amp_example/" class="md-footer__link md-footer__link--prev" aria-label="Previous: PyTorch and multi-precision training" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              PyTorch and multi-precision training
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../torch_amp_example/" class="md-footer__link md-footer__link--next" aria-label="Next: PyTorch and automatic mixed precision with APEX" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              PyTorch and automatic mixed precision with APEX
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - 2022 Claaudia
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://twitter.com/claaudia_aau" target="_blank" rel="noopener" title="Claaudia on Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:<claaudia@aau.dk>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.claaudia.aau.dk/" target="_blank" rel="noopener" title="www.claaudia.aau.dk" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "toc.integrate", "navigation.indexes", "navigation.sections"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.0238f547.min.js"></script>
+      
+    
+  </body>
+</html>
