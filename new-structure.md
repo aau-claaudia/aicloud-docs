@@ -28,6 +28,7 @@ This is the proposed new structure of the documentation:
     management, Singularity containerisation.
 - Introduction; typical minimal workflow of connecting, transferring
   data, obtaining container, running job.
+- Queueing details and policy
 <!-- remainder planned as unchanged for now -->
 - Use cases:
   - "Interactive TensorFlow": examples/interactive_tensorflow.md
