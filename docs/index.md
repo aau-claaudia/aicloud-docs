@@ -27,7 +27,7 @@ on how to obtain access to AI Cloud, see [CLAAUDIA's
 homepage](https://www.claaudia.aau.dk/platforms-tools/compute/gpu-cloud-ai/).
 
 Students at Aalborg University can also use the AI Cloud. As a
-students, you are granted access to the AI Cloud for one semester at a
+student, you are granted access to the AI Cloud for one semester at a
 time in relation to your semester project, if the project requires the
 AI Cloud's resources. This requires approval from your supervisor.
 
