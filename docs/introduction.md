@@ -1,68 +1,401 @@
-# AI Cloud II at AAU user information
-This README contains information for getting started with the "AI Cloud II" system at AAU, links to additional resources, and examples of daily usage. We are many users on this system, so please consult the section on [Fair usage](#fair-usage) and follow the guidelines. We also have a [community site](https://web.yammer.com/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiI4NzM1OTg5NzYwIn0/all) at AAU Yammer where users can share experiences and we announce workshops, changes, and service to the system. If you have support questions, please contact us at support@its.aau.dk.
+This section describes how to get started with the AI Cloud at AAU.  
+We are many users on this system, so please consult the section on
+[Fair usage](#fair-usage) and follow the guidelines. We also have a
+[community
+site](https://web.yammer.com/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiI4NzM1OTg5NzYwIn0/all)
+at AAU Yammer where users can share experiences and administrators
+announce workshops, changes, and service to the system. If you have
+support questions, please contact us at
+[support@its.aau.dk](mailto:support@its.aau.dk).
 
-For new users, we recommend reading the [Introduction](#introduction) and [Getting started](#getting-started) section plus the section on [Fair usage](#fair-usage)
-
-## New to AI Cloud II compared to old AI Cloud
-
-The most important update:
-
-*Heterogene system with two DGX II, 3 T4 nodes, and a DGX A100 (primarily CREATE users) and in the future additional GPU servers.*
-
-This has some consequences across the system as we will describe in this documentation.
+For new users, we recommend reading the [front page](index.md) and
+[Overview](overview.md) section plus the section on [Fair
+usage](#fair-usage)
 
 ## Overview
 
-Working on AI Cloud II is based on a combination of two different mechanisms, [Singularity](https://www.sylabs.io/docs/) and [Slurm](https://slurm.schedmd.com/documentation.html), which are used for the following purposes:
-
-- **Singularity** is a container framework which serves to provide you with the necessary software environment to run your computational workloads. Different researchers may have widely different software stacks or perhaps versions of the same software stack that you need for your work. In order to provide maximum flexibility to you as users and to minimise potential compatibility problems between different software installed on the compute nodes, each user's software environment(s) is defined and provisioned as Singularity containers. You can both download pre-defined container images or configure or modify them yourself according to your needs.  
-  See details on container images from NGC [further down](#a-few-words-on-container-images).
-
-- **Slurm** is a queueing system that manages resource sharing in the AI Cloud. Slurm makes sure that all users get a fair share of the resources and get served in turn. Computational work in the AI Cloud can *only* be carried out through Slurm. This means you can only run your jobs on the compute nodes by submitting them to the Slurm queueing system. It is also through Slurm that you request the amount of ressources your job requires, such as amount of RAM, number of CPUs (logical CPUs with hyperthreading = 2 x physical CPUs = 2 x cores), number of GPUs etc.  
-  See how to get started with Slurm [further down](#slurm-basics).
-
 <!--**It is intended that all analysis on AI Cloud II are run via  containers which you start and manage by yourselves. It is possible to build singularity images from the NVIDIA's stock docker images [NVIDIA GPU Cloud](https://ngc.nvidia.com/) - check also this [Support Matrix](https://docs.nvidia.com/deeplearning/dgx/support-matrix/index.html "support matrix"). If you need something of your own taste, all software tools and their dependencies are supposed to be installed inside your containers. Furthermore, if you want to use the software stack again and again, it is a good idea to create a singularity image for that.**-->
 
-The AI Cloud II will consist of the following compute nodes
+The AI Cloud pilot platform consists of the following compute nodes:
 
-| Name                        | Nodes in total |GPUs per node     | CPUs per node   | RAM per node | Disk          | NVLINK / NVSWITCH  | Primary usage             |
-| ---                         | ---            | ---              | ---             | ---          | ---           | ---              | ---                       |
-| a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)    | 64 (AMD EPYC)   | 256 GB       | Non local     | Non              | Interactive / smaller single GPU jobs |
-| nv-ai-[01,03].srv.aau.dk    | 2              | 16 (DGX-2, V100) | 96 (Intel Xeon) | 1470 GB      | 30TB /raid    | Yes              | Large / batch / multi-GPU jobs |
-| nv-ai-04.srv.aau.dk         | 1              | 8 (DGX A100)     | 256 (AMD EPYC)  | 980 GB       | 14TB /raid    | Yes              | Large / batch / multi-GPU jobs |
+| Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
+| ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
+| nv-ai-[01,03].srv.aau.dk    | 2              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
 
-![Overview of the system](./workshop/overview.png)
- 
-CephFS is a shared filesystem that allow access to data in the home directory all both front-end and compute nodes. All users can allocate jobs on all nodes, but certain users from CREATE have priority on the DGX A100 node nv-ai-04.srv.aau.dk.
+The (new) AI Cloud consists of the following compute nodes:
+
+| Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
+| ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
+| a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)  | 32 (AMD EPYC)      | 96             | 256 GB       | 16 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
+| *i256-a10-[06-10].srv.aau.dk* | 5              | 4 (NVIDIA A10) | ? (Intel ?)        | ?              | 256 GB       | 24 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
+| nv-ai-04.srv.aau.dk         | 1              | 8 (A100)       | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+
+???+ note
+
+    The compute nodes i256-a10-[06-10].srv.aau.dk are currently being installed and are not quite ready yet.
 
 ## Getting started
 
-An alternative [workshop version](./workshop/SlurmAndSingularityTraining.pdf) intro to the system is also available. 
+An alternative [workshop
+version](./workshop/SlurmAndSingularityTraining.pdf) introduction is
+also available, but this only applies to the AI Cloud pilot platform.
 
-## Logging in
-You can access the platform using [SSH](https://wiki.archlinux.org/index.php/OpenSSH#Client_usage).
+### Logging in
 
-Generally, the AI Cloud is only directly accessible when being on the AAU network, in this case you would access the front-end node by:
-```console
-ssh <aau-ID>@ai-fe02.srv.aau.dk
-```
-Replace `<aau-ID>` with your personal AAU ID. For some users, this is your email (e.g. `yourname@department.aau.dk`). For newer users, your AAU ID may be separate from your email address and have the form `AB12CD@department.aau.dk`; if you have this, use your AAU ID to log in.
+You can access the platform using
+[SSH](https://wiki.archlinux.org/index.php/OpenSSH#Client_usage). How
+to use SSH depends on which operating system you use on your local
+computer:
 
-If you wish to access while **not** being connected to the AAU network, you have two options: [Use VPN](https://www.en.its.aau.dk/instructions/VPN/) or use AAU's [SSH JumpHost](https://www.en.its.aau.dk/instructions/Username+and+password/SSH/).
+Linux
+: If you use a modern Linux distribution such as Ubuntu on your
+  computer, the necessary tools to connect to AI Cloud are usually
+  already installed by default.
 
-If you're often outside AAU, you can use the SSH JumpHost through your personal ssh config (Linux/MacOS often located in: `$HOME/.ssh/config`).
+OS X (Apple)
+: OS X has SSH built into the command line terminal. This means you
+  can invoke SSH commands as shown in the following examples directly
+  from your command line.  
+  OS X does, however, not have a built-in [X
+  server](https://en.wikipedia.org/wiki/X.Org_Server) so it is
+  necessary to install additional software if you wish to be able to
+  show the graphical user interface (GUI) of applications (using X
+  forwarding).  
+  Installing [XQuartz](https://www.xquartz.org/) should enable OS X to
+  use X forwarding.
 
-```console
-Host ai-fe02.srv.aau.dk
-     User <aau-ID>
-     ProxyJump %r@sshgw.aau.dk
-```
-Add the above configuration to your personal ssh config file (often located in: `$HOME/.ssh/config` on Linux or MacOS systems). Now you can easily connect to the platform regardless of network simply using `ssh claaudia-ai-cloud`.
+Windows (Microsoft)
+: Newer versions of Windows have SSH built into the command line
+  terminal. This means you can invoke SSH commands as shown in the
+  following examples directly from your command line.  
+  Windows does, however, not have a built-in [X
+  server](https://en.wikipedia.org/wiki/X.Org_Server) either so it is
+  necessary to install additional software if you wish to be able to
+  show the graphical user interface (GUI) of applications (using X
+  forwarding).  
+  If you wish to use a convenient way to connect to the AI Cloud from
+  Windows with the ability to display the GUI of applications you run
+  in AI Cloud, we recommend that you install and use
+  [MobaXterm](https://mobaxterm.mobatek.net/) on your local computer.
 
+The AI Cloud is only directly accessible when being on the AAU network
+(including VPN). You can connect to AI Cloud front-end node by running
+the following command on the command line of your local computer:
 
-## Slurm basics
+???+ example
+
+    AI Cloud pilot platform
+    ```console
+    ssh -i <aau email> ai-pilot.srv.aau.dk
+    ```
+
+???+ example
+
+    AI Cloud
+    ```console
+    ssh -i <aau email> ai-fe02.srv.aau.dk
+    ```
+
+Replace `<aau email>` with your AAU email address, e.g.
+
+???+ example
+
+    ```console
+    ssh -i tari@its.aau.dk ai-fe02.srv.aau.dk
+    ```
+
+If you wish to access while **not** being connected to the AAU
+network, you have two options: [Use
+VPN](https://www.en.its.aau.dk/instructions/VPN/) or use AAU's [SSH
+gateway](https://www.en.its.aau.dk/instructions/Username+and+password/SSH/).
+
+??? info
+
+    If you are often outside AAU, you can use the SSH gateway by default
+    through your personal SSH configuration (in Linux/OS X this is often
+    located in: `$HOME/.ssh/config`).
+	
+	AI Cloud pilot platform
+    ```console
+    Host ai-pilot.srv.aau.dk
+         User <aau email>
+         ProxyJump %r@sshgw.aau.dk
+    ```
+
+	AI Cloud
+    ```console
+    Host ai-fe02.srv.aau.dk
+         User <aau email>
+         ProxyJump %r@sshgw.aau.dk
+    ```
+
+    Add the above configuration to your personal ssh config file (often
+    located in: `$HOME/.ssh/config` on Linux or OS X systems). Now you
+    can easily connect to the platform regardless of network using the
+    commands from preceding examples.
+
+### Transferring files
+
+You can transfer files to/from AI Cloud using the command line utility
+`scp` from your local computer (Linux and OS X). *To* AI Cloud:
+
+???+ example
+
+    AI Cloud pilot platform
+    ```console
+    scp some-file <aau email>@ai-pilot.srv.aau.dk:~
+    ```
+
+???+ example
+
+    AI Cloud
+    ```console
+    scp some-file <aau email>@ai-fe02.srv.aau.dk:~
+    ```
+where '~' means your user directory on AI Cloud. You can append
+directories below that to your destination:
+
+???+ example
+
+    ```console
+    scp some-file <aau email>@ai-fe02.srv.aau.dk:~/some-dir/some-sub-dir/
+    ```
+
+You can also copy in the opposite direction, e.g. from the AI Cloud
+pilot platform to your local computer with:
+
+???+ example
+
+    ```console
+    scp <aau email>@ai-pilot.srv.aau.dk:~/some-folder/some-subfolder/some-file .
+    ```
+	where '.' means the current directory you are located in on your local
+	computer.
+
+In general, file transfer tools that can use SSH as protocol should
+work. A common choice is [FileZilla](https://filezilla-project.org/)
+or the Windows application [WinSCP](https://winscp.net/).
+
+## Running jobs
+
+As mentioned on the [Overview](overview.md) page, two important
+building blocks of the AI Cloud are the queue system Slurm and the
+container technology Singularity. In order to run a computation,
+analysis, simulation, training of a machine learning algorithm etc.,
+it is necessary to first obtain a container to run your application in
+(in most cases) and to queue it as a job in the queue system
+(mandatory). The queue system is the only way to get access to running
+applications on the compute nodes.
+
+!!! warning
+
+    The front-end nodes of the AI Cloud pilot platform and the AI Cloud
+    are not meant for running computationally intensive applications. If
+    you attempt to do so anyway, this risks rendering the entire AI Cloud
+    inaccessible to you and all other users on it, because you exhaust the
+    memory and/or CPU capacity of the front-end node. This is not
+    considered acceptable use of the platform and is not allowed.
+
+### Slurm jobs
+
+The first important building block to be aware of is the queue system
+Slurm.
+
+Applications can only be run on the compute nodes through Slurm. You
+quite literally only have access to the compute nodes when you have a
+job allocated on them.
+
+The simplest way to run a job via Slurm is to use the command `srun`.
+
+!!! example
+
+	```console
+    srun hostname
+	```
+	This runs the command `hostname` as a job in the queue system. When
+    run like this with no further parameters specified, Slurm will run the
+    command on the first compute node available.  
+	On the AI Cloud pilot platform, this will either be nv-ai-01.srv.aau.dk
+	or nv-ai-03.srv.aau.dk. On the AI Cloud, it will be
+	a256-t4-01.srv.aau.dk, a256-t4-02.srv.aau.dk, or a256-t4-03.srv.aau.dk.  
+	The command will return one of these host names. If the command displays
+	"srun: job XXXXXX queued and waiting for resources", this means that all
+	compute nodes are fully occupied (by other users' jobs) and your job is
+	waiting in queue to be executed when resources become available.
+
+This was your first Slurm job. You will need this (`srun`) and other
+Slurm commands for most of your work in AI Cloud. You will see more
+examples in combination with Singularity in the next section. Further
+details about Slurm can be found on the [Slurm details](slurm.md)
+page.
+
+### Singularity containers
+
+Only a small set of typical Linux command line tools are installed on
+the compute nodes and can be run without a container. For all other
+applications, you must first obtain a container to run your
+applications in. The container provides an encapsulated software
+environment with your application(s) installed inside.
+
+#### Obtaining containers
+
+The recommended way to obtain containers is to first visit [NVIDIA GPU
+Cloud (NGC)](https://catalog.ngc.nvidia.com/) and check whether NVIDIA
+already provides a container with the application you need.
+
+![Screenshot of NGC website](assets/img/ngc.png)
+
+As an example, this could be TensorFlow. You can search on NGC and
+find
+[TensorFlow](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow). Here
+you can choose the desired version from the "Copy image path" dropdown menu:
+
+![Screenshot of NGC TensorFlow page](assets/img/ngc-tf-detail.png)
+
+This copies a link to the container which we will use shortly to
+download it.
+
+We need to use Singularity to download the image and in order to run
+Singularity, we must run it the Slurm queue system. This results in
+the following command:
+
+???+ example
+
+    ```console
+    srun singularity pull docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
+    ```
+
+The above example consists of three parts:
+
+- `srun`: the Slurm command which gets the following command executed
+  on a compute node.
+- `singularity pull`: the Singularity command which downloads a
+  specified container.
+- `docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3`: this part of the
+  command itself consists of two parts. `docker://` tells Singularity
+  that we are downloading a Docker container and Singularity
+  automatically converts this to a Singularity container upon
+  download. `nvcr.io/nvidia/tensorflow:22.07-tf2-py3` is container
+  label copied from the NGC webpage which identifies the particular
+  container and version that we want. This part can be pasted into the
+  command line by pressing `<CTRL>+<SHIFT>+V` in the AI Cloud command
+  line.
+
+Once the `singularity pull` command has completed, you should have a
+file called "tensorflow_22.07-tf2-py3.sif" in your user directory (use
+the command `ls` to see the files in your current directory).
+
+#### Running applications in containers
+
+Now that you have a container image in your user directory (the file "tensorflow_22.07-tf2-py3.sif"), we can run the container. This can be done in several ways:
+
+Shell
+: You can open a shell in the container. This basically gives you a
+  command line in the runtime environment inside the container where
+  you can work interactively, i.e. type commands in the command line
+  to run scripts and open applications.  
+  This is good for experimenting with how you wish to run you
+  computations, analyses etc. in the container.
+
+??? example
+       
+        srun --pty singularity shell tensorflow_22.07-tf2-py3.sif
+    
+    The `--pty` parameter is necessary in order to enable typing commands
+    into the command line in the job. After opening the shell in the
+	container, your command line terminal should display:
+	
+	    Singularity>
+	
+	This means that it is ready for you to type in commands. Type `exit`
+	and hit ENTER to exit the container and stop the running job.
+
+Exec
+: Execute a specified command (such as running a script) in a
+  container.  
+  This is useful if you know exactly which command you wish to run in
+  your container.
+
+??? example
+
+        srun singularity exec tensorflow_22.07-tf2-py3.sif hostname
+	
+	Notice here that the `--pty` option is not necessary if the executed
+	command does not need keyboard input while running. Here we use
+	`hostname` as a toy example of a command that prints out a simple
+	piece of information and then exits.
+
+Run
+: Run the default action configured in the container.  
+  The container determines what the default action is. This is useful
+  if you have obtained a container constructed to carry out a specific
+  task.
+
+??? example
+
+        srun --pty singularity run tensorflow_22.07-tf2-py3.sif
+	
+	In some cases, the default action of a container is to open the shell.
+	This is why we use the `--pty` option here.
+
+### Allocating a GPU to your job
+
+The primary role of the AI Cloud is to run software that utilises one
+or more GPUs for computations.
+
+The final step we need here in order to run applications with a GPU is
+to actually allocate a GPU to a job using Slurm. The examples up to
+now have all run jobs without a GPU. It is necessary to explicitly ask
+Slurm for a GPU in order to be able to use one.
+
+???+ example
+
+    You can allocate a GPU to a job by using the `-G` or `--gres=gpu`
+    option for Slurm
+	
+	    srun -G 1 nvidia-smi
+	
+	This example allocates 1 GPU to a job running the command
+	`nvidia-smi`. This command prints information about the allocated
+	GPU and then exits.  
+	The following commands achieve the same:
+	
+	    srun --gres=gpu nvidia-smi
+		srun --gres=gpu:1 nvidia-smi
+	
+	Note that the above examples all allocate 1 GPU to the job. It is
+	possible to allocate more, for example `-G 2` for two GPUs.
+	
+**Software for computing on GPU is not necessarily able to utilise
+more than one GPU at a time. It is your responsibility to ensure that
+the software you run can indeed utilise as many GPUs as you
+allocate. It is not allowed to allocate more GPUs than your job can
+utilise.**
+
+In most cases you probably want to use a GPU in combination with a
+Singularity container. In this case, we also need to remember to
+enable support for NVIDIA GPUs in Singularity:
+
+???+ example
+
+        srun --gres=gpu:1 singularity exec --nv nvidia-smi
+
+    The `--nv` option enables NVIDIA GPUs in the container and must always
+    be used when running jobs that utilise GPU(s). Otherwise, the GPU(s)
+    will not be available inside the container.
+
+These were a few of the most basic details to get started using the AI
+Cloud. Once you have familiarised yourself a bit with the AI Cloud, we
+suggest you have a closer looking at the pages here with details on
+Slurm and Singularity for more details and features. The [Additional
+examples](examples/interactive_tensorflow.md) page contains more
+detailed examples of concrete use cases for the AI Cloud.
+
+<!-- Documentation re-written up to here -->
+
+<!--## Slurm basics
 To get a first impression, try:
-
+	
 ```console
 $ scontrol show node
 ....
@@ -342,32 +675,6 @@ A script such as the above can be submitted to the Slurm queue using the `sbatch
 sbatch <name-of-script>
 ```
 
-## Transferring files
-You can transfer files to/from AI Cloud using the command line utility `scp` from your local computer (Linux and OS X). *To* AI Cloud:
-```console
-$ scp some-file <USER ID>@ai-fe02.srv.aau.dk:~
-```
-where '~' is your user folder on AI Cloud. `<USER ID>` could for example be ‘ab34ef@department.aau.dk’.  
-You can append folders below that to your destination:
-```console
-$ scp some-file <USER ID>@ai-fe02.srv.aau.dk:~/some-folder/some-subfolder/
-```
-
-You can also copy from the old AI Cloud with
-```console
-$ scp <USER ID>@ai-pilot.srv.aau.dk:~/some-folder/some-subfolder/ .
-```
-
-In general, file transfer tools that can use SSH as protocol should work. A common choice is [FileZilla](https://filezilla-project.org/) or the Windows option [WinSCP](https://winscp.net/).
-
-If you wish to mount a folder in AI Cloud on your local computer for easier access, you can also do this using `sshfs` (Linux command line example executed on your local computer):
-
-```console
-mkdir aicloud-home
-sshfs <USER ID>@ai-pilot.srv.aau.dk:/user/<DOMAIN>/<ID> aicloud-home
-```
-where `<DOMAIN>` is 'department.aau.dk' and `<ID>` is 'ab34ef' for user 'ab34ef@department.aau.dk'.
-
 ## Ways of using Slurm
 
 Just to summarise from the above examples, there are three typical was of executing work through Slurm:
@@ -467,39 +774,66 @@ index, timestamp, utilization.gpu [%], utilization.memory [%], memory.total [MiB
 ```
 
 where 83549 is the Slurm JobId. If your job does not behave as intended, then please analyse the problem and try to solve the issue. It is not good practice to have allocated but not utilizing GPUs on the system.
-
+-->
 ## Fair usage
-The following guidelines are put in place to have a fair usage of the system for all users. The following text might be updated from time to time such that we can better serve all users.
+The following guidelines are put in place to ensure fair usage of the
+system for all users. The following text might be updated from time to
+time in order to provide the best possible service for as many users
+as possible.
 
 ITS/CLAAUDIA work from the following principles for fair usage:
 
-- Good research is the success criterion and ITS/CLAAUDIA should lower the barrier for allowing this.
+- Good research is the success criterion and ITS/CLAAUDIA should lower
+  the barrier for allowing this.
 - Researchers should enter on a level playing field.
-- ITS has an administrative and technical role and should in general not determine what research should have a higher priority. Students are vetted with recommendation of supervisor/staff backing that this is for research purposes.
+- ITS has an administrative and technical role and should in general
+  not determine what research should have a higher priority. Students
+  are vetted with recommendation of supervisor/staff backing that this
+  is for research purposes.
 - Aim at the most open and unrestricted access model.
 
-Based on these principles we kindly ask that all users consider the following guidelines:
+Based on these principles we kindly ask that all users consider the
+following guidelines:
 
-- Please be mindful of your allocations and refrain from allocating many resources without knowing/testing/verifying that you indeed can make good usage of the allocated resources.
-- Please be mindful and de-allocate the resources if you do no use them. Then other users can make good use of these.
+- Please be mindful of your allocations and refrain from allocating
+  many resources without knowing/testing/verifying that you indeed can
+  utilise all of the allocated resources.
+- Please be mindful and de-allocate the resources when you are no
+  longer using them. This enables other users to run their jobs.
 
-If in doubt, you can do
+If in doubt, you can run:
 ```console
 squeue -u $USER
 ```
-and inspect you own allocations. If you have allocations you are not using, then please cancel these resource allocations.
+and inspect your own job allocations. If you have allocations you are
+not using, then please cancel these resource allocations.
 
 A few key points to remember:
 
-1. Please refrain from doing pre-emptive allocations. From the current load, we still conclude that there are enough resources if the resources are used wisely.
-2. There are resources available in the evenings/nights and weekends. If possible, start your job as a batch script (`sbatch`), and let it queue and rest while the computer does the work. Maybe even better, put the job to queue late in the afternoon or use `-b`, `--begin` option with your batch script, e.g. add the line
+1. Please refrain from allocating jobs that sit idle in order to
+   "reserve" ressources for you. For example `srun --pty bash -l`
+   opens an interactive (command line) job that keeps running without
+   doing anything unless you actively type in commands.  
+   *This is unacceptable practice and we will cancel such inactive
+   jobs if we encounter them.*
+2. There are typically more resources available in the evenings/nights
+   and on weekends. If possible, start your job as a batch script
+   (`sbatch`) and let it queue and rest while the computer does the
+   work. Maybe even better, if the job is not urgent, queue the job to
+   run late in the afternoon or use the `-b` or `--begin` option with
+   your batch script, e.g. add the line
 
-```console
-#SBATCH --begin=18:00:00
-```
+   ```console
+   #SBATCH --begin=18:00:00
+   ```
 
-ITS/CLAAUDIA will keep analysing and observing the usage of the system to make the best use of the available resources based on the above principles and guidelines. If ITS/CLAAUDIA is in doubt, we will contact users and ask if the resource allocations are in line with the above principles and guidelines. We have previously contacted users in this regard, and will be more active in periods of high utilization.
-
+ITS/CLAAUDIA will keep analysing and observing the usage of the system
+to make the best use of the available resources based on the above
+principles and guidelines. If ITS/CLAAUDIA is in doubt, we will
+contact users and ask if the resource allocations are in line with the
+above principles and guidelines. We will be more active in periods of
+high utilization.
+<!--
 ## Do you have an upcoming deadline?
 If you are working towards an upcoming deadline, and find it difficult to have the resources you need, then please send an email to support@its.aau.dk with a URL (call for papers etc.) stating the deadline. We can provide some hints, help and possibly additional resources to help you meet your deadline.
 
@@ -507,3 +841,4 @@ If you are working towards an upcoming deadline, and find it difficult to have t
 ## Data deletion
 From time to time we observe if users no longer are listed in the central database. Users can be removed when the studies or employment ends. We will as a last option try to reach you by email. If this fails, we reserve the right to delete data in your home directory and on the compute node, e.g. /raid.
 
+-->
