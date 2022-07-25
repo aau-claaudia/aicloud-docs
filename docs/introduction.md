@@ -1,64 +1,140 @@
-# AI Cloud II at AAU user information
-This README contains information for getting started with the "AI Cloud II" system at AAU, links to additional resources, and examples of daily usage. We are many users on this system, so please consult the section on [Fair usage](#fair-usage) and follow the guidelines. We also have a [community site](https://web.yammer.com/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiI4NzM1OTg5NzYwIn0/all) at AAU Yammer where users can share experiences and we announce workshops, changes, and service to the system. If you have support questions, please contact us at support@its.aau.dk.
+This section describes how to get started with the AI Cloud at AAU.  
+We are many users on this system, so please consult the section on
+[Fair usage](#fair-usage) and follow the guidelines. We also have a
+[community
+site](https://web.yammer.com/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiI4NzM1OTg5NzYwIn0/all)
+at AAU Yammer where users can share experiences and administrators
+announce workshops, changes, and service to the system. If you have
+support questions, please contact us at
+[support@its.aau.dk](mailto:support@its.aau.dk).
 
-For new users, we recommend reading the [Introduction](#introduction) and [Getting started](#getting-started) section plus the section on [Fair usage](#fair-usage)
-
-## New to AI Cloud II compared to old AI Cloud
-
-The most important update:
-
-*Heterogene system with two DGX II, 3 T4 nodes, and a DGX A100 (primarily CREATE users) and in the future additional GPU servers.*
-
-This has some consequences across the system as we will describe in this documentation.
+For new users, we recommend reading the [front page](index.md) and
+[Overview](overview.md) section plus the section on [Fair
+usage](#fair-usage)
 
 ## Overview
 
-Working on AI Cloud II is based on a combination of two different mechanisms, [Singularity](https://www.sylabs.io/docs/) and [Slurm](https://slurm.schedmd.com/documentation.html), which are used for the following purposes:
-
-- **Singularity** is a container framework which serves to provide you with the necessary software environment to run your computational workloads. Different researchers may have widely different software stacks or perhaps versions of the same software stack that you need for your work. In order to provide maximum flexibility to you as users and to minimise potential compatibility problems between different software installed on the compute nodes, each user's software environment(s) is defined and provisioned as Singularity containers. You can both download pre-defined container images or configure or modify them yourself according to your needs.  
-  See details on container images from NGC [further down](#a-few-words-on-container-images).
-
-- **Slurm** is a queueing system that manages resource sharing in the AI Cloud. Slurm makes sure that all users get a fair share of the resources and get served in turn. Computational work in the AI Cloud can *only* be carried out through Slurm. This means you can only run your jobs on the compute nodes by submitting them to the Slurm queueing system. It is also through Slurm that you request the amount of ressources your job requires, such as amount of RAM, number of CPUs (logical CPUs with hyperthreading = 2 x physical CPUs = 2 x cores), number of GPUs etc.  
-  See how to get started with Slurm [further down](#slurm-basics).
-
 <!--**It is intended that all analysis on AI Cloud II are run via  containers which you start and manage by yourselves. It is possible to build singularity images from the NVIDIA's stock docker images [NVIDIA GPU Cloud](https://ngc.nvidia.com/) - check also this [Support Matrix](https://docs.nvidia.com/deeplearning/dgx/support-matrix/index.html "support matrix"). If you need something of your own taste, all software tools and their dependencies are supposed to be installed inside your containers. Furthermore, if you want to use the software stack again and again, it is a good idea to create a singularity image for that.**-->
 
-The AI Cloud II will consist of the following compute nodes
+The AI Cloud pilot platform consists of the following compute nodes:
 
-| Name                        | Nodes in total |GPUs per node     | CPUs per node   | RAM per node | Disk          | NVLINK / NVSWITCH  | Primary usage             |
-| ---                         | ---            | ---              | ---             | ---          | ---           | ---              | ---                       |
-| a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)    | 64 (AMD EPYC)   | 256 GB       | Non local     | Non              | Interactive / smaller single GPU jobs |
-| nv-ai-[01,03].srv.aau.dk    | 2              | 16 (DGX-2, V100) | 96 (Intel Xeon) | 1470 GB      | 30TB /raid    | Yes              | Large / batch / multi-GPU jobs |
-| nv-ai-04.srv.aau.dk         | 1              | 8 (DGX A100)     | 256 (AMD EPYC)  | 980 GB       | 14TB /raid    | Yes              | Large / batch / multi-GPU jobs |
+| Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
+| ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
+| nv-ai-[01,03].srv.aau.dk    | 2              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
 
-![Overview of the system](./workshop/overview.png)
- 
-CephFS is a shared filesystem that allow access to data in the home directory all both front-end and compute nodes. All users can allocate jobs on all nodes, but certain users from CREATE have priority on the DGX A100 node nv-ai-04.srv.aau.dk.
+The (new) AI Cloud consists of the following compute nodes:
+
+| Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
+| ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
+| a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)  | 32 (AMD EPYC)      | 96             | 256 GB       | 16 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
+| *i256-a10-[06-10].srv.aau.dk* | 5              | 4 (NVIDIA A10) | ? (Intel ?)        | ?              | 256 GB       | 24 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
+| nv-ai-04.srv.aau.dk         | 1              | 8 (A100)       | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+
+???+ note
+
+    The compute nodes i256-a10-[06-10].srv.aau.dk are currently being installed and are not quite ready yet.
 
 ## Getting started
 
-An alternative [workshop version](./workshop/SlurmAndSingularityTraining.pdf) intro to the system is also available. 
+An alternative [workshop
+version](./workshop/SlurmAndSingularityTraining.pdf) introduction is
+also available, but this only applies to the AI Cloud pilot platform.
 
 ## Logging in
-You can access the platform using [SSH](https://wiki.archlinux.org/index.php/OpenSSH#Client_usage).
 
-Generally, the AI Cloud is only directly accessible when being on the AAU network, in this case you would access the front-end node by:
-```console
-ssh <aau-ID>@ai-fe02.srv.aau.dk
-```
-Replace `<aau-ID>` with your personal AAU ID. For some users, this is your email (e.g. `yourname@department.aau.dk`). For newer users, your AAU ID may be separate from your email address and have the form `AB12CD@department.aau.dk`; if you have this, use your AAU ID to log in.
+You can access the platform using
+[SSH](https://wiki.archlinux.org/index.php/OpenSSH#Client_usage). How
+to use SSH depends on which operating system you use on your local
+computer:
 
-If you wish to access while **not** being connected to the AAU network, you have two options: [Use VPN](https://www.en.its.aau.dk/instructions/VPN/) or use AAU's [SSH JumpHost](https://www.en.its.aau.dk/instructions/Username+and+password/SSH/).
+Linux
+: If you use a modern Linux distribution such as Ubuntu on your
+  computer, the necessary tools to connect to AI Cloud are usually
+  already installed by default.
 
-If you're often outside AAU, you can use the SSH JumpHost through your personal ssh config (Linux/MacOS often located in: `$HOME/.ssh/config`).
+OS X (Apple)
+: OS X has SSH built into the command line terminal. This means you
+  can invoke SSH commands as shown in the following examples directly
+  from your command line.  
+  OS X does, however, not have a built-in [X
+  server](https://en.wikipedia.org/wiki/X.Org_Server) so it is
+  necessary to install additional software if you wish to be able to
+  show the graphical user interface (GUI) of applications (using X
+  forwarding).  
+  Installing [XQuartz](https://www.xquartz.org/) should enable OS X to
+  use X forwarding.
 
-```console
-Host ai-fe02.srv.aau.dk
-     User <aau-ID>
-     ProxyJump %r@sshgw.aau.dk
-```
-Add the above configuration to your personal ssh config file (often located in: `$HOME/.ssh/config` on Linux or MacOS systems). Now you can easily connect to the platform regardless of network simply using `ssh claaudia-ai-cloud`.
+Windows (Microsoft)
+: Newer versions of Windows have SSH built into the command line
+  terminal. This means you can invoke SSH commands as shown in the
+  following examples directly from your command line.  
+  Windows does, however, not have a built-in [X
+  server](https://en.wikipedia.org/wiki/X.Org_Server) either so it is
+  necessary to install additional software if you wish to be able to
+  show the graphical user interface (GUI) of applications (using X
+  forwarding).  
+  If you wish to use a convenient way to connect to the AI Cloud from
+  Windows with the ability to display the GUI of applications you run
+  in AI Cloud, we recommend that you install and use
+  [MobaXterm](https://mobaxterm.mobatek.net/) on your local computer.
 
+The AI Cloud is only directly accessible when being on the AAU network
+(including VPN). You can connect to AI Cloud front-end node by running
+the following command on the command line of your local computer:
+
+???+ example
+
+    AI Cloud pilot platform
+    ```console
+    ssh -i <aau email> ai-pilot.srv.aau.dk
+    ```
+
+???+ example
+
+    AI Cloud
+    ```console
+    ssh -i <aau email> ai-fe02.srv.aau.dk
+    ```
+
+Replace `<aau email>` with your AAU email address, e.g.
+
+???+ example
+
+    ```console
+    ssh -i tari@its.aau.dk ai-fe02.srv.aau.dk
+    ```
+
+If you wish to access while **not** being connected to the AAU
+network, you have two options: [Use
+VPN](https://www.en.its.aau.dk/instructions/VPN/) or use AAU's [SSH
+gateway](https://www.en.its.aau.dk/instructions/Username+and+password/SSH/).
+
+??? info
+
+    If you are often outside AAU, you can use the SSH gateway by default
+    through your personal SSH configuration (in Linux/OS X this is often
+    located in: `$HOME/.ssh/config`).
+	
+	AI Cloud pilot platform
+    ```console
+    Host ai-pilot.srv.aau.dk
+         User <aau email>
+         ProxyJump %r@sshgw.aau.dk
+    ```
+
+	AI Cloud
+    ```console
+    Host ai-fe02.srv.aau.dk
+         User <aau email>
+         ProxyJump %r@sshgw.aau.dk
+    ```
+
+    Add the above configuration to your personal ssh config file (often
+    located in: `$HOME/.ssh/config` on Linux or OS X systems). Now you
+    can easily connect to the platform regardless of network using the
+    commands from preceding examples.
+
+<!-- Documentation re-written up to here -->
 
 ## Slurm basics
 To get a first impression, try:
