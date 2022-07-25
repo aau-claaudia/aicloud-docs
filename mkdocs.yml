@@ -46,11 +46,11 @@ markdown_extensions:
       alternate_style: true 
   - pymdownx.inlinehilite
   - pymdownx.keys
-
   - attr_list
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - toc
 #  - pymdownx.keys
 #  - pymdownx.highlight:
 #      linenums: true
