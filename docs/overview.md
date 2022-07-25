@@ -9,3 +9,5 @@ sole platform in the near future.
 ![AI Cloud pilot platform](assets/img/ai-cloud-pilot-overview.png)
 
 ## AI Cloud (new)
+
+![AI Cloud (new) platform](assets/img/ai-cloud-overview.png)
