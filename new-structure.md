@@ -29,7 +29,7 @@ This is the proposed new structure of the documentation:
 - Introduction; typical minimal workflow of connecting, transferring
   data, obtaining container, running job.
 <!-- remainder planned as unchanged for now -->
-- "Additional examples":
+- Use cases:
   - "Interactive TensorFlow": examples/interactive_tensorflow.md
   - "Jupyter notebook using TensorFlow container": examples/jupyter.md
   - "PyTorch and Anaconda": examples/pytorch_anaconda.md
