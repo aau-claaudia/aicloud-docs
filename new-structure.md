@@ -26,8 +26,8 @@ This is the proposed new structure of the documentation:
     (new) AI Cloud.
   - Major software components; SSH connectivity, Slurm resource
     management, Singularity containerisation.
-- Introduction; typical minimal workflow of connecting, obtaining
-  container, running job.
+- Introduction; typical minimal workflow of connecting, transferring
+  data, obtaining container, running job.
 <!-- remainder planned as unchanged for now -->
 - "Additional examples":
   - "Interactive TensorFlow": examples/interactive_tensorflow.md
