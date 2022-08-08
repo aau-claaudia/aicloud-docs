@@ -87,9 +87,9 @@ comutationally intensive training of deep neural networks, while the
 compute nodes with T4 GPUs are better suited for inference tasks using
 an already trained model.
 
-## Operating system and application framework
+## Operating system, file storage, and application framework
 
-The AI Cloud (and -pilot platform) are based on [Ubuntu
+The AI Cloud (and -pilot platform) is based on [Ubuntu
 Linux](https://en.wikipedia.org/wiki/Ubuntu) as its operating
 system. In practice, working in the AI Cloud primarily takes place via
 a [command-line
@@ -97,7 +97,7 @@ interface](https://en.wikipedia.org/wiki/Command-line_interface).
 
 Two major building blocks are essential to working with the AI Cloud:
 a resource management / queuing system called Slurm and a container
-system called Singularity/Apptainer
+system called Singularity/Apptainer.
 
 ???+ info
 
@@ -139,3 +139,20 @@ containers. You can both download pre-defined container images or
 configure or modify them yourself according to your needs.  
 See details on container images from NGC in the
 [introduction](introduction.md).
+
+### File storage
+
+Both the AI Cloud pilot platform and the newer AI Cloud store your
+files in your user directory. Your user directory is stored on a
+network file system that allows all of the nodes within each platform
+can access your files. This means that if you store or edit a file in
+your user directory on the front-end node, the compute nodes in the
+same platform can see the same file and contents thereof. The nodes
+access the network file system in a shared manner, so there is nothing
+you need to do to synchronise the files between the nodes.
+
+The AI Cloud pilot platform and the newer AI Cloud use separate
+network file systems. This means that on the AI Cloud pilot platform,
+you cannot directly see the files in the newer AI Cloud and vice
+versa. You can, however, copy files between them manually; please see
+[Introduction; transferring files](introduction.md#transferring-files).
