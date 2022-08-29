@@ -26,13 +26,9 @@ The (new) AI Cloud consists of the following compute nodes:
 
 | Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
 | ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
-| a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)  | 32 (AMD EPYC)      | 96             | 256 GB       | 16 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
-| *i256-a10-[06-10].srv.aau.dk* | 5              | 4 (NVIDIA A10) | ? (Intel ?)        | ?              | 256 GB       | 24 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
+| a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)  | 32 (AMD EPYC)      | 64             | 256 GB       | 16 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
+| i256-a10-[06-10].srv.aau.dk | 5              | 4 (NVIDIA A10) | 32 (Intel Xeon)    | 64             | 256 GB       | 24 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
 | nv-ai-04.srv.aau.dk         | 1              | 8 (A100)       | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
-
-???+ note
-
-    The compute nodes i256-a10-[06-10].srv.aau.dk are currently being installed and are not quite ready yet.
 
 ## Getting started
 
