@@ -290,7 +290,7 @@ Shell
   command line in the runtime environment inside the container where
   you can work interactively, i.e. type commands in the command line
   to run scripts and open applications.  
-  This is good for experimenting with how you wish to run you
+  This is good for experimenting with how you wish to run your
   computations, analyses etc. in the container.
 
 ??? example
