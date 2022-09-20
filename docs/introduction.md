@@ -82,14 +82,14 @@ the following command on the command line of your local computer:
 
     AI Cloud pilot platform
     ```console
-    ssh -i <aau email> ai-pilot.srv.aau.dk
+    ssh <aau email>@ai-pilot.srv.aau.dk
     ```
 
 ???+ example
 
     AI Cloud
     ```console
-    ssh -i <aau email> ai-fe02.srv.aau.dk
+    ssh <aau email>@ai-fe02.srv.aau.dk
     ```
 
 Replace `<aau email>` with your AAU email address, e.g.
@@ -97,7 +97,7 @@ Replace `<aau email>` with your AAU email address, e.g.
 ???+ example
 
     ```console
-    ssh -i tari@its.aau.dk ai-fe02.srv.aau.dk
+    ssh tari@its.aau.dk@ai-fe02.srv.aau.dk
     ```
 
 If you wish to access while **not** being connected to the AAU
