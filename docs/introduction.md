@@ -258,13 +258,14 @@ the following command:
 ???+ example
 
     ```console
-    srun singularity pull docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
+    srun --mem 32G singularity pull docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
     ```
 
 The above example consists of three parts:
 
 - `srun`: the Slurm command which gets the following command executed
   on a compute node.
+- `mem`: the slurm command that allows you allocate memory to your process.
 - `singularity pull`: the Singularity command which downloads a
   specified container.
 - `docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3`: this part of the
