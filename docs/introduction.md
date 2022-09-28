@@ -20,7 +20,7 @@ The AI Cloud pilot platform consists of the following compute nodes:
 
 | Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
 | ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
-| nv-ai-[01,03].srv.aau.dk    | 2              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+| nv-ai-03.srv.aau.dk         | 1              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
 
 The (new) AI Cloud consists of the following compute nodes:
 
@@ -28,6 +28,7 @@ The (new) AI Cloud consists of the following compute nodes:
 | ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
 | a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)  | 32 (AMD EPYC)      | 64             | 256 GB       | 16 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
 | i256-a10-[06-10].srv.aau.dk | 5              | 4 (NVIDIA A10) | 32 (Intel Xeon)    | 64             | 256 GB       | 24 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
+| nv-ai-01.srv.aau.dk         | 1              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
 | nv-ai-04.srv.aau.dk         | 1              | 8 (A100)       | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
 
 ## Getting started
