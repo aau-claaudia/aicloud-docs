@@ -27,6 +27,7 @@ theme:
     - toc.integrate
     - navigation.indexes
     - navigation.sections
+    - content.tabs.link
 
   logo: assets/logo_round.png
   favicon: assets/favicon.ico
@@ -42,6 +43,7 @@ extra_css:
 #repo_url: https://github.com/aau-claaudia
 
 markdown_extensions:
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.inlinehilite
@@ -57,7 +59,6 @@ markdown_extensions:
 #      linenums: true
 #      linenums_style: pymdownx-inline
 
-#  - pymdownx.superfences
 #  - pymdownx.snippets
 
 extra:

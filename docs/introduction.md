@@ -81,25 +81,31 @@ the following command on the command line of your local computer:
 
 ???+ example
 
-    AI Cloud pilot platform
-    ```console
-    ssh -l <aau email> ai-pilot.srv.aau.dk
-    ```
+    === "AI Cloud"
 
-???+ example
+        ```console
+        ssh -l <aau email> ai-fe02.srv.aau.dk
+        ```
 
-    AI Cloud
-    ```console
-    ssh -l <aau email> ai-fe02.srv.aau.dk
-    ```
+    === "AI Cloud pilot platform"
 
-Replace `<aau email>` with your AAU email address, e.g.
+        ```console
+        ssh -l <aau email> ai-pilot.srv.aau.dk
+        ```
 
-???+ example
+    Replace `<aau email>` with your AAU email address, e.g.
 
-    ```console
-    ssh -l tari@its.aau.dk ai-fe02.srv.aau.dk
-    ```
+    === "AI Cloud"
+
+        ```console
+        ssh -l tari@its.aau.dk ai-fe02.srv.aau.dk
+        ```
+
+    === "AI Cloud pilot platform"
+
+        ```console
+        ssh -l tari@its.aau.dk ai-pilot.srv.aau.dk
+        ```
 
 If you wish to access while **not** being connected to the AAU
 network, you have two options: [Use
@@ -111,20 +117,22 @@ gateway](https://www.en.its.aau.dk/instructions/Username+and+password/SSH/).
     If you are often outside AAU, you can use the SSH gateway by default
     through your personal SSH configuration (in Linux/OS X this is often
     located in: `$HOME/.ssh/config`).
-	
-	AI Cloud pilot platform
-    ```console
-    Host ai-pilot.srv.aau.dk
-         User <aau email>
-         ProxyJump %r@sshgw.aau.dk
-    ```
 
-	AI Cloud
-    ```console
-    Host ai-fe02.srv.aau.dk
-         User <aau email>
-         ProxyJump %r@sshgw.aau.dk
-    ```
+    === "AI Cloud"
+
+        ```console
+        Host ai-fe02.srv.aau.dk
+             User <aau email>
+             ProxyJump %r@sshgw.aau.dk
+        ```
+
+    === "AI Cloud pilot platform"
+
+        ```console
+        Host ai-pilot.srv.aau.dk
+             User <aau email>
+             ProxyJump %r@sshgw.aau.dk
+        ```
 
     Add the above configuration to your personal ssh config file (often
     located in: `$HOME/.ssh/config` on Linux or OS X systems). Now you
@@ -138,34 +146,51 @@ You can transfer files to/from AI Cloud using the command line utility
 
 ???+ example
 
-    AI Cloud pilot platform
-    ```console
-    scp some-file <aau email>@ai-pilot.srv.aau.dk:~
-    ```
+    === "AI Cloud"
+
+        ```console
+        scp some-file <aau email>@ai-fe02.srv.aau.dk:~
+        ```
+
+    === "AI Cloud pilot platform"
+
+        ```console
+        scp some-file <aau email>@ai-pilot.srv.aau.dk:~
+        ```
+
+    where '~' means your user directory on AI Cloud. You can append
+    directories below that to your destination:
 
 ???+ example
 
-    AI Cloud
-    ```console
-    scp some-file <aau email>@ai-fe02.srv.aau.dk:~
-    ```
-where '~' means your user directory on AI Cloud. You can append
-directories below that to your destination:
+    === "AI Cloud"
 
-???+ example
+        ```console
+        scp some-file <aau email>@ai-fe02.srv.aau.dk:~/some-dir/some-sub-dir/
+        ```
 
-    ```console
-    scp some-file <aau email>@ai-fe02.srv.aau.dk:~/some-dir/some-sub-dir/
-    ```
+    === "AI Cloud pilot platform"
+
+        ```console
+        scp some-file <aau email>@ai-pilot.srv.aau.dk:~/some-dir/some-sub-dir/
+        ```
 
 You can also copy in the opposite direction, e.g. from the AI Cloud
 pilot platform to your local computer with:
 
 ???+ example
 
-    ```console
-    scp <aau email>@ai-pilot.srv.aau.dk:~/some-folder/some-subfolder/some-file .
-    ```
+    === "AI Cloud"
+
+        ```console
+        scp <aau email>@ai-fe02.srv.aau.dk:~/some-folder/some-subfolder/some-file .
+        ```
+
+    === "AI Cloud pilot platform"
+
+        ```console
+        scp <aau email>@ai-pilot.srv.aau.dk:~/some-folder/some-subfolder/some-file .
+        ```
 	where '.' means the current directory you are located in on your local
 	computer.
 
