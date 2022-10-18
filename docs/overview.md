@@ -27,20 +27,20 @@ to and from AI Cloud and defining and launching job scripts.
 The details of defining and running jobs is described in the
 [introduction](introduction.md).
 
-The two compute nodes nv-ai-01 and nv-ai-03 are [NVIDIA DGX-2
-servers](https://www.nvidia.com/en-us/data-center/dgx-2/). Each
-compute node is equipped with 2 x 24-core Intel Xeon CPUs, 1.5 TB of
+The single remaining compute node nv-ai-03 is an [NVIDIA DGX-2
+server](https://www.nvidia.com/en-us/data-center/dgx-2/). The
+compute node is equipped with 2 &times; 24-core Intel Xeon CPUs, 1.5 TB of
 system RAM, and 16 [NVIDIA Tesla V100
 GPUs](https://www.nvidia.com/en-us/data-center/v100/) with 32 GB of
 RAM each, all connected via NVIDIA NVLink.  
-These are very powerful servers which you can use smaller or larger
+This is a very powerful server which you can use smaller or larger
 portions of for shorter or longer duration. Details on how can be
 found in the [introduction](introduction.md).
 
 ???+ note
 
     In the future, the AI Cloud pilot platform will be
-    decomissioned and its two compute nodes included in the (new) AI
+    decomissioned and its compute node included in the (new) AI
     Cloud described below.
 
 ## AI Cloud (new)
@@ -57,22 +57,25 @@ different types of hardware available in the compute nodes.
 The compute nodes of the AI Cloud currently include:
 
 - Three compute nodes named a256-t4-01 to a256-t4-03; each with AMD
-  CPUs (2 x AMD EPYC 7302 16-core), 256GB of system RAM, and 6 [NVIDIA
+  CPUs (2 &times; AMD EPYC 7302 16-core), 256GB of system RAM, and 6 [NVIDIA
   T4 GPUs](https://www.nvidia.com/en-us/data-center/tesla-t4/) (16 GB
   of RAM each).
-- *Not yet ready:* Five compute nodes named i256-a10-06 to
-  i256-a10-06; each with Intel CPUs (<!-- TO-DO -->*TBD...*), 256GB of
-  system RAM, and <!-- TO-DO -->? [NVIDIA A10
+- Five compute nodes named i256-a10-06 to i256-a10-06; each with Intel
+  CPUs (2 &times; Xeon Gold 6326), 256GB of system RAM, and 4 [NVIDIA
+  A10
   GPUs](https://www.nvidia.com/en-us/data-center/products/a10-gpu/)
   (24 GB of RAM each).
+- One [NVIDIA DGX-2
+server](https://www.nvidia.com/en-us/data-center/dgx-2/) server named
+nv-ai-01; identical to nv-ai-03 above.
 - One [NVIDIA
   DGX-A100](https://www.nvidia.com/en-us/data-center/dgx-a100/) server
-  named nv-ai-04. This compute node is equipped with AMD CPUs (2 x AMD
+  named nv-ai-04. This compute node is equipped with AMD CPUs (2 &times; AMD
   Rome 7742 64-core), 2TB of system RAM, and 8 [NVIDIA A100
   GPUs](https://www.nvidia.com/en-us/data-center/a100/) (40GB of RAM
   each).
 - In the future, the newer AI Cloud will also contain the compute
-  nodes nv-ai-01 and nv-ai-03 from the AI Cloud pilot platform.
+  node nv-ai-03 from the AI Cloud pilot platform.
   
 !!! important
 
@@ -120,8 +123,8 @@ can *only* be carried out through Slurm. This means you can only run
 your jobs on the compute nodes by submitting them to the Slurm
 queueing system. It is also through Slurm that you request the amount
 of ressources your job requires, such as amount of RAM, number of CPUs
-(logical CPUs with hyperthreading = 2 x physical CPUs = 2 x cores),
-number of GPUs etc.  
+(logical CPUs with hyperthreading = 2 &times; physical CPUs = 2
+&times; cores), number of GPUs etc.  
 See how to get started with Slurm in the
 [introduction](introduction.md).
 
