@@ -401,7 +401,7 @@ enable support for NVIDIA GPUs in Singularity:
 
 ???+ example
 
-        srun --gres=gpu:1 singularity exec --nv nvidia-smi
+        srun --gres=gpu:1 singularity exec --nv tensorflow_22.07-tf2-py3.sif nvidia-smi
 
     The `--nv` option enables NVIDIA GPUs in the container and must always
     be used when running jobs that utilise GPU(s). Otherwise, the GPU(s)
