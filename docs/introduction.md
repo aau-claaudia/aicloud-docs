@@ -16,19 +16,13 @@ usage](#fair-usage)
 
 <!--**It is intended that all analysis on AI Cloud II are run via  containers which you start and manage by yourselves. It is possible to build singularity images from the NVIDIA's stock docker images [NVIDIA GPU Cloud](https://ngc.nvidia.com/) - check also this [Support Matrix](https://docs.nvidia.com/deeplearning/dgx/support-matrix/index.html "support matrix"). If you need something of your own taste, all software tools and their dependencies are supposed to be installed inside your containers. Furthermore, if you want to use the software stack again and again, it is a good idea to create a singularity image for that.**-->
 
-The AI Cloud pilot platform consists of the following compute nodes:
-
-| Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
-| ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
-| nv-ai-03.srv.aau.dk         | 1              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
-
-The (new) AI Cloud consists of the following compute nodes:
+The AI Cloud consists of the following compute nodes:
 
 | Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
 | ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
 | a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)  | 32 (AMD EPYC)      | 64             | 256 GB       | 16 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
 | i256-a10-[06-10].srv.aau.dk | 5              | 4 (NVIDIA A10) | 32 (Intel Xeon)    | 64             | 256 GB       | 24 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
-| nv-ai-01.srv.aau.dk         | 1              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+| nv-ai-[01-02].srv.aau.dk    | 2              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
 | nv-ai-04.srv.aau.dk         | 1              | 8 (A100)       | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
 
 ## Getting started
@@ -81,31 +75,16 @@ the following command on the command line of your local computer:
 
 ???+ example
 
-    === "AI Cloud"
-
-        ```console
-        ssh -l <aau email> ai-fe02.srv.aau.dk
-        ```
-
-    === "AI Cloud pilot platform"
-
-        ```console
-        ssh -l <aau email> ai-pilot.srv.aau.dk
-        ```
+    ```console
+    ssh -l <aau email> ai-fe02.srv.aau.dk
+    ```
 
     Replace `<aau email>` with your AAU email address, e.g.
 
-    === "AI Cloud"
 
-        ```console
-        ssh -l tari@its.aau.dk ai-fe02.srv.aau.dk
-        ```
-
-    === "AI Cloud pilot platform"
-
-        ```console
-        ssh -l tari@its.aau.dk ai-pilot.srv.aau.dk
-        ```
+   ```console
+   ssh -l tari@its.aau.dk ai-fe02.srv.aau.dk
+   ```
 
 If you wish to access while **not** being connected to the AAU
 network, you have two options: [Use
@@ -118,21 +97,11 @@ gateway](https://www.en.its.aau.dk/instructions/Username+and+password/SSH/).
     through your personal SSH configuration (in Linux/OS X this is often
     located in: `$HOME/.ssh/config`).
 
-    === "AI Cloud"
-
-        ```console
-        Host ai-fe02.srv.aau.dk
-             User <aau email>
-             ProxyJump %r@sshgw.aau.dk
-        ```
-
-    === "AI Cloud pilot platform"
-
-        ```console
-        Host ai-pilot.srv.aau.dk
-             User <aau email>
-             ProxyJump %r@sshgw.aau.dk
-        ```
+    ```console
+    Host ai-fe02.srv.aau.dk
+         User <aau email>
+         ProxyJump %r@sshgw.aau.dk
+    ```
 
     Add the above configuration to your personal ssh config file (often
     located in: `$HOME/.ssh/config` on Linux or OS X systems). Now you
@@ -146,52 +115,29 @@ You can transfer files to/from AI Cloud using the command line utility
 
 ???+ example
 
-    === "AI Cloud"
-
-        ```console
-        scp some-file <aau email>@ai-fe02.srv.aau.dk:~
-        ```
-
-    === "AI Cloud pilot platform"
-
-        ```console
-        scp some-file <aau email>@ai-pilot.srv.aau.dk:~
-        ```
+    ```console
+	scp some-file <aau email>@ai-fe02.srv.aau.dk:~
+	```
 
     where '~' means your user directory on AI Cloud. You can append
     directories below that to your destination:
 
 ???+ example
 
-    === "AI Cloud"
-
-        ```console
-        scp some-file <aau email>@ai-fe02.srv.aau.dk:~/some-dir/some-sub-dir/
-        ```
-
-    === "AI Cloud pilot platform"
-
-        ```console
-        scp some-file <aau email>@ai-pilot.srv.aau.dk:~/some-dir/some-sub-dir/
-        ```
+    ```console
+	scp some-file <aau email>@ai-fe02.srv.aau.dk:~/some-dir/some-sub-dir/
+	```
 
 You can also copy in the opposite direction, e.g. from the AI Cloud
 pilot platform to your local computer with:
 
 ???+ example
 
-    === "AI Cloud"
+    ```console
+	scp <aau email>@ai-fe02.srv.aau.dk:~/some-folder/some-subfolder/some-file .
+	```
 
-        ```console
-        scp <aau email>@ai-fe02.srv.aau.dk:~/some-folder/some-subfolder/some-file .
-        ```
-
-    === "AI Cloud pilot platform"
-
-        ```console
-        scp <aau email>@ai-pilot.srv.aau.dk:~/some-folder/some-subfolder/some-file .
-        ```
-	where '.' means the current directory you are located in on your local
+    where '.' means the current directory you are located in on your local
 	computer.
 
 In general, file transfer tools that can use SSH as protocol should

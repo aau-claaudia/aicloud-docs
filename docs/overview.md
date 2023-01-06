@@ -1,22 +1,21 @@
 # AI Cloud structure
 
-The AI Cloud currently consists of two separate platforms: the [AI
-Cloud pilot platform](#ai-cloud-pilot-platform) and the "new" [AI
-Cloud](#ai-cloud-new) which will continue as the sole platform in the
-near future.
+The [AI Cloud](#ai-cloud-new) is a cluster consisting of a number of
+nodes (servers).
 
 You are always welcome to [contact the CLAAUDIA
 team](https://www.claaudia.aau.dk/support-advisory/) for guidance on
 how to best use the described platforms.
 
-## AI Cloud pilot platform
+## AI Cloud
 
-The AI Cloud pilot platform is the first generation of the AI Cloud
-and has been in service since 2019. The pilot platform consists of a
-front-end node (or log-in or gateway node if you will) and two compute
-nodes. Most existing users will know this as "the AI Cloud".
+The AI Cloud is the second generation of CLAAUDIA's AI Cloud service which has
+gradually been put into service since 2021.  
+The AI Cloud consists of a front-end node (ai-fe02.srv.aau.dk) and a number of compute
+nodes. The AI Cloud is a heterogeneous platform with several different
+types of hardware available in the compute nodes.
 
-![AI Cloud pilot platform](assets/img/ai-cloud-pilot-overview.png)
+![AI Cloud platform](assets/img/ai-cloud-overview.png)
 
 The front-end node is used for logging into the platform, accessing
 your files, and starting jobs on the compute nodes. The front-end node
@@ -24,35 +23,8 @@ is a relatively small server which is *not* meant for performing heavy
 computations; only light-weight operations such as transferring files
 to and from AI Cloud and defining and launching job scripts.
 
-The details of defining and running jobs is described in the
+The details of defining and running jobs are described in the
 [introduction](introduction.md).
-
-The single remaining compute node nv-ai-03 is an [NVIDIA DGX-2
-server](https://www.nvidia.com/en-us/data-center/dgx-2/). The
-compute node is equipped with 2 &times; 24-core Intel Xeon CPUs, 1.5 TB of
-system RAM, and 16 [NVIDIA Tesla V100
-GPUs](https://www.nvidia.com/en-us/data-center/v100/) with 32 GB of
-RAM each, all connected via NVIDIA NVLink.  
-This is a very powerful server which you can use smaller or larger
-portions of for shorter or longer duration. Details on how can be
-found in the [introduction](introduction.md).
-
-???+ note
-
-    In the future, the AI Cloud pilot platform will be
-    decomissioned and its compute node included in the (new) AI
-    Cloud described below.
-
-## AI Cloud (new)
-
-The (new) AI Cloud is the second generation of the AI Cloud which has
-gradually been put into service since 2021.  
-Like the the pilot platform, the AI Cloud consists of a front-end node
-and a number of compute nodes. In contrast to the AI Cloud pilot
-platform, the newer AI Cloud is a heterogeneous platform with several
-different types of hardware available in the compute nodes.
-
-![AI Cloud (new) platform](assets/img/ai-cloud-overview.png)
 
 The compute nodes of the AI Cloud currently include:
 
@@ -65,34 +37,48 @@ The compute nodes of the AI Cloud currently include:
   A10
   GPUs](https://www.nvidia.com/en-us/data-center/products/a10-gpu/)
   (24 GB of RAM each).
-- One [NVIDIA DGX-2
-server](https://www.nvidia.com/en-us/data-center/dgx-2/) server named
-nv-ai-01; identical to nv-ai-03 above.
+- Two [NVIDIA DGX-2
+  servers](https://www.nvidia.com/en-us/data-center/dgx-2/) named
+  nv-ai-01 and nv-ai-02; a third server named nv-ai-03 will be added
+  soon. These compute node are each equipped with 2 &times; 24-core
+  Intel Xeon CPUs, 1.5 TB of system RAM, and 16 [NVIDIA Tesla V100
+  GPUs](https://www.nvidia.com/en-us/data-center/v100/) with 32 GB of
+  RAM each, all connected via NVIDIA NVLink.  
+  These are very powerful servers which you can use smaller or larger
+  portions of for shorter or longer duration. Details on how can be
+  found in the [introduction](introduction.md).
 - One [NVIDIA
   DGX-A100](https://www.nvidia.com/en-us/data-center/dgx-a100/) server
   named nv-ai-04. This compute node is equipped with AMD CPUs (2 &times; AMD
   Rome 7742 64-core), 2TB of system RAM, and 8 [NVIDIA A100
   GPUs](https://www.nvidia.com/en-us/data-center/a100/) (40GB of RAM
   each).
-- In the future, the newer AI Cloud will also contain the compute
-  node nv-ai-03 from the AI Cloud pilot platform.
   
 !!! important
 
     Special conditions apply for using the compute node nv-ai-04; see
     [introduction](introduction.md).
 
-This more diverse selection (compared to the pilot platform) of
+This diverse selection of
 different hardware in the AI Cloud allows for more suitable choice of
 specific hardware according to your task. For example, the DGX-2
-compute nodes of the AI Cloud pilot platform are better suited for the
+compute nodes are better suited for the
 comutationally intensive training of deep neural networks, while the
 compute nodes with T4 GPUs are better suited for inference tasks using
 an already trained model.
 
+## AI Cloud pilot platform
+
+The AI Cloud pilot platform was the first generation of the AI Cloud
+and was in service 2019-2022. This platform was available through the
+front-end node ai-pilot.srv.aau.dk (also known as
+nv-ai-fe01.srv.aau.dk), but *no longer exists*.  
+If you had data in the AI Cloud pilot platform, this is still
+available through the current front-end node instead.
+
 ## Operating system, file storage, and application framework
 
-The AI Cloud (and -pilot platform) is based on [Ubuntu
+The AI Cloud is based on [Ubuntu
 Linux](https://en.wikipedia.org/wiki/Ubuntu) as its operating
 system. In practice, working in the AI Cloud primarily takes place via
 a [command-line
@@ -145,17 +131,11 @@ See details on container images from NGC in the
 
 ### File storage
 
-Both the AI Cloud pilot platform and the newer AI Cloud store your
+The AI Cloud stores your
 files in your user directory. Your user directory is stored on a
-network file system that allows all of the nodes within each platform
+network file system that allows all of the nodes within the platform
 can access your files. This means that if you store or edit a file in
-your user directory on the front-end node, the compute nodes in the
-same platform can see the same file and contents thereof. The nodes
+your user directory on the front-end node, the compute nodes
+can see the same file and contents thereof. The nodes
 access the network file system in a shared manner, so there is nothing
 you need to do to synchronise the files between the nodes.
-
-The AI Cloud pilot platform and the newer AI Cloud use separate
-network file systems. This means that on the AI Cloud pilot platform,
-you cannot directly see the files in the newer AI Cloud and vice
-versa. You can, however, copy files between them manually; please see
-[Introduction; transferring files](introduction.md#transferring-files).
