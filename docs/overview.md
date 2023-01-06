@@ -9,9 +9,9 @@ how to best use the described platforms.
 
 ## AI Cloud
 
-The (new) AI Cloud is the second generation of the AI Cloud which has
+The AI Cloud is the second generation of CLAAUDIA's AI Cloud service which has
 gradually been put into service since 2021.  
-The AI Cloud consists of a front-end node and a number of compute
+The AI Cloud consists of a front-end node (ai-fe02.srv.aau.dk) and a number of compute
 nodes. The AI Cloud is a heterogeneous platform with several different
 types of hardware available in the compute nodes.
 
