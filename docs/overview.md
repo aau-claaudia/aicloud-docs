@@ -15,7 +15,7 @@ The AI Cloud consists of a front-end node (ai-fe02.srv.aau.dk) and a number of c
 nodes. The AI Cloud is a heterogeneous platform with several different
 types of hardware available in the compute nodes.
 
-![AI Cloud platform](assets/img/ai-cloud-overview.png)
+![AI Cloud platform](assets/img/ai-cloud-overview.png){width=80%}
 
 The front-end node is used for logging into the platform, accessing
 your files, and starting jobs on the compute nodes. The front-end node
@@ -37,27 +37,39 @@ The compute nodes of the AI Cloud currently include:
   A10
   GPUs](https://www.nvidia.com/en-us/data-center/products/a10-gpu/)
   (24 GB of RAM each).
-- Two [NVIDIA DGX-2
+- Four compute nodes named a256-a40-04 to a256-a40-07; each with AMD
+  CPUs (32 cores), 256GB of system RAM, and 3 [NVIDIA
+  A40
+  GPUs](https://www.nvidia.com/en-us/data-center/a40/)
+  (48 GB of RAM each).
+- Three [NVIDIA DGX-2
   servers](https://www.nvidia.com/en-us/data-center/dgx-2/) named
-  nv-ai-01 and nv-ai-02; a third server named nv-ai-03 will be added
-  soon. These compute node are each equipped with 2 &times; 24-core
-  Intel Xeon CPUs, 1.5 TB of system RAM, and 16 [NVIDIA Tesla V100
+  nv-ai-01 to nv-ai-03. These compute node are each equipped with 2
+  &times; 24-core Intel Xeon CPUs, 1.5 TB of system RAM, and 16
+  [NVIDIA Tesla V100
   GPUs](https://www.nvidia.com/en-us/data-center/v100/) with 32 GB of
   RAM each, all connected via NVIDIA NVLink.  
   These are very powerful servers which you can use smaller or larger
   portions of for shorter or longer duration. Details on how can be
   found in the [introduction](introduction.md).
+- Two compute nodes named i256-a40-01 and i256-a40-02; each with Intel
+  CPUs (24 cores), 256GB of system RAM, and 3 [NVIDIA A40
+  GPUs](https://www.nvidia.com/en-us/data-center/a40/) (48 GB of RAM
+  each). **Limited access**
 - One [NVIDIA
   DGX-A100](https://www.nvidia.com/en-us/data-center/dgx-a100/) server
-  named nv-ai-04. This compute node is equipped with AMD CPUs (2 &times; AMD
-  Rome 7742 64-core), 2TB of system RAM, and 8 [NVIDIA A100
-  GPUs](https://www.nvidia.com/en-us/data-center/a100/) (40GB of RAM
-  each).
+  named nv-ai-04. This compute node is equipped with AMD CPUs (2
+  &times; AMD Rome 7742 64-core), 2TB of system RAM, and 8 [NVIDIA
+  A100 GPUs](https://www.nvidia.com/en-us/data-center/a100/) (40GB of
+  RAM each). **Limited access**
   
 !!! important
 
-    Special conditions apply for using the compute node nv-ai-04; see
-    [introduction](introduction.md).
+    The compute nodes nv-ai-04 and i256-a40-01 and i256-a40-02 are owned
+	by specific research groups or centers which have first-priority
+	access to them. Other users can only access them on a limitied basis
+	where your jobs may be cancelled by higher-priority jobs; see
+    [Introduction](introduction.md).
 
 This diverse selection of
 different hardware in the AI Cloud allows for more suitable choice of
