@@ -9,4 +9,4 @@
 
 [SLURM and singularity presentation](https://slurm.schedmd.com/SLUG17/SLUG_Bull_Singularity.pdf)
 
-[Slurm Definition File](https://www.sylabs.io/guides/3.8/user-guide/definition_files.html)
+[Singularity Definition File](https://www.sylabs.io/guides/3.8/user-guide/definition_files.html)

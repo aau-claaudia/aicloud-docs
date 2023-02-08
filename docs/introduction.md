@@ -16,19 +16,26 @@ usage](#fair-usage)
 
 <!--**It is intended that all analysis on AI Cloud II are run via  containers which you start and manage by yourselves. It is possible to build singularity images from the NVIDIA's stock docker images [NVIDIA GPU Cloud](https://ngc.nvidia.com/) - check also this [Support Matrix](https://docs.nvidia.com/deeplearning/dgx/support-matrix/index.html "support matrix"). If you need something of your own taste, all software tools and their dependencies are supposed to be installed inside your containers. Furthermore, if you want to use the software stack again and again, it is a good idea to create a singularity image for that.**-->
 
-The AI Cloud pilot platform consists of the following compute nodes:
-
-| Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
-| ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
-| nv-ai-[01,03].srv.aau.dk    | 2              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
-
-The (new) AI Cloud consists of the following compute nodes:
+The AI Cloud consists of the following compute nodes:
 
 | Name                        | Nodes in total |GPUs per node   | CPU cores per node | CPU HW threads | RAM per node | RAM per GPU  | Disk         | NVLINK / NVSWITCH | Primary usage                         |
 | ---                         | ---            | ---            | ---                | ---            | ---          | ---          | ---          | ---               | ---                                   |
 | a256-t4-[01-03].srv.aau.dk  | 3              | 6 (NVIDIA T4)  | 32 (AMD EPYC)      | 64             | 256 GB       | 16 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
-| i256-a10-[06-10].srv.aau.dk | 5              | 4 (NVIDIA A10) | 32 (Intel Xeon)    | 64             | 256 GB       | 24 GB        | None locally | No                | Interactive / smaller single-GPU jobs |
-| nv-ai-04.srv.aau.dk         | 1              | 8 (A100)       | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+| i256-a10-[06-10].srv.aau.dk | 5              | 4 (NVIDIA A10) | 32 (Intel Xeon)    | 64             | 256 GB       | 24 GB        | None locally | No                | Interactive / medium single-GPU jobs |
+| a256-a40-[04-07].srv.aau.dk | 4              | 3 (NVIDIA A40) | 32 (AMD EPYC)    | 32             | 256 GB       | 48 GB        | None locally | No                | Large single-GPU jobs |
+| i256-a40-[01-02].srv.aau.dk | 2              | 4 (NVIDIA A40) | 24 (Intel Xeon)    | 24             | 256 GB       | 48 GB        | 6.4 TB /raid | Yes (2&times;2)  | Large single-/multi-GPU jobs |
+| nv-ai-[01-03].srv.aau.dk    | 3              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30 TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+| nv-ai-04.srv.aau.dk         | 1              | 8 (A100)       | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14 TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+
+!!! important
+
+    The compute nodes nv-ai-04 and i256-a40-01 and i256-a40-02 are owned
+	by specific research groups or centers which have first-priority
+	access to them. Other users can only access them on a limitied basis
+	where your jobs may be cancelled by higher-priority jobs. Users
+	outside the prioritised group can only use them via the "batch"
+	partition (use option `--partition=batch` for your jobs, which is
+	also the default). See [Slurm jobs](#slurm-jobs).
 
 ## Getting started
 
@@ -80,25 +87,16 @@ the following command on the command line of your local computer:
 
 ???+ example
 
-    AI Cloud pilot platform
     ```console
-    ssh -i <aau email> ai-pilot.srv.aau.dk
+    ssh -l <aau email> ai-fe02.srv.aau.dk
     ```
 
-???+ example
+    Replace `<aau email>` with your AAU email address, e.g.
 
-    AI Cloud
-    ```console
-    ssh -i <aau email> ai-fe02.srv.aau.dk
-    ```
 
-Replace `<aau email>` with your AAU email address, e.g.
-
-???+ example
-
-    ```console
-    ssh -i tari@its.aau.dk ai-fe02.srv.aau.dk
-    ```
+   ```console
+   ssh -l tari@its.aau.dk ai-fe02.srv.aau.dk
+   ```
 
 If you wish to access while **not** being connected to the AAU
 network, you have two options: [Use
@@ -110,15 +108,7 @@ gateway](https://www.en.its.aau.dk/instructions/Username+and+password/SSH/).
     If you are often outside AAU, you can use the SSH gateway by default
     through your personal SSH configuration (in Linux/OS X this is often
     located in: `$HOME/.ssh/config`).
-	
-	AI Cloud pilot platform
-    ```console
-    Host ai-pilot.srv.aau.dk
-         User <aau email>
-         ProxyJump %r@sshgw.aau.dk
-    ```
 
-	AI Cloud
     ```console
     Host ai-fe02.srv.aau.dk
          User <aau email>
@@ -137,25 +127,18 @@ You can transfer files to/from AI Cloud using the command line utility
 
 ???+ example
 
-    AI Cloud pilot platform
     ```console
-    scp some-file <aau email>@ai-pilot.srv.aau.dk:~
-    ```
+	scp some-file <aau email>@ai-fe02.srv.aau.dk:~
+	```
 
-???+ example
-
-    AI Cloud
-    ```console
-    scp some-file <aau email>@ai-fe02.srv.aau.dk:~
-    ```
-where '~' means your user directory on AI Cloud. You can append
-directories below that to your destination:
+    where '~' means your user directory on AI Cloud. You can append
+    directories below that to your destination:
 
 ???+ example
 
     ```console
-    scp some-file <aau email>@ai-fe02.srv.aau.dk:~/some-dir/some-sub-dir/
-    ```
+	scp some-file <aau email>@ai-fe02.srv.aau.dk:~/some-dir/some-sub-dir/
+	```
 
 You can also copy in the opposite direction, e.g. from the AI Cloud
 pilot platform to your local computer with:
@@ -163,9 +146,10 @@ pilot platform to your local computer with:
 ???+ example
 
     ```console
-    scp <aau email>@ai-pilot.srv.aau.dk:~/some-folder/some-subfolder/some-file .
-    ```
-	where '.' means the current directory you are located in on your local
+	scp <aau email>@ai-fe02.srv.aau.dk:~/some-folder/some-subfolder/some-file .
+	```
+
+    where '.' means the current directory you are located in on your local
 	computer.
 
 In general, file transfer tools that can use SSH as protocol should
@@ -258,13 +242,14 @@ the following command:
 ???+ example
 
     ```console
-    srun singularity pull docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
+    srun --mem 32G singularity pull docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3
     ```
 
 The above example consists of three parts:
 
 - `srun`: the Slurm command which gets the following command executed
   on a compute node.
+- `mem`: a Slurm command that allows you allocate memory to your process. A higher amount of memory than the default is needed specifically for this TensorFlow container.
 - `singularity pull`: the Singularity command which downloads a
   specified container.
 - `docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3`: this part of the
@@ -290,7 +275,7 @@ Shell
   command line in the runtime environment inside the container where
   you can work interactively, i.e. type commands in the command line
   to run scripts and open applications.  
-  This is good for experimenting with how you wish to run you
+  This is good for experimenting with how you wish to run your
   computations, analyses etc. in the container.
 
 ??? example
@@ -374,7 +359,7 @@ enable support for NVIDIA GPUs in Singularity:
 
 ???+ example
 
-        srun --gres=gpu:1 singularity exec --nv nvidia-smi
+        srun --gres=gpu:1 singularity exec --nv tensorflow_22.07-tf2-py3.sif nvidia-smi
 
     The `--nv` option enables NVIDIA GPUs in the container and must always
     be used when running jobs that utilise GPU(s). Otherwise, the GPU(s)
