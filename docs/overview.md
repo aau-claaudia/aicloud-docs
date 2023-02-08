@@ -38,7 +38,7 @@ The compute nodes of the AI Cloud currently include:
   GPUs](https://www.nvidia.com/en-us/data-center/products/a10-gpu/)
   (24 GB of RAM each).
 - Four compute nodes named a256-a40-04 to a256-a40-07; each with AMD
-  CPUs (32 cores), 256GB of system RAM, and 3 [NVIDIA
+  CPUs (2&times;16 cores), 256GB of system RAM, and 3 [NVIDIA
   A40
   GPUs](https://www.nvidia.com/en-us/data-center/a40/)
   (48 GB of RAM each).
@@ -53,7 +53,7 @@ The compute nodes of the AI Cloud currently include:
   portions of for shorter or longer duration. Details on how can be
   found in the [introduction](introduction.md).
 - Two compute nodes named i256-a40-01 and i256-a40-02; each with Intel
-  CPUs (24 cores), 256GB of system RAM, and 3 [NVIDIA A40
+  CPUs (2&times;12 cores), 256GB of system RAM, and 3 [NVIDIA A40
   GPUs](https://www.nvidia.com/en-us/data-center/a40/) (48 GB of RAM
   each). **Limited access**
 - One [NVIDIA
