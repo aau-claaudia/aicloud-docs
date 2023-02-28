@@ -10,10 +10,10 @@ cluster equipped with general-purpose graphics processing units
 The AI Cloud is a facility consisting of several servers designed to
 be ideal for training deep learning algorithms. Deep learning is in
 many cases branded as artificial intelligence (AI) - hence the name AI
-Cloud.  
+Cloud.
 This also makes the facility good for a wide range of computationally
 intensive work such as numerical simulations and high-performance data
-analysis (HPDA).  
+analysis (HPDA).
 See "Overview" in the menu above for more details on what the AI Cloud
 consists of.
 
@@ -45,5 +45,14 @@ Typical examples of applications that you can run in AI Cloud are:
 deep learning applications using TensorFlow, PyTorch, or other deep
 learning frameworks; applications built using NVIDIA CUDA or
 higher-level libraries such as cuDNN, cuBLAS etc.; any numerical
-simulation software that can utilise GPUs for computing.  
+simulation software that can utilise GPUs for computing.
 See also "Additional examples" in the menu above for examples.
+
+Currently AI Cloud is suitable for working with data classified as level 0
+and 1 on the [data classification model](https://www.security.aau.dk/dataclassification/).
+Data classified as level 2 or 3 is therefore not supported as of now,
+but we plan on doing so in the future. 
+If you need GPU-ressources to process data on levels 2 and 3, please 
+[reach out to the CLAAUDIA-team](support@its.aau.dk) and we will help you find 
+a solution. This could involve setting up a separate drive for your data, 
+or to help you get acccess to one of the larger [HPC-facilities outside of AAU](https://www.deic.dk/en/supercomputing/national-hpc-facilities)
