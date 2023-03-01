@@ -1,7 +1,7 @@
 ---
 title: Introduction to AI Cloud 
 subtitle: Slurm and Singularity Training
-date: May 2022
+date: March 2023
 theme: AAUsimple
 aspectratio: 169
 header-includes: |
