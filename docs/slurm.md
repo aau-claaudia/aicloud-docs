@@ -17,17 +17,18 @@ Node
 : We often refer to these as compute nodes in this documentations,
   because this is where the computational jobs take place.  
   The nodes are the individual servers in the platform; see
-  [Overview](overview.md) for illustration.
+  [Overview](overview.md) for illustration and the [table in
+  Introduction](introduction.md#overview) for details.
   
 Partition
 : You can think of partitions as different queues for the compute
   nodes. There are several partitions in the AI Cloud and the same
   nodes can be present in more than one partition.  
   For any one node, the different partitions it is present in can for
-  example give access to the node under different partitions. The AI
-  Cloud currently has the partitions: batch, prioritized, and create
-  (the latter is only visible to users from VAP lab at the Create
-  department).  
+  example give access to the node under different conditions. The AI
+  Cloud currently has the partitions: batch and prioritized. A few
+  additional partitions are only visible to specific users of these
+  (create, aicentre1, aicentre2).  
   See more details about partitions in a later section.
 
 <!-- QoS should be added if we start using them in the new AI Cloud -->
@@ -95,7 +96,7 @@ documentation of the command.
 
 ### Checking details of the nodes
 
-Use the command `scontrol show nodes` or `scontrol show node [node
+Use the command `scontrol show node` or `scontrol show node [node
 name]` to show details about all nodes or a specific node,
 respectively.  Run `scontrol --help` or `man scontrol` in AI Cloud for
 detailed documentation of the command.
@@ -121,3 +122,15 @@ detailed documentation of the command.
            CapWatts=n/a
            CurrentWatts=0 AveWatts=0
            ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
+
+### Nodesummary
+
+The two commands `sinfo` and `scontrol show node` provide information
+which is either too little or way too much detail in most
+situations. As an alternative, we provide the tool `nodesummary` to
+show a hopefully more intuitive overview of the used/available
+resources in AI Cloud.
+
+![Screenshot of `nodesummary` in use.](assets/img/nodesummary.png)
+
+**More information to be added here soon...**
