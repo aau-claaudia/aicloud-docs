@@ -207,7 +207,8 @@ This was your first Slurm job. You will need this (`srun`) and other
 Slurm commands for most of your work in AI Cloud. You will see more
 examples in combination with Singularity in the next section. Further
 details about Slurm can be found on the [Slurm details](slurm.md)
-page.
+page. The Danish e-infrastructure Cooperation (Deic) also hosts a great
+[e-learning course](http://slurmlearning.deic.dk/) that might be helpful.
 
 ### Singularity containers
 
