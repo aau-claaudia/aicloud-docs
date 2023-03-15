@@ -6,10 +6,16 @@ details.
 - [Official documentation for Slurm](https://slurm.schedmd.com/) - AI
   Cloud is currently using version
   [21.08.8-2](https://slurm.schedmd.com/archive/slurm-21.08.8-2/).
+- [Interactive tutorial for Slurm](http://slurmlearning.deic.dk/) -
+  this is a tutorial made by [DeiC](https://www.deic.dk/) to help
+  introduce HPC users to Slurm. *Please note that this tutorial
+  environment is not identical to our AI Cloud, but it enables you to
+  familiarise yourself with Slurm in a safe environment where you
+  cannot accicentally break anything for anyone else.*
 
 ## Bits and pieces in the queue system
 
-The Slurm queue system is built around some concepts, some of which
+The Slurm queue system is built around some concepts which
 are important to know in order to understand the system and how to use
 it:
 
