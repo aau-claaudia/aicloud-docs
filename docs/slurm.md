@@ -69,7 +69,7 @@ Use the command `sinfo` to see the state of the nodes in the AI
 Cloud. Run `sinfo --help` or `man sinfo` in AI Cloud for detailed
 documentation of the command.
 
-??? example
+???+ example
 
         sinfo
          
@@ -107,7 +107,7 @@ name]` to show details about all nodes or a specific node,
 respectively.  Run `scontrol --help` or `man scontrol` in AI Cloud for
 detailed documentation of the command.
 
-??? example
+???+ example
 
         scontrol show node a256-t4-01.srv.aau.dk
 		
@@ -138,5 +138,59 @@ show a hopefully more intuitive overview of the used/available
 resources in AI Cloud.
 
 ![Screenshot of `nodesummary` in use.](assets/img/nodesummary.png)
+
+## Selecting a partition
+
+### The *batch* partition
+
+The default partition in AI Cloud is *batch*. If you submit a job
+without specifying a partition, e.g. `sbatch --gres=gpu:1
+job_script.sh`, your job automatically gets run in the *batch*
+partition. As shown in the `sinfo` example above, the batch partition
+has a time limit of 12 hours and furthermore, jobs can get cancelled
+(pre-empted) by other jobs running in other partitions. As a regular
+user, the batch partition is the only way you can get access to the
+special compute nodes mentioned in [Introduction -
+Overview](introduction.md#overview) which belong to particular
+research groups.
+
+### The *prioritized* partition
+
+All users also have access to the *prioritized* partition. As shown in
+the `sinfo` example above, this partition has a 6-day time limit and
+other jobs cannot cancel jobs in this partition. The 6-day time limit
+is a temporary feature that we may decrease in the future when
+everyone gets more used to re-queueing jobs.
+
+In order to use the *prioritized* partition, you must specify it for
+your jobs with the "--partition" or "-p" option:
+
+???+ example
+
+        sbatch -p prioritized --gres=gpu:1 job_script.sh
+
+    Using the "-p" option to specify a partition for a batch job.
+
+### Special partitions
+
+If you belong to one of the research groups with your own server in AI
+Cloud, you have been informed personally how to get first-priority
+access to it.
+
+Currently, these servers are associated with the partitions: *create*,
+*aicentre1*, and *aicentre2*. By submitting your jobs to your group's
+partition, you can run jobs on the server, even if it requires
+cancelling jobs of users in the *batch* partition to provide you the
+requested resources. For example, users from VAP lab at CREATE can use
+their server nv-ai-04.srv.aau.dk by submitting jobs to the *create*
+partition:
+
+???+ example
+
+        sbatch -p create --gres=gpu:1 job_script.sh
+
+    Using the "-p" option to access a special partition. Only designated users of these partitions can access them.
+
+The special partitions have no time limit.
 
 **More information to be added here soon...**
