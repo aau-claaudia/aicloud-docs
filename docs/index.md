@@ -55,4 +55,4 @@ but we plan on doing so in the future.
 If you need GPU-ressources to process data on levels 2 and 3, please 
 [reach out to the CLAAUDIA-team](support@its.aau.dk) and we will help you find 
 a solution. This could involve setting up a separate drive for your data, 
-or to help you get acccess to one of the larger [HPC-facilities outside of AAU](https://www.deic.dk/en/supercomputing/national-hpc-facilities)
+or to help you get acccess to one of the larger [HPC-facilities outside of AAU](https://www.deic.dk/en/supercomputing/national-hpc-facilities).

@@ -4,6 +4,8 @@ nav:
 
   - Introduction: introduction.md
 
+  - Slurm: slurm.md
+
   - "Additional examples":
     - "Interactive TensorFlow": examples/interactive_tensorflow.md
     - "Jupyter notebook using TensorFlow container": examples/jupyter.md
