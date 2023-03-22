@@ -4,7 +4,7 @@ nav:
 
   - Introduction: introduction.md
 
-  - Slurm: slurm.md
+  - Running jobs: slurm.md
 
   - "Additional examples":
     - "Interactive TensorFlow": examples/interactive_tensorflow.md
