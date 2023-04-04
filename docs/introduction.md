@@ -785,7 +785,7 @@ following guidelines:
 
 If in doubt, you can run:
 ```console
-squeue -u $USER
+squeue --me
 ```
 and inspect your own job allocations. If you have allocations you are
 not using, then please cancel these resource allocations.
