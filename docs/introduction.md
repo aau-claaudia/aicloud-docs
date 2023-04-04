@@ -206,7 +206,7 @@ The simplest way to run a job via Slurm is to use the command `srun`.
 This was your first Slurm job. You will need this (`srun`) and other
 Slurm commands for most of your work in AI Cloud. You will see more
 examples in combination with Singularity in the next section. Further
-details about Slurm can be found on the [Slurm details](slurm.md)
+details about Slurm can be found on the [Running jobs](slurm.md)
 page. The Danish e-infrastructure Cooperation (Deic) also hosts a great
 [e-learning course](http://slurmlearning.deic.dk/) that might be helpful.
 
