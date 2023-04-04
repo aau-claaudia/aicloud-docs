@@ -205,13 +205,13 @@ The command `squeue` can be used to get a general overview:
 
         squeue
         JOBID PARTITION		NAME	 USER ST	   TIME	 NODES NODELIST(REASON)
-		31623	  batch		DRSC xxxxxxxx  R	6:45:14		 1 i256-a10-10.srv.aau.dk
-		31693	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
-		31694	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
-		31695	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
-		31696	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
-		31502 prioritiz runQHGK. zzzzzzzz PD	   0:00		 1 (Dependency)
-		31504 prioritiz runQHGK. zzzzzzzz PD	   0:00		 1 (Dependency)
+        31623	  batch		DRSC xxxxxxxx  R	6:45:14		 1 i256-a10-10.srv.aau.dk
+        31693	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
+        31694	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
+        31695	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
+        31696	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
+        31502 prioritiz runQHGK. zzzzzzzz PD	   0:00		 1 (Dependency)
+        31504 prioritiz runQHGK. zzzzzzzz PD	   0:00		 1 (Dependency)
 
 The column JOBID shows the ID number of each job in queue. PARTITION
 shows which partition each job is running in. NAME is the name of the
