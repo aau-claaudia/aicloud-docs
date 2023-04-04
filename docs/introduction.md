@@ -250,7 +250,11 @@ The above example consists of three parts:
 
 - `srun`: the Slurm command which gets the following command executed
   on a compute node.
-- `mem`: a Slurm command that allows you allocate memory to your process. A higher amount of memory than the default is needed specifically for this TensorFlow container.
+- `mem`: a Slurm command that allows you allocate memory to your
+  process. A higher amount of memory than the default is needed
+  specifically for this TensorFlow container. Please see the
+  [Containers](singularity.md#work-around-mem) page for a better way to
+  avoid excessive memory requirements.
 - `singularity pull`: the Singularity command which downloads a
   specified container.
 - `docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3`: this part of the

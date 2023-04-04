@@ -6,6 +6,8 @@ nav:
 
   - Running jobs: slurm.md
 
+  - Containers: singularity.md
+
   - "Additional examples":
     - "Interactive TensorFlow": examples/interactive_tensorflow.md
     - "Jupyter notebook using TensorFlow container": examples/jupyter.md
