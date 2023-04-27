@@ -24,18 +24,18 @@ The AI Cloud consists of the following compute nodes:
 | i256-a10-[06-10].srv.aau.dk | 5              | 4 (NVIDIA A10) | 32 (Intel Xeon)    | 64             | 256 GB       | 24 GB        | None locally | No                | Interactive / medium single-GPU jobs |
 | a256-a40-[04-07].srv.aau.dk | 4              | 3 (NVIDIA A40) | 32 (AMD EPYC)    | 32             | 256 GB       | 48 GB        | None locally | No                | Large single-GPU jobs |
 | i256-a40-[01-02].srv.aau.dk | 2              | 4 (NVIDIA A40) | 24 (Intel Xeon)    | 24             | 256 GB       | 48 GB        | 6.4 TB /raid | Yes (2&times;2)  | Large single-/multi-GPU jobs |
-| nv-ai-[01-03].srv.aau.dk    | 3              | 16 (V100)      | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30 TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
-| nv-ai-04.srv.aau.dk         | 1              | 8 (A100)       | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14 TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+| nv-ai-[01-03].srv.aau.dk    | 3              | 16 (NVIDIA V100) | 48 (Intel Xeon)    | 96             | 1470 GB      | 32 GB        | 30 TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
+| nv-ai-04.srv.aau.dk         | 1              | 8 (NVIDIA A100) | 128 (AMD EPYC)     | 256            | 980 GB       | 40 GB        | 14 TB /raid   | Yes               | Large / batch / multi-GPU jobs        |
 
 !!! important
 
-    The compute nodes nv-ai-04 and i256-a40-01 and i256-a40-02 are owned
-	by specific research groups or centers which have first-priority
-	access to them. Other users can only access them on a limitied basis
-	where your jobs may be cancelled by higher-priority jobs. Users
-	outside the prioritised group can only use them via the "batch"
-	partition (use option `--partition=batch` for your jobs, which is
-	also the default). See [Slurm jobs](#slurm-jobs).
+    The compute nodes nv-ai-04, i256-a40-01, and i256-a40-02 are owned
+    by specific research groups or centers which have first-priority
+    access to them. Other users can only access them on a limitied basis
+    where your jobs may be cancelled by higher-priority jobs. Users
+    outside the prioritised group can only use them via the "batch"
+    partition (use option `--partition=batch` for your jobs). See
+    [Slurm jobs](#slurm-jobs).
 
 ## Getting started
 
