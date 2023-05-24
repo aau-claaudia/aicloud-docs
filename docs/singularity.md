@@ -6,6 +6,38 @@ You are welcome to suggest topics you would like to know more about by
 creating an issue:
 [here](https://github.com/aau-claaudia/aicloud-docs/issues).
 
+## Installing software in containers
+
+The Singularity container images ('.sif' files) you get by downloading
+a pre-defined container from for example NGC with `singularity pull`
+(see also [Introduction](../introduction/#obtaining-containers)) are
+read-only. This means you cannot install additional software in them
+directly. There are several different ways you can go about it instead
+to be able to install additional software into your containers:
+
+1. Create a writable sandbox container image
+2. Build a new container image file with Cotainr
+3. Build a new container image file from a definition file
+4. Install Python packages with `pip` or `conda` outside the container
+
+For now we explain the methods 1. and 4. above here. Guidance on
+methods 2. and 3. is coming...
+
+### Create a writable sandbox container image
+
+DRAFT:
+
+    singularity build --sandbox lolcow-test-sandbox2 lolcow_latest.sif
+    singularity shell --writable --fakeroot lolcow-test-sandbox2
+
+### Install Python packages with `pip` or `conda` outside the container
+
+This is not recommended, as the method is a bit "brittle". It is easy
+to set it up wrong and end up in a situation where versions of
+packages installed for different container images get mixed up and
+cause problems. Consider this a last resort: [Please see this
+guide](../examples/pip_in_containers).
+
 ## Work-arounds for slow and memory-consuming container builds
 
 The two work-arounds below demonstrate how to build Singularity
