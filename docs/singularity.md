@@ -25,10 +25,44 @@ methods 2. and 3. is coming...
 
 ### Create a writable sandbox container image
 
-DRAFT:
+First create a so-called sandbox container:
+```console
+srun singularity build --sandbox [sandbox-dir-name] [container image]
+```
+where you replace `[sandbox-dir-name]` by a name you decide for the
+directory that holds your sandbox container, and replace `[container
+image]` by the name of a container image you already have in AI Cloud
+(e.g. "pytorch_23.04-py3.sif") or the URI of a container to download
+(e.g. "docker://nvcr.io/nvidia/pytorch:23.04-py3").
 
-    singularity build --sandbox lolcow-test-sandbox2 lolcow_latest.sif
-    singularity shell --writable --fakeroot lolcow-test-sandbox2
+???+ example
+    
+	```console
+	srun singularity build --sandbox pytorch-23.04 docker://nvcr.io/nvidia/pytorch:23.04-py3
+    ```
+	
+Then when you wish to install additional software in the container, open a shell in the container:
+
+???+ example
+    
+	```console
+	srun singularity shell --writable --fakeroot pytorch-23.04
+    ```
+
+While inside the container, install additional packages using for
+example the `apt` package manager:
+```console
+Singularity> apt install [package name]
+```
+or `pip` (for Python):
+```console
+Singularity> pip install [package name]
+```
+
+When not installing software in the container you can run applications
+in it as usual, without the ability to write to the container. See
+commands in the
+[Introduction](../introduction/#running-applications-in-containers).
 
 ### Install Python packages with `pip` or `conda` outside the container
 
