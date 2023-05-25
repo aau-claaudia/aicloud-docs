@@ -20,9 +20,6 @@ to be able to install additional software into your containers:
 3. Build a new container image file from a definition file
 4. Install Python packages with `pip` or `conda` outside the container
 
-For now we explain the methods 1. and 4. above here. Guidance on
-methods 2. and 3. is coming...
-
 ### Create a writable sandbox container image
 
 First create a so-called sandbox container:
@@ -64,6 +61,35 @@ in it as usual, without the ability to write to the container. See
 commands in the
 [Introduction](../introduction/#running-applications-in-containers).
 
+### Build a new container image file with Cotainr
+
+Cotainr is a tool developed by [DeiC]() to ease building of
+Singularity containers. It can be used to build custom containers with
+additional software installable by conda and pip. This means it is
+primarily for adding Python packages to a container. It works from a
+base container image that you specify and then build additional
+Anaconda and pip packages which you supply as a conda environment
+specification.
+
+We hope to install this tool system-wide in AI Cloud in late
+June. Until then, you are welcome to download the tool to your own
+user directory and use it from there. Please see the [Cotainr
+documentation](https://cotainr.readthedocs.io/en/latest/index.html)
+for more information on how to use it.
+
+### Build a new container image file from a definition file
+
+You can also build containers from scratch or from an existing base
+image directly with Singularity. This is a somewhat more difficult
+approach than the above Cotainr tool, because it requires you to write
+the Singularity definition file yourself. The build process can be
+lengthy (see also [work-arounds](#work-arounds) below on how to
+improve build speed) and so, it can take a long time with
+trial-and-error to get the definition right and produce a working
+container. Please see the [Singularity
+documentation](https://docs.sylabs.io/guides/3.8/user-guide/build_a_container.html#building-containers-from-singularityce-definition-files)
+for details on how to build containers from definition files.
+
 ### Install Python packages with `pip` or `conda` outside the container
 
 This is not recommended, as the method is a bit "brittle". It is easy
@@ -72,7 +98,7 @@ packages installed for different container images get mixed up and
 cause problems. Consider this a last resort: [Please see this
 guide](../examples/pip_in_containers).
 
-## Work-arounds for slow and memory-consuming container builds
+## Work-arounds for slow and memory-consuming container builds {#work-arounds}
 
 The two work-arounds below demonstrate how to build Singularity
 container images:
