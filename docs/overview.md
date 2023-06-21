@@ -42,9 +42,9 @@ The compute nodes of the AI Cloud currently include:
   A40
   GPUs](https://www.nvidia.com/en-us/data-center/a40/)
   (48 GB of RAM each).
-- Three [NVIDIA DGX-2
+- Two [NVIDIA DGX-2
   servers](https://www.nvidia.com/en-us/data-center/dgx-2/) named
-  nv-ai-01 to nv-ai-03. These compute node are each equipped with 2
+  nv-ai-01 and nv-ai-03. These compute nodes are each equipped with 2
   &times; 24-core Intel Xeon CPUs, 1.5 TB of system RAM, and 16
   [NVIDIA Tesla V100
   GPUs](https://www.nvidia.com/en-us/data-center/v100/) with 32 GB of
