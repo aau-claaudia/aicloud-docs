@@ -1,6 +1,4 @@
 # Additional resources
-[Trouble-shooting](./TroubleShooting.md)
-
 [Workshop introduction](./workshop/SlurmAndSingularityTraining.pdf)
 
 [Docker and singularity on an HPC system](http://alex88ridolfi.altervista.org/pulsar_tutorials_material/Sep26_How_to_use_Docker_and_Singularity/Hilmarsson_How_to_use_Docker_and_Singularity.pdf)

@@ -1,5 +1,6 @@
 site_name: AI Cloud Documentation
 nav:
+  - index.md
   - Overview: overview.md
 
   - Introduction: introduction.md
@@ -17,6 +18,7 @@ nav:
     - "Multi-GPU data parallelism training with Horovod and Keras": multi_gpu_keras/README.md
     - "PyTorch and automatic mixed precision with APEX": torch_amp_example/README.md
     - "Python pip in containters": examples/pip_in_containers.md
+    - "Mount user directory on your local computer": examples/mount_dir.md
     
   - "Workshop": workshop/workshop.md
   
@@ -44,7 +46,7 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
-#repo_url: https://github.com/aau-claaudia
+repo_url: https://github.com/aau-claaudia/aicloud-docs
 
 markdown_extensions:
   - pymdownx.superfences
@@ -72,14 +74,14 @@ extra:
       name: Claaudia on Twitter
 
     - icon: fontawesome/solid/paper-plane
-      link: mailto:<claaudia@aau.dk>
+      link: mailto:claaudia@aau.dk
 
     - icon: fontawesome/solid/globe
       link: https://www.claaudia.aau.dk/
 
   #generator: True
 
-copyright: Copyright &copy; 2021 - 2022 Claaudia
+copyright: Copyright &copy; 2021 - 2023 CLAAUDIA
 
 
 #extra_javascript:

@@ -1,1 +1,0 @@
-Choose on of the examples of the available examples on the left.
