@@ -141,33 +141,32 @@ resources in AI Cloud.
 
 ## Selecting a partition
 
+### The *prioritized* partition
+
+The default partition in AI Cloud is *prioritized*. If you submit a
+job without specifying a partition, e.g. `sbatch --gres=gpu:1
+job_script.sh`, your job automatically gets run in the *prioritized*
+partition. All users have access to the *prioritized* partition. As
+shown in the `sinfo` example above, this partition has a 6-day time
+limit and other jobs cannot cancel jobs in this partition.
+
 ### The *batch* partition
 
-The default partition in AI Cloud is *batch*. If you submit a job
-without specifying a partition, e.g. `sbatch --gres=gpu:1
-job_script.sh`, your job automatically gets run in the *batch*
-partition. As shown in the `sinfo` example above, the batch partition
+As shown in the `sinfo` example above, the batch partition
 has a time limit of 12 hours and furthermore, jobs can get cancelled
 (pre-empted) by other jobs running in other partitions. As a regular
 user, the batch partition is the only way you can get access to the
 special compute nodes mentioned in [Introduction -
 Overview](introduction.md#overview) which belong to particular
-research groups.
+research groups. Except for those compute nodes, the *batch* partition
+is not very interesting to use due to the pre-emption feature.
 
-### The *prioritized* partition
-
-All users also have access to the *prioritized* partition. As shown in
-the `sinfo` example above, this partition has a 6-day time limit and
-other jobs cannot cancel jobs in this partition. The 6-day time limit
-is a temporary feature that we may decrease in the future when
-everyone gets more used to re-queueing jobs.
-
-In order to use the *prioritized* partition, you must specify it for
+In order to use the *batch* partition, you must specify it for
 your jobs with the "--partition" or "-p" option:
 
 ???+ example
 
-        sbatch -p prioritized --gres=gpu:1 job_script.sh
+        sbatch -p batch --gres=gpu:1 job_script.sh
 
     Using the "-p" option to specify a partition for a batch job.
 
