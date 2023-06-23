@@ -297,10 +297,16 @@ functionality to your program:
 2. If the file exists; load it and continue work from there.
 3. If not; start the work from scratch.
 4. While working; save the necessary internal data and output data so
-   far to a checkpoint file.
+   far to a checkpoint file at regular time intervals.
 5. When the program completes without errors; save the final output
    data the way you would normally save your output data and delete
    the checkpoint file.
+
+For example, if your program stores a checkpoint every 15 minutes, you
+would only risk losing up to 15 minutes of work if the job gets
+stopped. All of the prior work is stored in your most recent
+checkpoint which your workload can automatically load and continue
+from.
 
 Some popular libraries often used in AI Cloud have built-in features
 you can use for checkpointing:
