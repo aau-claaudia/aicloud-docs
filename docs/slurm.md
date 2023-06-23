@@ -141,35 +141,40 @@ resources in AI Cloud.
 
 ## Selecting a partition
 
-### The *batch* partition
+### The *prioritized* partition
 
-The default partition in AI Cloud is *batch*. If you submit a job
-without specifying a partition, e.g. `sbatch --gres=gpu:1
-job_script.sh`, your job automatically gets run in the *batch*
-partition. As shown in the `sinfo` example above, the batch partition
+The default partition in AI Cloud is *prioritized*. If you submit a
+job without specifying a partition, e.g. `sbatch --gres=gpu:1
+job_script.sh`, your job automatically gets run in the *prioritized*
+partition. All users have access to the *prioritized* partition. As
+shown in the `sinfo` example above, this partition has a 24-hour time
+limit and other jobs cannot cancel jobs in this partition.
+
+### The *batch* partition {#batch}
+
+As shown in the `sinfo` example above, the batch partition
 has a time limit of 12 hours and furthermore, jobs can get cancelled
 (pre-empted) by other jobs running in other partitions. As a regular
 user, the batch partition is the only way you can get access to the
 special compute nodes mentioned in [Introduction -
 Overview](introduction.md#overview) which belong to particular
-research groups.
+research groups. Except for those compute nodes, the *batch* partition
+is not very interesting to use due to the pre-emption feature.
 
-### The *prioritized* partition
-
-All users also have access to the *prioritized* partition. As shown in
-the `sinfo` example above, this partition has a 6-day time limit and
-other jobs cannot cancel jobs in this partition. The 6-day time limit
-is a temporary feature that we may decrease in the future when
-everyone gets more used to re-queueing jobs.
-
-In order to use the *prioritized* partition, you must specify it for
+In order to use the *batch* partition, you must specify it for
 your jobs with the "--partition" or "-p" option:
 
 ???+ example
 
-        sbatch -p prioritized --gres=gpu:1 job_script.sh
+        sbatch -p batch --gres=gpu:1 job_script.sh
 
     Using the "-p" option to specify a partition for a batch job.
+
+A more advanced way you can work with the *batch* partition is to
+enable requeueing of your jobs. That way your jobs would be able to
+automatically continue running at a later point if they happen to get
+preempted by higher-priority jobs. See [running longer
+jobs](#requeueing) for more details about this principle.
 
 ### Special partitions
 
@@ -233,4 +238,89 @@ Showing your own jobs only:
 `squeue` can show many other details about jobs as well. Run `man
 squeue` to see detailed documentation on how to do this.
 
-**More information to be added here soon...**
+## Running longer jobs {#requeueing}
+
+In some cases, you need to run jobs that take longer than the 24 hours
+which is the maximum run-time of jobs in the *prioritized*
+partition. The way to do this is to configure your jobs to be
+re-queued if they run out of time. There are two necessary ingredients
+to making this work:
+
+1. Instruct Slurm that your job should be requeued if it gets stopped.
+2. Program/configure your job workload to use checkpointing of working
+   data so that the work can continue from the latest checkpoint when
+   it gets the opportunity to start again.
+
+### Instruct Slurm to requeue your job
+
+Note that this only makes sense if you have programmed or configured
+your workload to use checkpointing so that it is able to continue from
+where it last stopped. If this is not the case, your job would merely
+start over from the beginning when requeued and you could end up with
+a job that keeps starting over forever but never really finishes.
+
+To instruct Slurm that your job can be requeued if stopped (due to for
+example time-out or pre-emption as mentioned above in
+[*batch*](#batch)), add the parameter `--requeue` to the `sbatch`
+command when submitting your job:
+
+???+ example
+
+        sbatch --requeue --gres=gpu:t4:1 job_script.sh
+
+    Using the "--requeue" option to instruct Slurm that your job can be requeued
+
+We advise that you request a specific type of GPU (for example T4
+above) or a specific node when working with requeueable jobs, since we
+cannot guarantee what would happen if your job initially started
+running with one type of GPU and then subsequently attempted to
+continue from a checkpoint with a different type of GPU.
+
+### Use checkpointing {#checkpointing}
+
+Checkpointing means that you configure or program your workload to
+store its working data so far to a temporary location on disk at
+regular intervals. When the workload starts running, it should first
+check if it has an already stored checkpoint on disk, and continue from
+there if it finds one.
+
+This way, if your job suddenly gets stopped, you can start it again
+and it automatically continues running from its latest saved
+checkpoint.
+
+How to implement checkpointing depends on the details of how your
+workload has been programmed. If you have programmed your workload
+from scratch yourself, the general recipe is to add the following
+functionality to your program:
+
+1. Look for an exisiting checkpoint file.
+2. If the file exists; load it and continue work from there.
+3. If not; start the work from scratch.
+4. While working; save the necessary internal data and output data so
+   far to a checkpoint file at regular time intervals.
+5. When the program completes without errors; save the final output
+   data the way you would normally save your output data and delete
+   the checkpoint file.
+
+For example, if your program stores a checkpoint every 15 minutes, you
+would only risk losing up to 15 minutes of work if the job gets
+stopped. All of the prior work is stored in your most recent
+checkpoint which your workload can automatically load and continue
+from.
+
+Some popular libraries often used in AI Cloud have built-in features
+you can use for checkpointing:
+
+- **TensorFlow** provides a [guide
+  here](https://www.tensorflow.org/guide/checkpoint) on how to use
+  checkpointing in TensorFlow model training.  
+  Similarly, the Keras interface also has [this
+  mechanism](https://keras.io/api/callbacks/model_checkpoint/) that
+  can be used to implement checkpointing.
+- **PyTorch** provides a [guide
+  here](https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html)
+  on how to use checkpointing in PyTorch model training.
+
+*You are welcome to suggest additions to this list if you know useful
+checkpointing mechanisms for other software that can be used on AI
+Cloud.*
