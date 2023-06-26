@@ -1,29 +1,46 @@
-# Background
+# AI Cloud Background
 
 ## Background I
 
 - For research purposes at AAU.
-- Allow students based on recommendation from staff/supervisor/researcher.
-- Free---but we do observe accounting.
+- Admit students based on recommendation from staff/supervisor/researcher.
+- Free---but the system does attempt to balance load evenly among departments.
 
 ## Background II
 
-- Update
-     
+- Two NVIDIA DGX-2 in the AI Cloud cluster
+   - Shared. Users' data separated by ordinary file system access
+     restrictions. Not suitable for sensitive/secret data. Usable for
+     [levels 0 and 1](https://www.security.aau.dk/dataclassification/)
+- One DGX-2 set aside for research with confidential/sensitive (levels
+  2 and 3) data.
+   - Sliced (vitual machines). There are projects, and more are coming
+     with requirements on data protection.
+- GPU system. CPU-primary computations should be done somewhere
+  else. [Strato](https://strato-new.claaudia.aau.dk),
+  [uCloud](https://cloud.sdu.dk), or [DeiC throughput HPC](https://www.deic.dk/en/Supercomputing/Instructions-and-Guides/How-to-get-access-to-HPC-Type-2).
+- A lot of things are happening both in
+  [DK](https://www.deic.dk/da/Supercomputere/Nationale-HPC-anlog) and
+  at [EU level](https://eurohpc-ju.europa.eu/). The HPC landscape is
+  being reshaped, for example with the new supercomputer
+  [LUMI](https://lumi-supercomputer.eu/). It is possible to get access
+  to much larger facilities outside AAU. Email claaudia@aau.dk for
+  more information.
+
 # System design
 
 ## High level design
 
-  -- Need new drawing!
+  ![AI Cloud Design](../images/AICloudDesign.png){width=75%}
 
 # Getting started 
 
 ## Essential skill set and tool set
 
- - Basic Linux, and Shell environment, preferably bash scripting language
+ - Basic Linux, and shell environment, preferably bash scripting language
  - Terminal: 
-     - Windows: MobaXterm (https://mobaxterm.mobatek.net/) 
-     - MacOS default terminal or iTerm2 (https://www.iterm2.com/) 
+     - Windows: MobaXterm (<https://mobaxterm.mobatek.net/>)
+     - MacOS default terminal or iTerm2 (<https://www.iterm2.com/>) 
      - Linux: Gnome terminal, KDE konsole 
  - Shell: bash (default), zsh (more feature-rich)
 
@@ -46,7 +63,7 @@
 
   # One-step log on
 
-  `ssh <aau ID>@ai-fe02.srv.aau.dk`
+  `ssh <aau ID>@ai-pilot.srv.aau.dk`
 
 ## Log on the server 
 
@@ -56,9 +73,9 @@
 # Two-step log on
 ssh sshgw.aau.dk -l <aau ID>
 Type in your passcode and your Microsoft verification code
-ssh ai-fe02.srv.aau.dk -l <aau ID>
+ssh ai-pilot.srv.aau.dk -l <aau ID>
 # Tunneling 
-ssh -L 2022:ai-fe02.srv.aau.dk:22\
+ssh -L 2022:ai-pilot.srv.aau.dk:22\
   -l <aau ID> sshgw.aau.dk
 Type in your passcode and your Microsoft verification code
 scp -P 2022 ~/Download/testfile <aau ID>@localhost:~/
@@ -66,7 +83,7 @@ scp -P 2022 ~/Download/testfile <aau ID>@localhost:~/
 
 # Slurm basics
 
-## Why?
+## Slurm queue manager
 - Why Slurm?
     - Resource management.
     - Transparency, fairness
@@ -156,7 +173,6 @@ sreport -tminper cluster utilization --tres="gres/gpu" \
  sacctmgr show qos \
     format=name,priority,maxtresperuser%20,MaxWall
  sacctmgr show assoc format=account,user%30,qos%40
- sudo sacctmgr modify user <user> set QOS+=deadline
 ```
 
 Follow the guidelines on the documentation page and submit an email to support@its.aau.dk if you have a paper deadline.
@@ -191,7 +207,7 @@ Some additional readings:
 4. HPC-oriented
 5. Users familar with Docker might experience slow build process.
 
-Refs Docker vs. Singularity discussion: [ref](https://pythonspeed.com/articles/containers-filesystem-data-processing/) and [ref2](https://www.reddit.com/r/docker/comments/7y2yp2/why_is_singularity_used_as_opposed_to_docker_in/)
+Refs Docker vs. Singularity discussion: [[1]](https://pythonspeed.com/articles/containers-filesystem-data-processing/) and [[2]](https://www.reddit.com/r/docker/comments/7y2yp2/why_is_singularity_used_as_opposed_to_docker_in/)
 
 ## Check built-in documentation
 
@@ -201,7 +217,7 @@ Refs Docker vs. Singularity discussion: [ref](https://pythonspeed.com/articles/c
 
 ## Singularity build from Docker and exec command
 
-Example: Pull a Docker image and convert to singularity image
+Example: Pull a Docker image and convert to Singularity image
 
   `srun singularity pull docker://godlovedc/lolcow`
 
@@ -289,7 +305,7 @@ srun --pty --gres=gpu:1 singularity shell --nv \
 
 On the node:
 
-- View resource utilization on compute node (shh in):
+- View resource utilization on compute node (ssh in):
   * ```$ top -u <user>```
   * ```$ smem -u -k```
   * ```$ nvidia-smi -l 1 -i <IDX>```   # see scontrol -d show job <jobId>
@@ -298,7 +314,7 @@ On the node:
 - Data in e.g. /user/student.aau.dk/ are on a distributed file system
   * Consider using /raid (SSD NVMe) on the compute node (see doc)
 - If you have allocated a GPU and your job information contains ```mem=10000M``` and it is just pending (state=PD, possible reason=resources) but there should be resources.
-  * Issue: cancel and add e.g. --mem=64G to you allocation 
+  * Issue: cancel and add e.g. `--mem=64G` to your allocation 
 
 ## Tools, tips and tricks II
 
@@ -316,13 +332,16 @@ Things to consider in your framework:
 
 We kindly ask that all users consider the following guidelines:
 
-* Please be mindful of your allocations and refrain from allocating many resources without knowing/testing/verifying that you can indeed make good use of the allocated resources.
-* Please be mindful and de-allocate the resources if you do no use them. Then other users can make good use of these.
+* Please be mindful of your allocations and refrain from allocating
+  more resources than you know, have tested/verified that your jobs
+  can indeed utilise.
+* Please be mindful and de-allocate the resources when you do no use
+  them. This ensures better overall utilisation for everyone.
 
 We see challenges towards the end of semesters (cyclic):
 
-* More HW (NVIDIA T4) is on the way in.
-* It is for research ... administration intend to interfere as little as possible ... but we do try to help and do something.
+* More HW (NVIDIA T4, A10, A40) is on the way in "new AI Cloud".
+* It is for research ... administration intends to interfere as little as possible ... but we do try to help and do something.
 * Resource discussion in the steering committee --- [contact](https://www.claaudia.aau.dk/about/) your faculty representative.
 
 # Where to go from here
@@ -333,7 +352,7 @@ We see challenges towards the end of semesters (cyclic):
     - More workflows
     - Copying data to the local drive for higher I/O performance
     - Inspecting your utilization
-    - Matlab, pytorch, ...
+    - Matlab, PyTorch, ...
     - Fair usage/upcoming deadline
     - Links and references to additional material
     - Support (fastest response): support@its.aau.dk
