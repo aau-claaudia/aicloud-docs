@@ -1,2 +1,3 @@
 # Documentation
- Documentation: https://www.strato-docs.claaudia.aau.dk/
+
+Documentation: <https://aicloud-docs.claaudia.aau.dk/>
