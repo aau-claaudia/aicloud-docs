@@ -238,6 +238,34 @@ Showing your own jobs only:
 `squeue` can show many other details about jobs as well. Run `man
 squeue` to see detailed documentation on how to do this.
 
+## Using a specific type of GPU {#specific-gpu}
+
+In some cases your work requires a specific type of GPU. It could be,
+for example, that you need at least 20 GB of GPU RAM available. In
+that case at T4 GPU does not meet the requirement. It could also be
+that you know that an A10 GPU would be sufficient for your job, so
+there is no need to allocate an A40 GPU to it.
+
+In cases like these, you can specify a specific type of GPU to
+allocate to your job. This is done by adding a GPU type *label* to the
+"--gres" option to the `sbatch` or `srun` commands.
+
+???+ example
+
+        sbatch --gres=gpu:a10:1 my_job_script.sh
+
+    The `--gres` option lets you specify the type of GPU(s) to
+	allocate to your job. In this example, the specification "gpu:a10:1"
+	means that you are asking for 1 A10 GPU.
+
+	If you merely use "--gres=gpu:1" you will be allocated an arbitrary
+	available GPU in the cluster.
+
+Please see the [overview table](introduction.md#overview) in
+Introduction for the types of GPU that you can specify with this
+option. For an NVIDIA T4 GPU, the corresponding label for the "--gres"
+option is "t4", so the name of the GPU type in lower-case letters.
+
 ## Running longer jobs {#requeueing}
 
 In some cases, you need to run jobs that take longer than the 24 hours

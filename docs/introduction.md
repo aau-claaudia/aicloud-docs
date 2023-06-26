@@ -358,6 +358,9 @@ the software you run can indeed utilise as many GPUs as you
 allocate. It is not allowed to allocate more GPUs than your job can
 utilise.**
 
+Note that you can ask for a specific type of GPU if you need to,
+please see: [Using a specific type of GPU](slurm.md#specific-gpu).
+
 In most cases you probably want to use a GPU in combination with a
 Singularity container. In this case, we also need to remember to
 enable support for NVIDIA GPUs in Singularity:
