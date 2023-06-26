@@ -1,5 +1,4 @@
-
-Twice a year (~April and November) we do a 2h training session covering Slurm and Singularity.
+Twice a year (typically February and September) we do an approximately
+half-day introduction workshop covering Slurm and Singularity.
 
 - You can obtain the material [here](SlurmAndSingularityTraining.pdf)
-

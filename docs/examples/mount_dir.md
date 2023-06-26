@@ -12,5 +12,5 @@ If you wish to mount a folder in AI Cloud on your local computer
     ```
 
 where `<DOMAIN>` is 'department.aau.dk' and `<ID>` is 'ab34ef' for
-user 'ab34ef@department.aau.dk'. Please note here that `<ID` for most
+user 'ab34ef@department.aau.dk'. Please note here that `<ID>` for most
 users is *not* the same as the name part of your email address.
