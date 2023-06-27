@@ -76,7 +76,7 @@ documentation of the command.
         PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
         batch*         up   12:00:00      1    mix nv-ai-04.srv.aau.dk
         batch*         up   12:00:00      8   idle a256-t4-01.srv.aau.dk,a256-t4-02.srv.aau.dk, ...
-        prioritized    up 1-00:00:00      8   idle a256-t4-01.srv.aau.dk,a256-t4-02.srv.aau.dk, ...
+        prioritized    up 6-00:00:00      8   idle a256-t4-01.srv.aau.dk,a256-t4-02.srv.aau.dk, ...
 
     The `sinfo` command shows basic information about partitions in the
     queue system and what the states of nodes in these partitions are.
@@ -147,7 +147,7 @@ The default partition in AI Cloud is *prioritized*. If you submit a
 job without specifying a partition, e.g. `sbatch --gres=gpu:1
 job_script.sh`, your job automatically gets run in the *prioritized*
 partition. All users have access to the *prioritized* partition. As
-shown in the `sinfo` example above, this partition has a 24-hour time
+shown in the `sinfo` example above, this partition has a 6-day time
 limit and other jobs cannot cancel jobs in this partition.
 
 ### The *batch* partition {#batch}
@@ -268,7 +268,7 @@ option is "t4", so the name of the GPU type in lower-case letters.
 
 ## Running longer jobs {#requeueing}
 
-In some cases, you need to run jobs that take longer than the 24 hours
+In some cases, you need to run jobs that take longer than the 6 days
 which is the maximum run-time of jobs in the *prioritized*
 partition. The way to do this is to configure your jobs to be
 re-queued if they run out of time. There are two necessary ingredients
