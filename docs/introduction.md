@@ -89,7 +89,7 @@ the following command on the command line of your local computer:
 If you wish to access while **not** being connected to the AAU
 network, you have two options: [Use
 VPN](https://www.en.its.aau.dk/instructions/VPN/) or use AAU's [SSH
-gateway](https://www.en.its.aau.dk/instructions/Username+and+password/SSH/).
+gateway](https://www.en.its.aau.dk/instructions/ssh).
 
 ??? info
 
