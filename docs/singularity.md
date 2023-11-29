@@ -26,9 +26,9 @@ First create a so-called sandbox container:
 ```console
 srun singularity build --sandbox [sandbox-dir-name] [container image]
 ```
-where you replace `[sandbox-dir-name]` by a name you decide for the
+where you replace `[sandbox-dir-name]` with a name you decide for the
 directory that holds your sandbox container, and replace `[container
-image]` by the name of a container image you already have in AI Cloud
+image]` with the name of a container image you already have in AI Cloud
 (e.g. "pytorch_23.04-py3.sif") or the URI of a container to download
 (e.g. "docker://nvcr.io/nvidia/pytorch:23.04-py3").
 
@@ -63,19 +63,34 @@ commands in the
 
 ### Build a new container image file with Cotainr
 
-Cotainr is a tool developed by [DeiC]() to ease building of
-Singularity containers. It can be used to build custom containers with
-additional software installable by conda and pip. This means it is
-primarily for adding Python packages to a container. It works from a
-base container image that you specify and then build additional
-Anaconda and pip packages which you supply as a conda environment
-specification.
+[Cotainr]("https://cotainr.readthedocs.io/en/stable/index.html") is a tool developed by [DeiC]("https://www.deic.dk/en/om-deic") to ease building of Singularity containers. 
+It can be used to build custom containers with additional software installable by Conda and Pip. This means it is primarily for adding Python packages to a container. 
+It works from a base container image that you specify and then build additional Anaconda and pip packages which you supply as a conda environment specification.
+The tool has not yet been installed system-wide on AI Cloud, but we hope to do so in the near future.
+Until then you can download the software to your own user directory, and launch it by specifying the path to the executable.
 
-We hope to install this tool system-wide in AI Cloud in late
-June. Until then, you are welcome to download the tool to your own
-user directory and use it from there. Please see the [Cotainr
-documentation](https://cotainr.readthedocs.io/en/latest/index.html)
-for more information on how to use it.
+
+Begin by cloning the Cotainr repository from Github:
+```console
+git clone https://github.com/DeiC-HPC/cotainr.git
+
+```
+After this command has been run, you will find that you have a new folder called `cotainr`.
+Cotainr can now be launched with the following command structure:
+```console
+srun [path/to/cotainr] build [name of output file] --base-image=[base image] --conda-env=[name of environment]
+```
+
+As always we use `srun` to ask Slurm to delegate the subsequent command to a compute node. 
+We then need to specify the path to `cotainr/bin/cotainr` and call `build`. Then choose a name for your container and replace `[name of output file]` with this newly chosen name. It is conventional to append the suffix `.sif` to Singularity Image Files.
+After that you will need to specify a `[base image]`, which can be an existing container in your directory or one from a remote source. Finally use the parameter `--conda-env` to specify which Conda environment file you want to use. If you have an existing Conda environment somewhere, you can export this environment `conda env export > my_environemt.yml`.
+
+???+ example
+    ```console
+    srun ~/cotainr/bin/cotainr build amber.sif --base-image=docker://ubuntu:22.04 --conda-env=amber.yml
+    ```
+
+Also don't forget to check out the [offical Cotainr documentation]("https://cotainr.readthedocs.io/en/stable/index.html") for more information.
 
 ### Build a new container image file from a definition file
 
