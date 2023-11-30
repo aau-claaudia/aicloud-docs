@@ -63,26 +63,29 @@ commands in the
 
 ### Build a new container image file with Cotainr
 
-[Cotainr]("https://cotainr.readthedocs.io/en/stable/index.html") is a tool developed by [DeiC]("https://www.deic.dk/en/om-deic") to ease building of Singularity containers. 
+[Cotainr]("https://cotainr.readthedocs.io/en/stable/index.html") is a tool developed by [DeiC]("https://www.deic.dk/en/om-deic") to ease building of Singularity containers.
 It can be used to build custom containers with additional software installable by Conda and Pip. This means it is primarily for adding Python packages to a container. 
 It works from a base container image that you specify and then build additional Anaconda and pip packages which you supply as a conda environment specification.
-The tool has not yet been installed system-wide on AI Cloud, but we hope to do so in the near future.
+We plan on installing this tool system-wide on AI Cloud in the near future.
 Until then you can download the software to your own user directory, and launch it by specifying the path to the executable.
 
+We begin by downloading the latest release from the [Cotainr repository]("https://github.com/DeiC-HPC/cotainr/releases"). In the example below we are downloading the latest version as of late 2023. Be sure to check for newer versions at the aforementioned repository. Look for the zip archive "Assets" section, and copy the link.
 
-Begin by cloning the Cotainr repository from Github:
 ```console
-git clone https://github.com/DeiC-HPC/cotainr.git
-
+wget https://github.com/DeiC-HPC/cotainr/archive/refs/tags/2023.11.0.zip
 ```
-After this command has been run, you will find that you have a new folder called `cotainr`.
-Cotainr can now be launched with the following command structure:
+
+You should now have a zip archive, which you can unzip with:
+```
+unzip 2023.11.0.zip
+```
+
+After this has been done, you should have a directory called `cotainr-2023.11.0`. We should now be able to launch Cotainr and access its commands from within this directory. In a generalised manner the command structure is:
 ```console
 srun [path/to/cotainr] build [name of output file] --base-image=[base image] --conda-env=[name of environment]
 ```
-
 As always we use `srun` to ask Slurm to delegate the subsequent command to a compute node. 
-We then need to specify the path to `cotainr/bin/cotainr` and call `build`. Then choose a name for your container and replace `[name of output file]` with this newly chosen name. It is conventional to append the suffix `.sif` to Singularity Image Files.
+We then need to specify the path to `cotainr/bin/cotainr` and call `build`. Then choose a name for your container and replace `[name of output file]` with this newly chosen name. We recommend appending the conventional suffix `.sif` to this name.
 After that you will need to specify a `[base image]`, which can be an existing container in your directory or one from a remote source. Finally use the parameter `--conda-env` to specify which Conda environment file you want to use. If you have an existing Conda environment somewhere, you can export this environment `conda env export > my_environemt.yml`.
 
 ???+ example
