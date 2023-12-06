@@ -51,12 +51,12 @@ Resources
   completed and relinquished the resources.*
 
 Time limit
-: [Partitions]("https://aicloud-docs.claaudia.aau.dk/slurm/#selecting-a-partition") may impose time limits. These limits define the longest time your job can run for in the specific partition. They can be viewed with the `sinfo` command.
-If your job has not ended by this time limit, it will be automatically cancelled.
-In the days leading up to the [service windows]("https://www.researcher.aau.dk/guides/research-data/high-performance-computing/terms-and-conditions-of-use-of-hpc-resources#scheduled-service-windows-for-strato-and-ai-cloud"),
-you will also be met by a time limit, which prevents you from launching jobs with end dates that surpass the date of the servicewindow. 
-If the `time` parameter is not set, Slurm assumes you ask for the default maximum time for the partition. To submit a job that runs for 1 day and 8 hours, you can simply add `time=1-8:00:00` to your Slurm command.
-Make sure to read about our recommendations for using [checkpointing]("https://aicloud-docs.claaudia.aau.dk/slurm/#checkpointing) to work with time limits.
+: [Partitions](#selecting-a-partition) may impose time limits. These limits define the longest time your job can run for in the specific partition. They can be viewed with the `sinfo` command. If your job has not ended by this time limit, it will be automatically cancelled.
+: *In the days leading up to the [service windows](https://www.researcher.aau.dk/guides/research-data/high-performance-computing/terms-and-conditions-of-use-of-hpc-resources#scheduled-service-windows-for-strato-and-ai-cloud), you will also be met by a time limit, which prevents you from launching jobs with end dates that surpass the date of the servicewindow.
+If the `time` parameter is not set, Slurm assumes you ask for the default maximum time for the partition.
+You will thus have to calculate how much time you have before the service window, and then submit a job with this parameter added.
+To submit a job that runs for 1 day and 8 hours, you can simply add `time=1-8:00:00` to your slurm command. 
+Additionally you can read about our recommendations for using [checkpointing](#checkpointing) to work with time limits.*
 
 ## Checking the current state of the queue system
 
