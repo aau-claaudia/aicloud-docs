@@ -192,7 +192,7 @@ Please follow these steps to use the local storage of a compute node
 during build of your container:
 
 1. Start an interactive job for building your container:  
-   `srun --pty --nodelist nv-ai-01.srv.aau.dk bash -l`  
+   `srun --pty --nodelist nv-ai-01 bash -l`  
    *It is important to use the `--nodelist` parameter to request a
    compute node with local storage.*
 2. Create a cache directory for yourself to use during build of
