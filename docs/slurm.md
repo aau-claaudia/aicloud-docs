@@ -75,9 +75,9 @@ documentation of the command.
         sinfo
          
         PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
-        batch*         up   12:00:00      1    mix nv-ai-04.srv.aau.dk
-        batch*         up   12:00:00      8   idle a256-t4-01.srv.aau.dk,a256-t4-02.srv.aau.dk, ...
-        prioritized    up 6-00:00:00      8   idle a256-t4-01.srv.aau.dk,a256-t4-02.srv.aau.dk, ...
+        batch*         up   12:00:00      1    mix nv-ai-04
+        batch*         up   12:00:00      8   idle a256-t4-[01-02],i256-a10-06,i256-a40-[01-02]...
+        prioritized    up 6-00:00:00      8   idle a256-t4-[01-02],i256-a10-06,i256-a40-[01-02]...
 
     The `sinfo` command shows basic information about partitions in the
     queue system and what the states of nodes in these partitions are.
@@ -110,25 +110,25 @@ detailed documentation of the command.
 
 ???+ example
 
-        scontrol show node a256-t4-01.srv.aau.dk
-		
-        NodeName=a256-t4-01.srv.aau.dk Arch=x86_64 CoresPerSocket=16 
-           CPUAlloc=0 CPUTot=64 CPULoad=0.00
-           AvailableFeatures=(null)
-           ActiveFeatures=(null)
-           Gres=gpu:6
-           NodeAddr=a256-t4-01.srv.aau.dk NodeHostName=a256-t4-01.srv.aau.dk Version=21.08.8-2
-           OS=Linux 5.4.0-124-generic #140-Ubuntu SMP Thu Aug 4 02:23:37 UTC 2022 
-           RealMemory=244598 AllocMem=0 FreeMem=252833 Sockets=2 Boards=1
-           State=IDLE ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A
-           Partitions=batch,prioritized 
-           BootTime=2022-08-15T14:32:38 SlurmdStartTime=2022-08-17T13:36:22
-           LastBusyTime=2022-08-30T10:04:46
-           CfgTRES=cpu=64,mem=244598M,billing=64,gres/gpu=6
-           AllocTRES=
-           CapWatts=n/a
-           CurrentWatts=0 AveWatts=0
-           ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
+    scontrol show node a256-t4-01
+
+    NodeName=a256-t4-01 Arch=x86_64 CoresPerSocket=16
+      CPUAlloc=12 CPUTot=64 CPULoad=0.50
+      AvailableFeatures=(null)
+      ActiveFeatures=(null)
+      Gres=gpu:t4:6
+      NodeAddr=172.21.212.130 NodeHostName=a256-t4-01.srv.aau.dk Version=21.08.8-2
+      OS=Linux 5.4.0-170-generic #188-Ubuntu SMP Wed Jan 10 09:51:01 UTC 2024
+      RealMemory=244584 AllocMem=101440 FreeMem=242152 Sockets=2 Boards=1
+      State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=10 Owner=N/A MCS_label=N/A
+      Partitions=batch,prioritized
+      BootTime=2024-01-27T15:28:12 SlurmdStartTime=2024-01-27T15:28:36
+      LastBusyTime=2024-01-29T08:40:54
+      CfgTRES=cpu=64,mem=244584M,billing=64,gres/gpu=6
+      AllocTRES=cpu=12,mem=101440M,gres/gpu=2
+      CapWatts=n/a
+      CurrentWatts=0 AveWatts=0
+      ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
 
 ### Nodesummary
 
@@ -188,7 +188,7 @@ Currently, these servers are associated with the partitions: *create*,
 partition, you can run jobs on the server, even if it requires
 cancelling jobs of users in the *batch* partition to provide you the
 requested resources. For example, users from VAP lab at CREATE can use
-their server nv-ai-04.srv.aau.dk by submitting jobs to the *create*
+their server nv-ai-04 by submitting jobs to the *create*
 partition:
 
 ???+ example
@@ -211,11 +211,11 @@ The command `squeue` can be used to get a general overview:
 
         squeue
         JOBID PARTITION		NAME	 USER ST	   TIME	 NODES NODELIST(REASON)
-        31623	  batch		DRSC xxxxxxxx  R	6:45:14		 1 i256-a10-10.srv.aau.dk
-        31693	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
-        31694	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
-        31695	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
-        31696	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01.srv.aau.dk
+        31623	  batch		DRSC xxxxxxxx  R	6:45:14		 1 i256-a10-10
+        31693	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01
+        31694	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01
+        31695	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01
+        31696	  batch singular yyyyyyyy  R	  24:20		 1 i256-a40-01
         31502 prioritiz runQHGK. zzzzzzzz PD	   0:00		 1 (Dependency)
         31504 prioritiz runQHGK. zzzzzzzz PD	   0:00		 1 (Dependency)
 
