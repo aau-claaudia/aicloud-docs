@@ -18,9 +18,8 @@ nav:
     - "PyTorch and automatic mixed precision with APEX": torch_amp_example/README.md
     - "Python pip in containers": examples/pip_in_containers.md
     - "Mount user directory on your local computer": examples/mount_dir.md
+    - "Group projects": examples/group_projects.md
     
-  - "Workshop": workshop/workshop.md
-  
   - "Additional resources": additional.md
   
 theme:

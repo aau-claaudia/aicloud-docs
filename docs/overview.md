@@ -15,8 +15,6 @@ The AI Cloud consists of a front-end node (ai-fe02.srv.aau.dk) and a number of c
 nodes. The AI Cloud is a heterogeneous platform with several different
 types of hardware available in the compute nodes.
 
-![AI Cloud platform](assets/img/ai-cloud-overview.png){width=80%}
-
 The front-end node is used for logging into the platform, accessing
 your files, and starting jobs on the compute nodes. The front-end node
 is a relatively small server which is *not* meant for performing heavy
@@ -25,59 +23,6 @@ to and from AI Cloud and defining and launching job scripts.
 
 The details of defining and running jobs are described in the
 [introduction](introduction.md).
-
-The compute nodes of the AI Cloud currently include:
-
-- Three compute nodes named a256-t4-01 to a256-t4-03; each with AMD
-  CPUs (2 &times; AMD EPYC 7302 16-core), 256GB of system RAM, and 6 [NVIDIA
-  T4 GPUs](https://www.nvidia.com/en-us/data-center/tesla-t4/) (16 GB
-  of RAM each).
-- Five compute nodes named i256-a10-06 to i256-a10-06; each with Intel
-  CPUs (2 &times; Xeon Gold 6326), 256GB of system RAM, and 4 [NVIDIA
-  A10
-  GPUs](https://www.nvidia.com/en-us/data-center/products/a10-gpu/)
-  (24 GB of RAM each).
-- Four compute nodes named a256-a40-04 to a256-a40-07; each with AMD
-  CPUs (2&times;16 cores), 256GB of system RAM, and 3 [NVIDIA
-  A40
-  GPUs](https://www.nvidia.com/en-us/data-center/a40/)
-  (48 GB of RAM each).
-- Two [NVIDIA DGX-2
-  servers](https://www.nvidia.com/en-us/data-center/dgx-2/) named
-  nv-ai-01 and nv-ai-03. These compute nodes are each equipped with 2
-  &times; 24-core Intel Xeon CPUs, 1.5 TB of system RAM, and 16
-  [NVIDIA Tesla V100
-  GPUs](https://www.nvidia.com/en-us/data-center/v100/) with 32 GB of
-  RAM each, all connected via NVIDIA NVLink.  
-  These are very powerful servers which you can use smaller or larger
-  portions of for shorter or longer duration. Details on how can be
-  found in the [introduction](introduction.md).
-- Two compute nodes named i256-a40-01 and i256-a40-02; each with Intel
-  CPUs (2&times;12 cores), 256GB of system RAM, and 3 [NVIDIA A40
-  GPUs](https://www.nvidia.com/en-us/data-center/a40/) (48 GB of RAM
-  each). **Limited access**
-- One [NVIDIA
-  DGX-A100](https://www.nvidia.com/en-us/data-center/dgx-a100/) server
-  named nv-ai-04. This compute node is equipped with AMD CPUs (2
-  &times; AMD Rome 7742 64-core), 2TB of system RAM, and 8 [NVIDIA
-  A100 GPUs](https://www.nvidia.com/en-us/data-center/a100/) (40GB of
-  RAM each). **Limited access**
-  
-!!! important
-
-    The compute nodes nv-ai-04 and i256-a40-01 and i256-a40-02 are owned
-	by specific research groups or centers which have first-priority
-	access to them. Other users can only access them on a limitied basis
-	where your jobs may be cancelled by higher-priority jobs; see
-    [Introduction](introduction.md).
-
-This diverse selection of
-different hardware in the AI Cloud allows for more suitable choice of
-specific hardware according to your task. For example, the DGX-2
-compute nodes are better suited for the
-comutationally intensive training of deep neural networks, while the
-compute nodes with T4 GPUs are better suited for inference tasks using
-an already trained model.
 
 ## AI Cloud pilot platform
 
@@ -143,11 +88,25 @@ See details on container images from NGC in the
 
 ### File storage
 
-The AI Cloud stores your
-files in your user directory. Your user directory is stored on a
-network file system that allows all of the nodes within the platform
-can access your files. This means that if you store or edit a file in
-your user directory on the front-end node, the compute nodes
-can see the same file and contents thereof. The nodes
-access the network file system in a shared manner, so there is nothing
-you need to do to synchronise the files between the nodes.
+Files in "user directories" and "project directories" are stored on a central network file system, and  accessible to all nodes. When you launch a job, access to the network file system is carried over to the compute node. This means that there is no need to synchronise files between nodes. When you store or edit a file in your user directory on the front-end node, the compute nodes can see the same file and its contents.
+
+#### Storage quota expansions
+When users log in to AI Cloud for the first time, a user directory is created for them. These directories are allocated 1 TB of storage by default. This should be plenty for most users, but should you need additional space, it is possible to apply for storage quota expansions for a limited time using our [Storage quota expansions form](https://forms.office.com/e/AjT0GccAPb).
+
+!!! info
+
+    When you log in to the platform, you can see your storage usage of the user directory at the very top line:    
+    ```
+    Current quota usage: 181GiB / 1.0TiB
+    Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-169-generic x86_64)
+    
+     * Documentation:  https://help.ubuntu.com
+     * Management:     https://landscape.canonical.com
+     * Support:        https://ubuntu.com/pro
+    
+      System information as of Fri Mar 15 11:09:21 CET 2024
+    ```
+
+#### Group project directories
+
+For projects where users need to collaborate and share files with other users, it is possible to create a group folder inside the directory `home/project`. Please consult the page [Group Project](https://aicloud-docs.claaudia.aau.dk/examples/group_projects/) to learn more about how to use this directory.
