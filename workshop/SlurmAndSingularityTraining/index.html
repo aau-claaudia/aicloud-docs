@@ -1,0 +1,1136 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>AI Cloud Background - AI Cloud Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=barlow:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"barlow";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+     
+  <div style="background: darkslateblue;">
+    <p style="text-align: center;font-size: 17px;color: white;max-width: 800px;margin: auto;padding-left: 30px;padding-right: 30px;font-weight: 600;margin-bottom: 10px;margin-top: 10px;">This page is no longer maintained. </p>
+    <p style="text-align: center;font-size: 14px;color: white;max-width: 800px;margin: auto;padding-left: 30px;padding-right: 30px;margin-bottom: 20px;font-weight: 400;">All information and guides related to AI Cloud have been moved to 
+      <a href="https://hpc.aau.dk/ai-cloud/" style="text-decoration: underline;color: aquamarine;font-weight: 600;">https://hpc.aau.dk/ai-cloud/</a>
+      . Please visit the new site for the most up-to-date resources on AI Cloud</p>
+  </div>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-cloud-background" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI Cloud Documentation" class="md-header__button md-logo" aria-label="AI Cloud Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo_round.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Cloud Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI Cloud Background
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aau-claaudia/aicloud-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../overview/" class="md-tabs__link">
+        
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../introduction/" class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../slurm/" class="md-tabs__link">
+        
+  
+    
+  
+  Running jobs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../singularity/" class="md-tabs__link">
+        
+  
+    
+  
+  Containers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/interactive_tensorflow/" class="md-tabs__link">
+          
+  
+    
+  
+  Additional examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../additional/" class="md-tabs__link">
+        
+  
+    
+  
+  Additional resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Cloud Documentation" class="md-nav__button md-logo" aria-label="AI Cloud Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo_round.png" alt="logo">
+
+    </a>
+    AI Cloud Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aau-claaudia/aicloud-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../slurm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../singularity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../torch_amp_example/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Additional examples
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Additional examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/interactive_tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/pytorch_anaconda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch and Anaconda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/matlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multi_gpu_keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-GPU data parallelism training with Horovod and Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../torch_amp_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch and automatic mixed precision with APEX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/pip_in_containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python pip in containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/mount_dir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mount user directory on your local computer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/group_projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Group projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../additional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="ai-cloud-background">AI Cloud Background</h1>
+<h2 id="background-i">Background I</h2>
+<ul>
+<li>For research purposes at AAU.</li>
+<li>Admit students based on recommendation from staff/supervisor/researcher.</li>
+<li>Free---but the system does attempt to balance load evenly among departments.</li>
+</ul>
+<h2 id="background-ii">Background II</h2>
+<ul>
+<li>Two NVIDIA DGX-2 in the AI Cloud cluster</li>
+<li>Shared. Users' data separated by ordinary file system access
+     restrictions. Not suitable for sensitive/secret data. Usable for
+     <a href="https://www.security.aau.dk/dataclassification/">levels 0 and 1</a></li>
+<li>One DGX-2 set aside for research with confidential/sensitive (levels
+  2 and 3) data.</li>
+<li>Sliced (vitual machines). There are projects, and more are coming
+     with requirements on data protection.</li>
+<li>GPU system. CPU-primary computations should be done somewhere
+  else. <a href="https://strato-new.claaudia.aau.dk">Strato</a>,
+  <a href="https://cloud.sdu.dk">uCloud</a>, or <a href="https://www.deic.dk/en/Supercomputing/Instructions-and-Guides/How-to-get-access-to-HPC-Type-2">DeiC throughput HPC</a>.</li>
+<li>A lot of things are happening both in
+  <a href="https://www.deic.dk/da/Supercomputere/Nationale-HPC-anlog">DK</a> and
+  at <a href="https://eurohpc-ju.europa.eu/">EU level</a>. The HPC landscape is
+  being reshaped, for example with the new supercomputer
+  <a href="https://lumi-supercomputer.eu/">LUMI</a>. It is possible to get access
+  to much larger facilities outside AAU. Email claaudia@aau.dk for
+  more information.</li>
+</ul>
+<h1 id="system-design">System design</h1>
+<h2 id="high-level-design">High level design</h2>
+<p><img alt="AI Cloud Design" src="../images/AICloudDesign.png" width="75%" /></p>
+<h1 id="getting-started">Getting started</h1>
+<h2 id="essential-skill-set-and-tool-set">Essential skill set and tool set</h2>
+<ul>
+<li>Basic Linux, and shell environment, preferably bash scripting language</li>
+<li>Terminal: <ul>
+<li>Windows: MobaXterm (<a href="https://mobaxterm.mobatek.net/">https://mobaxterm.mobatek.net/</a>)</li>
+<li>MacOS default terminal or iTerm2 (<a href="https://www.iterm2.com/">https://www.iterm2.com/</a>) </li>
+<li>Linux: Gnome terminal, KDE konsole </li>
+</ul>
+</li>
+<li>Shell: bash (default), zsh (more feature-rich)</li>
+</ul>
+<h2 id="optional-byobu-tmuxs-user-friendly-wrapper-for-ubuntu">Optional: Byobu (Tmux's User-friendly Wrapper for Ubuntu)</h2>
+<ul>
+<li>
+<p>Benefits:</p>
+<ul>
+<li>Disconnect from the server while your programs are running in interactive mode.</li>
+<li>Multiple panel, windows (tabs)</li>
+</ul>
+</li>
+<li>
+<p>Byobu demo: activate, Remember Shift + F1, F12 + ?</p>
+</li>
+</ul>
+<p><a href="https://youtu.be/wKEGA8oEWXw">create windows and split, switching windows, split</a></p>
+<ul>
+<li>Alternatives: screen, tmux</li>
+</ul>
+<h2 id="log-on-the-server">Log on the server</h2>
+<ul>
+<li>Inside AAU network (on campus or inside VPN):</li>
+</ul>
+<p># One-step log on</p>
+<p><code>ssh &lt;aau ID&gt;@ai-pilot.srv.aau.dk</code></p>
+<h2 id="log-on-the-server_1">Log on the server</h2>
+<ul>
+<li>Outside AAU network (outside VPN)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Two-step<span class="w"> </span>log<span class="w"> </span>on
+<span class="go">ssh sshgw.aau.dk -l &lt;aau ID&gt;</span>
+<span class="go">Type in your passcode and your Microsoft verification code</span>
+<span class="go">ssh ai-pilot.srv.aau.dk -l &lt;aau ID&gt;</span>
+<span class="gp"># </span>Tunneling<span class="w"> </span>
+<span class="go">ssh -L 2022:ai-pilot.srv.aau.dk:22\</span>
+<span class="go">  -l &lt;aau ID&gt; sshgw.aau.dk</span>
+<span class="go">Type in your passcode and your Microsoft verification code</span>
+<span class="go">scp -P 2022 ~/Download/testfile &lt;aau ID&gt;@localhost:~/</span>
+</code></pre></div>
+<h1 id="slurm-basics">Slurm basics</h1>
+<h2 id="slurm-queue-manager">Slurm queue manager</h2>
+<ul>
+<li>Why Slurm?<ul>
+<li>Resource management.</li>
+<li>Transparency, fairness</li>
+<li>Widely used. Used before at AAU.</li>
+</ul>
+</li>
+</ul>
+<h2 id="resource-management">Resource management</h2>
+<ul>
+<li>What to manage (resources): walltime, number of GPUs, number of CPUs, memory, ...</li>
+<li>Important management concepts in Slurm terms:<ul>
+<li>Account and organization: cs, es, es.shj</li>
+<li>Quality of service (QoS): normal, 1gpulong, ...</li>
+<li>Queuing algorithm: <a href="https://slurm.schedmd.com/priority_multifactor.html">Multi-factor priority plugin</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="essential-commands">Essential commands</h2>
+<ul>
+<li><code>sbatch</code> -- Submit job script (batch mode)</li>
+<li><code>salloc</code> -- Create job allocation (one option for interactive mode)</li>
+<li><code>srun</code> -- Run a command within a batch allocation that was created by sbatch or salloc (or allocates if sbatch or salloc was not used)</li>
+<li><code>scancel</code>  -- Cancel submitted/running jobs</li>
+<li><code>squeue</code> -- View the status of the queue</li>
+<li><code>sinfo</code> -- View information on nodes and queues</li>
+<li><code>scontrol</code> -- View (or modify) state, e.g. jobs</li>
+<li><code>sprio</code> -- View priority computations on queue</li>
+</ul>
+<h2 id="interactive-jobs">Interactive jobs</h2>
+<p>Two variants (not equivalent)</p>
+<ul>
+<li><code>srun --pty --time=20:00 bash -l</code></li>
+</ul>
+<p>or </p>
+<ul>
+<li><code>salloc --time=20:00 --nodelist=nv-ai-03.srv.aau.dk</code></li>
+<li><code>ssh nv-ai-03.srv.aau.dk</code></li>
+</ul>
+<h2 id="slurm-batch-job-script">Slurm Batch job script</h2>
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>!/usr/bin/env<span class="w"> </span>bash
+<span class="gp">#</span>SBATCH<span class="w"> </span>--job-name<span class="w"> </span>MySlurmJob
+<span class="gp">#</span>SBATCH<span class="w"> </span>--partition<span class="w"> </span>batch<span class="w"> </span><span class="c1"># equivalent to PBS batch</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>--time<span class="w"> </span><span class="m">24</span>:00:00<span class="w"> </span><span class="c1"># Run 24 hours</span>
+<span class="gp">#</span><span class="c1">#SBATCH --gres=gpu:1 # commented out</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>--qos<span class="o">=</span>normal<span class="w"> </span><span class="c1"># examples short, normal, 1gpulong, allgpus</span>
+<span class="go">srun echo hello world from sbatch on node $SLURM_NODELIST</span>
+</code></pre></div>
+<p>Submit job:
+<div class="highlight"><pre><span></span><code><span class="go">  sbatch jobscript.sh</span>
+</code></pre></div></p>
+<h2 id="looking-up-things-and-cancel">Looking up things and cancel</h2>
+<p>Basics:</p>
+<div class="highlight"><pre><span></span><code><span class="go"> sinfo</span>
+<span class="go"> squeue</span>
+<span class="go"> scontrol show node</span>
+<span class="go"> scontrol -d show job &lt;JOBID&gt;</span>
+</code></pre></div>
+<p>Cancelling a job or job step: <code>scancel</code></p>
+<p><code>scancel &lt;jobid&gt;</code></p>
+<h2 id="accounting-commands">Accounting commands</h2>
+<ul>
+<li><code>sacct</code> - report accounting information by individual job and job step</li>
+<li><code>sreport</code> - report resource usage by cluster, partition, user, account, etc</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sacct -j 82563 --format=User,JobID,Jobname,partition,\
+  state%30,time,start,end,elapsed,qos,ReqMem,AllocGRES
+sreport -tminper cluster utilization --tres=&quot;gres/gpu&quot; \
+  start=9/01/20
+</code></pre></div>
+<h2 id="slurm-query-commands">Slurm query commands</h2>
+<p><code>sacctmgr</code> - database management tool</p>
+<div class="highlight"><pre><span></span><code> sacctmgr show qos \
+    format=name,priority,maxtresperuser%20,MaxWall
+ sacctmgr show assoc format=account,user%30,qos%40
+</code></pre></div>
+<p>Follow the guidelines on the documentation page and submit an email to support@its.aau.dk if you have a paper deadline.</p>
+<h2 id="slurm-hints-for-more-advanced-uses">Slurm: Hints for more advanced uses</h2>
+<p>Some additional readings:</p>
+<ul>
+<li><a href="https://slurm.schedmd.com/tres.html">Trackable Resource</a></li>
+<li><a href="https://slurm.schedmd.com/accounting.html">Accounting</a></li>
+<li><a href="https://slurm.schedmd.com/resource_limits.html">Resource Limit</a></li>
+<li><a href="https://hpc.nih.gov/docs/job_dependencies.html">Dependencies</a></li>
+<li><a href="https://slurm.schedmd.com/job_array.html">Job array</a></li>
+<li><a href="https://www.youtube.com/watch?v=5nxMLqF6Eu8">Information for developers</a></li>
+<li>run <code>man &lt;commandname&gt;</code> for builtin documentation. For example: <code>man scontrol</code></li>
+</ul>
+<h1 id="working-with-singularity-images">Working with Singularity images</h1>
+<h2 id="singularity-overview">Singularity overview</h2>
+<ol>
+<li>You get your own environment.<ul>
+<li>Flexibility in software</li>
+<li>Flexibility in version</li>
+<li>User requests/changes does not affect others</li>
+<li>Draw on the Docker images NVIDIA supplies in their <a href="https://ngc.nvidia.com/">NGC</a> (can convert Docker to Singularity image)</li>
+</ul>
+</li>
+<li>Security: overcome Docker's drawbacks<ul>
+<li>root access / UID problem</li>
+<li>resource exposure</li>
+</ul>
+</li>
+<li>Compatibility with Slurm</li>
+<li>HPC-oriented</li>
+<li>Users familar with Docker might experience slow build process.</li>
+</ol>
+<p>Refs Docker vs. Singularity discussion: <a href="https://pythonspeed.com/articles/containers-filesystem-data-processing/">[1]</a> and <a href="https://www.reddit.com/r/docker/comments/7y2yp2/why_is_singularity_used_as_opposed_to_docker_in/">[2]</a></p>
+<h2 id="check-built-in-documentation">Check built-in documentation</h2>
+<p><code>srun singularity -h</code></p>
+<p>see <code>singularity help &lt;command&gt;</code></p>
+<h2 id="singularity-build-from-docker-and-exec-command">Singularity build from Docker and exec command</h2>
+<p>Example: Pull a Docker image and convert to Singularity image</p>
+<p><code>srun singularity pull docker://godlovedc/lolcow</code></p>
+<p>and then run</p>
+<p><code>srun singularity run lolcow_latest.sif</code></p>
+<h2 id="singularity-build-from-ngc-docker-image">Singularity build from NGC Docker image</h2>
+<p><code>srun singularity pull docker://nvcr.io/nvidia/tensorflow:20.10-tf2-py3</code></p>
+<ul>
+<li>Takes some time. Placed a copy in:</li>
+</ul>
+<p>/user/share/singularity/images/tensorflow_20.10-tf2-py3.sif</p>
+<h2 id="singularity-build-from-ngc-docker-image_1">Singularity build from NGC Docker image</h2>
+<ul>
+<li>Common use case for interactive work:</li>
+</ul>
+<p><code>srun --pty --gres=gpu:1 singularity shell --nv tensorflow_20.10-tf2-py3.sif</code></p>
+<div class="highlight"><pre><span></span><code><span class="go">nvidia-smi</span>
+<span class="go">ipython</span>
+<span class="go">import tensorflow</span>
+<span class="go">exit</span>
+<span class="go">exit</span>
+</code></pre></div>
+<ul>
+<li>With the last exit you released the resources. Keep connection alive using tmux, screen, or byobo to avoid releasing.</li>
+</ul>
+<h2 id="combining-all-the-steps-from-today">Combining all the steps from today</h2>
+<p>Example:</p>
+<p><div class="highlight"><pre><span></span><code><span class="go">srun --gres=gpu:1 singularity exec --nv \</span>
+<span class="go">-B .:/code -B mnist-data/:/data -B output_data:/output_data \</span>
+<span class="go">tensorflow_20.10-tf2-py3.sif python /code/example.py 10</span>
+</code></pre></div>
+Can be inserted in a batch script</p>
+<h2 id="build-a-customized-singularity-images">Build a customized Singularity images</h2>
+<p>Singularity <a href="https://www.sylabs.io/guides/3.0/user-guide/definition_files.html"> definition file </a></p>
+<p>Example: Singularity
+<div class="highlight"><pre><span></span><code><span class="go">BootStrap: docker</span>
+<span class="go">From: nvcr.io/nvidia/tensorflow:20.10-tf2-py3</span>
+
+<span class="gp">%</span>post
+<span class="go">pip install keras</span>
+</code></pre></div></p>
+<p>You can then build with</p>
+<div class="highlight"><pre><span></span><code>srun singularity build --fakeroot \
+  tensorflow_keras.sif Singularity
+</code></pre></div>
+<h2 id="running-your-customized-singularity-images">Running your customized Singularity images</h2>
+<p>You can then run a specific command with</p>
+<div class="highlight"><pre><span></span><code>srun --gres=gpu:1 singularity exec --nv \
+  -B .:/code -B output_data:/output_data \
+  tensorflow_keras.sif python /code/example.py 10
+</code></pre></div>
+<p>or enter an interactive session with</p>
+<div class="highlight"><pre><span></span><code>srun --pty --gres=gpu:1 singularity shell --nv \
+  -B .:/code -B output_data:/output_data \
+  tensorflow_keras.sif
+</code></pre></div>
+<h1 id="tools-tips-and-tricks">Tools, tips and tricks</h1>
+<h2 id="tools-tips-and-tricks-i">Tools, tips and tricks I</h2>
+<p>On the node:</p>
+<ul>
+<li>View resource utilization on compute node (ssh in):</li>
+<li><code>$ top -u &lt;user&gt;</code></li>
+<li><code>$ smem -u -k</code></li>
+<li><code>$ nvidia-smi -l 1 -i &lt;IDX&gt;</code>   # see scontrol -d show job <jobId></li>
+<li>View GPU resource utilization from front-end node</li>
+<li><code>$ getUtilByJobId.sh &lt;JobId&gt;</code></li>
+<li>Data in e.g. /user/student.aau.dk/ are on a distributed file system</li>
+<li>Consider using /raid (SSD NVMe) on the compute node (see doc)</li>
+<li>If you have allocated a GPU and your job information contains <code>mem=10000M</code> and it is just pending (state=PD, possible reason=resources) but there should be resources.</li>
+<li>Issue: cancel and add e.g. <code>--mem=64G</code> to your allocation </li>
+</ul>
+<h2 id="tools-tips-and-tricks-ii">Tools, tips and tricks II</h2>
+<p>Things to consider in your framework:</p>
+<ul>
+<li>On the system: 6 CPUs and ~90G per GPU on average.</li>
+<li>Consider scaling workers (in framework) and CPUs.</li>
+<li>In general we run out of GPUs first, then memory. Consider adding more CPUs to push jobs through.</li>
+<li>V100 tensor cores are half-precision float. For speed: use half-precision or <a href="https://nvlabs.github.io/eccv2020-mixed-precision-tutorial/files/dusan_stosic-training-neural-networks-with-tensor-cores.pdf">mixed precision</a>.</li>
+<li>The DGX-2 comes with NVLink+NVSwitch: increase bandwidth between GPUs and allow for efficient <a href="https://developer.nvidia.com/blog/nvswitch-accelerates-nvidia-dgx2/">multi-GPU</a> programming.</li>
+</ul>
+<h1 id="fair-usage">Fair usage</h1>
+<h2 id="fair-usage_1">Fair usage</h2>
+<p>We kindly ask that all users consider the following guidelines:</p>
+<ul>
+<li>Please be mindful of your allocations and refrain from allocating
+  more resources than you know, have tested/verified that your jobs
+  can indeed utilise.</li>
+<li>Please be mindful and de-allocate the resources when you do no use
+  them. This ensures better overall utilisation for everyone.</li>
+</ul>
+<p>We see challenges towards the end of semesters (cyclic):</p>
+<ul>
+<li>More HW (NVIDIA T4, A10, A40) is on the way in "new AI Cloud".</li>
+<li>It is for research ... administration intends to interfere as little as possible ... but we do try to help and do something.</li>
+<li>Resource discussion in the steering committee --- <a href="https://www.claaudia.aau.dk/about/">contact</a> your faculty representative.</li>
+</ul>
+<h1 id="where-to-go-from-here">Where to go from here</h1>
+<h2 id="where-to-go-from-here_1">Where to go from here</h2>
+<ul>
+<li>
+<p><a href="https://git.its.aau.dk/CLAAUDIA/docs_aicloud/src/branch/master/aicloud_slurm">The user documentation</a></p>
+<ul>
+<li>More workflows</li>
+<li>Copying data to the local drive for higher I/O performance</li>
+<li>Inspecting your utilization</li>
+<li>Matlab, PyTorch, ...</li>
+<li>Fair usage/upcoming deadline</li>
+<li>Links and references to additional material</li>
+<li>Support (fastest response): support@its.aau.dk</li>
+<li>Advisory (slower response -- longer time span): claaudia@aau.dk</li>
+</ul>
+</li>
+<li>
+<p>Use the resource and give feedback. Share with us your success stories (including benchmarks, solved challenges, new possibilities, etc.)</p>
+</li>
+<li>Share with other users on the <a href="https://web.yammer.com/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiI4NzM1OTg5NzYwIn0/all">Yammer channel</a>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - 2023 CLAAUDIA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/claaudia_aau" target="_blank" rel="noopener" title="Claaudia on Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:claaudia@aau.dk" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.claaudia.aau.dk/" target="_blank" rel="noopener" title="www.claaudia.aau.dk" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7zm-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zm186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "toc.integrate", "navigation.indexes", "navigation.sections", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1838 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../overview/">
+      
+      
+        <link rel="next" href="../slurm/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Introduction - AI Cloud Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=barlow:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"barlow";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+     
+  <div style="background: darkslateblue;">
+    <p style="text-align: center;font-size: 17px;color: white;max-width: 800px;margin: auto;padding-left: 30px;padding-right: 30px;font-weight: 600;margin-bottom: 10px;margin-top: 10px;">This page is no longer maintained. </p>
+    <p style="text-align: center;font-size: 14px;color: white;max-width: 800px;margin: auto;padding-left: 30px;padding-right: 30px;margin-bottom: 20px;font-weight: 400;">All information and guides related to AI Cloud have been moved to 
+      <a href="https://hpc.aau.dk/ai-cloud/" style="text-decoration: underline;color: aquamarine;font-weight: 600;">https://hpc.aau.dk/ai-cloud/</a>
+      . Please visit the new site for the most up-to-date resources on AI Cloud</p>
+  </div>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Cloud Documentation" class="md-header__button md-logo" aria-label="AI Cloud Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo_round.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Cloud Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aau-claaudia/aicloud-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../overview/" class="md-tabs__link">
+        
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../slurm/" class="md-tabs__link">
+        
+  
+    
+  
+  Running jobs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../singularity/" class="md-tabs__link">
+        
+  
+    
+  
+  Containers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/interactive_tensorflow/" class="md-tabs__link">
+          
+  
+    
+  
+  Additional examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../additional/" class="md-tabs__link">
+        
+  
+    
+  
+  Additional resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Cloud Documentation" class="md-nav__button md-logo" aria-label="AI Cloud Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo_round.png" alt="logo">
+
+    </a>
+    AI Cloud Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aau-claaudia/aicloud-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logging-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging in
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transferring-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transferring files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running jobs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slurm-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slurm jobs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#singularity-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Singularity containers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Singularity containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obtaining containers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-applications-in-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running applications in containers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allocating-a-gpu-to-your-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Allocating a GPU to your job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fair-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fair usage
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../singularity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../torch_amp_example/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Additional examples
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Additional examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/interactive_tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/pytorch_anaconda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch and Anaconda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/matlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi_gpu_keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-GPU data parallelism training with Horovod and Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torch_amp_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch and automatic mixed precision with APEX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/pip_in_containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python pip in containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/mount_dir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mount user directory on your local computer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/group_projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Group projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Introduction</h1>
+
+<p>This section describes how to get started with the AI Cloud at AAU.<br />
+We are many users on this system, so please consult the section on
+<a href="#fair-usage">Fair usage</a> and follow the guidelines. We also have a
+<a href="https://web.yammer.com/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiI4NzM1OTg5NzYwIn0/all">community
+site</a>
+at AAU Yammer where users can share experiences and administrators
+announce workshops, changes, and service to the system. If you have
+support questions, please contact us at
+<a href="mailto:support@its.aau.dk">support@its.aau.dk</a>.</p>
+<p>For new users, we recommend reading the <a href="../">front page</a> and
+<a href="../overview/">Overview</a> section plus the section on <a href="#fair-usage">Fair
+usage</a></p>
+<h2 id="overview">Overview</h2>
+<!--**It is intended that all analysis on AI Cloud II are run via  containers which you start and manage by yourselves. It is possible to build singularity images from the NVIDIA's stock docker images [NVIDIA GPU Cloud](https://ngc.nvidia.com/) - check also this [Support Matrix](https://docs.nvidia.com/deeplearning/dgx/support-matrix/index.html "support matrix"). If you need something of your own taste, all software tools and their dependencies are supposed to be installed inside your containers. Furthermore, if you want to use the software stack again and again, it is a good idea to create a singularity image for that.**-->
+
+<p>The AI Cloud consists of the following compute nodes:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Nodes in total</th>
+<th>GPUs per node</th>
+<th>CPU cores per node</th>
+<th>CPU HW threads</th>
+<th>RAM per node</th>
+<th>RAM per GPU</th>
+<th>Disk</th>
+<th>NVLINK / NVSWITCH</th>
+<th>Primary usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a256-t4-[01-03]</td>
+<td>3</td>
+<td>6 (NVIDIA T4)</td>
+<td>32 (AMD EPYC)</td>
+<td>64</td>
+<td>256 GB</td>
+<td>16 GB</td>
+<td>None locally</td>
+<td>No</td>
+<td>Interactive / smaller single-GPU jobs</td>
+</tr>
+<tr>
+<td>i256-a10-[06-10]</td>
+<td>5</td>
+<td>4 (NVIDIA A10)</td>
+<td>32 (Intel Xeon)</td>
+<td>64</td>
+<td>256 GB</td>
+<td>24 GB</td>
+<td>None locally</td>
+<td>No</td>
+<td>Interactive / medium single-GPU jobs</td>
+</tr>
+<tr>
+<td>a256-a40-[04-07]</td>
+<td>4</td>
+<td>3 (NVIDIA A40)</td>
+<td>32 (AMD EPYC)</td>
+<td>32</td>
+<td>256 GB</td>
+<td>48 GB</td>
+<td>None locally</td>
+<td>No</td>
+<td>Large single-GPU jobs</td>
+</tr>
+<tr>
+<td>i256-a40-[01-02]</td>
+<td>2</td>
+<td>4 (NVIDIA A40)</td>
+<td>24 (Intel Xeon)</td>
+<td>24</td>
+<td>256 GB</td>
+<td>48 GB</td>
+<td>6.4 TB /raid</td>
+<td>Yes (2&times;2)</td>
+<td>Large single-/multi-GPU jobs</td>
+</tr>
+<tr>
+<td>nv-ai-[01-03]</td>
+<td>3</td>
+<td>16 (NVIDIA V100)</td>
+<td>48 (Intel Xeon)</td>
+<td>96</td>
+<td>1470 GB</td>
+<td>32 GB</td>
+<td>30 TB /raid</td>
+<td>Yes</td>
+<td>Large / batch / multi-GPU jobs</td>
+</tr>
+<tr>
+<td>nv-ai-04</td>
+<td>1</td>
+<td>8 (NVIDIA A100)</td>
+<td>128 (AMD EPYC)</td>
+<td>256</td>
+<td>980 GB</td>
+<td>40 GB</td>
+<td>14 TB /raid</td>
+<td>Yes</td>
+<td>Large / batch / multi-GPU jobs</td>
+</tr>
+<tr>
+<td>a768-l40-[01-02]</td>
+<td>2</td>
+<td>8 (NVIDIA L40)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>48 GB</td>
+<td></td>
+<td>Yes</td>
+<td>Large / batch / multi-GPU jobs</td>
+</tr>
+<tr>
+<td>a512-mi100-01</td>
+<td>1</td>
+<td>8 (AMD MI100)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>32 GB</td>
+<td></td>
+<td>Yes (Infinity Fabric link)</td>
+<td>Large / batch / multi-GPU jobs</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The compute nodes nv-ai-04, i256-a40-01, and i256-a40-02 are owned
+by specific research groups or centers which have first-priority
+access to them. Other users can only access them on a limitied basis
+where your jobs may be cancelled by higher-priority jobs. Users
+outside the prioritised group can only use them via the "batch"
+partition (use option <code>--partition=batch</code> for your jobs). See
+<a href="#slurm-jobs">Slurm jobs</a>.</p>
+</div>
+<h2 id="getting-started">Getting started</h2>
+<p>An alternative <a href="../workshop/SlurmAndSingularityTraining.pdf">workshop
+version</a> introduction is
+also available, but this only applies to the AI Cloud pilot platform.</p>
+<h3 id="logging-in">Logging in</h3>
+<p>You can access the platform using
+<a href="https://wiki.archlinux.org/index.php/OpenSSH#Client_usage">SSH</a>. How
+to use SSH depends on which operating system you use on your local
+computer:</p>
+<dl>
+<dt>Linux</dt>
+<dd>If you use a modern Linux distribution such as Ubuntu on your
+  computer, the necessary tools to connect to AI Cloud are usually
+  already installed by default.</dd>
+<dt>OS X (Apple)</dt>
+<dd>OS X has SSH built into the command line terminal. This means you
+  can invoke SSH commands as shown in the following examples directly
+  from your command line.<br />
+  OS X does, however, not have a built-in <a href="https://en.wikipedia.org/wiki/X.Org_Server">X
+  server</a> so it is
+  necessary to install additional software if you wish to be able to
+  show the graphical user interface (GUI) of applications (using X
+  forwarding).<br />
+  Installing <a href="https://www.xquartz.org/">XQuartz</a> should enable OS X to
+  use X forwarding.</dd>
+<dt>Windows (Microsoft)</dt>
+<dd>Newer versions of Windows have SSH built into the command line
+  terminal. This means you can invoke SSH commands as shown in the
+  following examples directly from your command line.<br />
+  Windows does, however, not have a built-in <a href="https://en.wikipedia.org/wiki/X.Org_Server">X
+  server</a> either so it is
+  necessary to install additional software if you wish to be able to
+  show the graphical user interface (GUI) of applications (using X
+  forwarding).<br />
+  If you wish to use a convenient way to connect to the AI Cloud from
+  Windows with the ability to display the GUI of applications you run
+  in AI Cloud, we recommend that you install and use
+  <a href="https://mobaxterm.mobatek.net/">MobaXterm</a> on your local computer.</dd>
+</dl>
+<p>The AI Cloud is only directly accessible when being on the AAU network
+(including VPN). You can connect to AI Cloud front-end node by running
+the following command on the command line of your local computer:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="go">ssh -l &lt;aau email&gt; ai-fe02.srv.aau.dk</span>
+</code></pre></div>
+<p>Replace <code>&lt;aau email&gt;</code> with your AAU email address, e.g.</p>
+</details>
+<div class="highlight"><pre><span></span><code><span class="go">ssh -l tari@its.aau.dk ai-fe02.srv.aau.dk</span>
+</code></pre></div>
+<p>If you wish to access while <strong>not</strong> being connected to the AAU
+network, you have two options: <a href="https://www.en.its.aau.dk/instructions/VPN/">Use
+VPN</a> or use AAU's <a href="https://www.en.its.aau.dk/instructions/ssh">SSH
+gateway</a>.</p>
+<details class="info">
+<summary>Info</summary>
+<p>If you are often outside AAU, you can use the SSH gateway by default
+through your personal SSH configuration (in Linux/OS X this is often
+located in: <code>$HOME/.ssh/config</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="go">Host ai-fe02.srv.aau.dk</span>
+<span class="go">     User &lt;aau email&gt;</span>
+<span class="go">     ProxyJump %r@sshgw.aau.dk</span>
+</code></pre></div>
+<p>Add the above configuration to your personal ssh config file (often
+located in: <code>$HOME/.ssh/config</code> on Linux or OS X systems). Now you
+can easily connect to the platform regardless of network using the
+commands from preceding examples.</p>
+</details>
+<h3 id="transferring-files">Transferring files</h3>
+<p>You can transfer files to/from AI Cloud using the command line utility
+<code>scp</code> from your local computer (Linux and OS X). <em>To</em> AI Cloud:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="go">scp some-file &lt;aau email&gt;@ai-fe02.srv.aau.dk:~</span>
+</code></pre></div>
+<p>where '~' means your user directory on AI Cloud. You can append
+directories below that to your destination:</p>
+</details>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="go">scp some-file &lt;aau email&gt;@ai-fe02.srv.aau.dk:~/some-dir/some-sub-dir/</span>
+</code></pre></div>
+</details>
+<p>You can also copy in the opposite direction, e.g. from the AI Cloud
+pilot platform to your local computer with:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="go">scp &lt;aau email&gt;@ai-fe02.srv.aau.dk:~/some-folder/some-subfolder/some-file .</span>
+</code></pre></div>
+<p>where '.' means the current directory you are located in on your local
+computer.</p>
+</details>
+<p>In general, file transfer tools that can use SSH as protocol should
+work. A common choice is <a href="https://filezilla-project.org/">FileZilla</a>
+or the Windows application <a href="https://winscp.net/">WinSCP</a>.</p>
+<h2 id="running-jobs">Running jobs</h2>
+<p>As mentioned on the <a href="../overview/">Overview</a> page, two important
+building blocks of the AI Cloud are the queue system Slurm and the
+container technology Singularity. In order to run a computation,
+analysis, simulation, training of a machine learning algorithm etc.,
+it is necessary to first obtain a container to run your application in
+(in most cases) and to queue it as a job in the queue system
+(mandatory). The queue system is the only way to get access to running
+applications on the compute nodes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The front-end nodes of the AI Cloud pilot platform and the AI Cloud
+are not meant for running computationally intensive applications. If
+you attempt to do so anyway, this risks rendering the entire AI Cloud
+inaccessible to you and all other users on it, because you exhaust the
+memory and/or CPU capacity of the front-end node. This is not
+considered acceptable use of the platform and is not allowed.</p>
+</div>
+<h3 id="slurm-jobs">Slurm jobs</h3>
+<p>The first important building block to be aware of is the queue system
+Slurm.</p>
+<p>Applications can only be run on the compute nodes through Slurm. You
+quite literally only have access to the compute nodes when you have a
+job allocated on them.</p>
+<p>The simplest way to run a job via Slurm is to use the command <code>srun</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code><span class="go">srun hostname</span>
+</code></pre></div>
+This runs the command <code>hostname</code> as a job in the queue system. When
+run like this with no further parameters specified, Slurm will run the
+command on the first compute node available.<br />
+On the AI Cloud pilot platform, this will either be nv-ai-01.srv.aau.dk
+or nv-ai-03.srv.aau.dk. On the AI Cloud, it will be
+a256-t4-01.srv.aau.dk, a256-t4-02.srv.aau.dk, or a256-t4-03.srv.aau.dk.<br />
+The command will return one of these host names. If the command displays
+"srun: job XXXXXX queued and waiting for resources", this means that all
+compute nodes are fully occupied (by other users' jobs) and your job is
+waiting in queue to be executed when resources become available.</p>
+</div>
+<p>This was your first Slurm job. You will need this (<code>srun</code>) and other
+Slurm commands for most of your work in AI Cloud. You will see more
+examples in combination with Singularity in the next section. Further
+details about Slurm can be found on the <a href="../slurm/">Running jobs</a>
+page. The Danish e-infrastructure Cooperation (Deic) also hosts a great
+<a href="http://slurmlearning.deic.dk/">e-learning course</a> that might be helpful.</p>
+<h3 id="singularity-containers">Singularity containers</h3>
+<p>Only a small set of typical Linux command line tools are installed on
+the compute nodes and can be run without a container. For all other
+applications, you must first obtain a container to run your
+applications in. The container provides an encapsulated software
+environment with your application(s) installed inside.</p>
+<h4 id="obtaining-containers">Obtaining containers</h4>
+<p>The recommended way to obtain containers is to first visit <a href="https://catalog.ngc.nvidia.com/">NVIDIA GPU
+Cloud (NGC)</a> and check whether NVIDIA
+already provides a container with the application you need.</p>
+<p><img alt="Screenshot of NGC website" src="../assets/img/ngc.png" /></p>
+<p>As an example, this could be TensorFlow. You can search on NGC and
+find
+<a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow">TensorFlow</a>. Here
+you can choose the desired version from the "Copy image path" dropdown menu:</p>
+<p><img alt="Screenshot of NGC TensorFlow page" src="../assets/img/ngc-tf-detail.png" /></p>
+<p>This copies a link to the container which we will use shortly to
+download it.</p>
+<p>We need to use Singularity to download the image and in order to run
+Singularity, we must run it the Slurm queue system. This results in
+the following command:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="highlight"><pre><span></span><code><span class="go">srun --mem 32G singularity pull docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3</span>
+</code></pre></div>
+</details>
+<p>The above example consists of three parts:</p>
+<ul>
+<li><code>srun</code>: the Slurm command which gets the following command executed
+  on a compute node.</li>
+<li><code>mem</code>: a Slurm command that allows you allocate memory to your
+  process. A higher amount of memory than the default is needed
+  specifically for this TensorFlow container. Please see the
+  <a href="../singularity/#work-around-mem">Containers</a> page for a better way to
+  avoid excessive memory requirements.</li>
+<li><code>singularity pull</code>: the Singularity command which downloads a
+  specified container.</li>
+<li><code>docker://nvcr.io/nvidia/tensorflow:22.07-tf2-py3</code>: this part of the
+  command itself consists of two parts. <code>docker://</code> tells Singularity
+  that we are downloading a Docker container and Singularity
+  automatically converts this to a Singularity container upon
+  download. <code>nvcr.io/nvidia/tensorflow:22.07-tf2-py3</code> is container
+  label copied from the NGC webpage which identifies the particular
+  container and version that we want. This part can be pasted into the
+  command line by pressing <code>&lt;CTRL&gt;+&lt;SHIFT&gt;+V</code> in the AI Cloud command
+  line.</li>
+</ul>
+<p>Once the <code>singularity pull</code> command has completed, you should have a
+file called "tensorflow_22.07-tf2-py3.sif" in your user directory (use
+the command <code>ls</code> to see the files in your current directory).</p>
+<h4 id="running-applications-in-containers">Running applications in containers</h4>
+<p>Now that you have a container image in your user directory (the file "tensorflow_22.07-tf2-py3.sif"), we can run the container. This can be done in several ways:</p>
+<dl>
+<dt>Shell</dt>
+<dd>You can open a shell in the container. This basically gives you a
+  command line in the runtime environment inside the container where
+  you can work interactively, i.e. type commands in the command line
+  to run scripts and open applications.<br />
+  This is good for experimenting with how you wish to run your
+  computations, analyses etc. in the container.</dd>
+</dl>
+<details class="example">
+<summary>Example</summary>
+<pre><code>srun --pty singularity shell tensorflow_22.07-tf2-py3.sif
+</code></pre>
+<p>The <code>--pty</code> parameter is necessary in order to enable typing commands
+into the command line in the job. After opening the shell in the
+container, your command line terminal should display:</p>
+<pre><code>Singularity&gt;
+</code></pre>
+<p>This means that it is ready for you to type in commands. Type <code>exit</code>
+and hit ENTER to exit the container and stop the running job.</p>
+</details>
+<dl>
+<dt>Exec</dt>
+<dd>Execute a specified command (such as running a script) in a
+  container.<br />
+  This is useful if you know exactly which command you wish to run in
+  your container.</dd>
+</dl>
+<details class="example">
+<summary>Example</summary>
+<pre><code>srun singularity exec tensorflow_22.07-tf2-py3.sif hostname
+</code></pre>
+<p>Notice here that the <code>--pty</code> option is not necessary if the executed
+command does not need keyboard input while running. Here we use
+<code>hostname</code> as a toy example of a command that prints out a simple
+piece of information and then exits.</p>
+</details>
+<dl>
+<dt>Run</dt>
+<dd>Run the default action configured in the container.<br />
+  The container determines what the default action is. This is useful
+  if you have obtained a container constructed to carry out a specific
+  task.</dd>
+</dl>
+<details class="example">
+<summary>Example</summary>
+<pre><code>srun --pty singularity run tensorflow_22.07-tf2-py3.sif
+</code></pre>
+<p>In some cases, the default action of a container is to open the shell.
+This is why we use the <code>--pty</code> option here.</p>
+</details>
+<h3 id="allocating-a-gpu-to-your-job">Allocating a GPU to your job</h3>
+<p>The primary role of the AI Cloud is to run software that utilises one
+or more GPUs for computations.</p>
+<p>The final step we need here in order to run applications with a GPU is
+to actually allocate a GPU to a job using Slurm. The examples up to
+now have all run jobs without a GPU. It is necessary to explicitly ask
+Slurm for a GPU in order to be able to use one.</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<p>You can allocate a GPU to a job by using the <code>-G</code> or <code>--gres=gpu</code>
+option for Slurm</p>
+<pre><code>srun -G 1 nvidia-smi
+</code></pre>
+<p>This example allocates 1 GPU to a job running the command
+<code>nvidia-smi</code>. This command prints information about the allocated
+GPU and then exits.<br />
+The following commands achieve the same:</p>
+<pre><code>srun --gres=gpu nvidia-smi
+srun --gres=gpu:1 nvidia-smi
+</code></pre>
+<p>Note that the above examples all allocate 1 GPU to the job. It is
+possible to allocate more, for example <code>-G 2</code> for two GPUs.</p>
+</details>
+<p><strong>Software for computing on GPU is not necessarily able to utilise
+more than one GPU at a time. It is your responsibility to ensure that
+the software you run can indeed utilise as many GPUs as you
+allocate. It is not allowed to allocate more GPUs than your job can
+utilise.</strong></p>
+<p>Note that you can ask for a specific type of GPU if you need to,
+please see: <a href="../slurm/#specific-gpu">Using a specific type of GPU</a>.</p>
+<p>In most cases you probably want to use a GPU in combination with a
+Singularity container. In this case, we also need to remember to
+enable support for NVIDIA GPUs in Singularity:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<pre><code>srun --gres=gpu:1 singularity exec --nv tensorflow_22.07-tf2-py3.sif nvidia-smi
+</code></pre>
+<p>The <code>--nv</code> option enables NVIDIA GPUs in the container and must always
+be used when running jobs that utilise GPU(s). Otherwise, the GPU(s)
+will not be available inside the container.</p>
+</details>
+<p>These were a few of the most basic details to get started using the AI
+Cloud. Once you have familiarised yourself a bit with the AI Cloud, we
+suggest you have a closer looking at the pages here with details on
+Slurm and Singularity for more details and features. The <a href="../examples/interactive_tensorflow/">Additional
+examples</a> page contains more
+detailed examples of concrete use cases for the AI Cloud.</p>
+<!-- Documentation re-written up to here -->
+
+<!--## Slurm basics
+To get a first impression, try:
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>scontrol<span class="w"> </span>show<span class="w"> </span>node
+<span class="go">....</span>
+<span class="go">NodeName=a256-t4-01.srv.aau.dk Arch=x86_64 CoresPerSocket=16 </span>
+<span class="go">   CPUAlloc=0 CPUTot=64 CPULoad=0.00</span>
+<span class="go">   AvailableFeatures=(null)</span>
+<span class="go">   ActiveFeatures=(null)</span>
+<span class="go">   Gres=gpu:6</span>
+<span class="go">   NodeAddr=a256-t4-01.srv.aau.dk NodeHostName=a256-t4-01.srv.aau.dk Version=21.08.0</span>
+<span class="go">   OS=Linux 5.4.0-91-generic #102-Ubuntu SMP Fri Nov 5 16:31:28 UTC 2021 </span>
+<span class="go">   RealMemory=244603 AllocMem=0 FreeMem=254971 Sockets=2 Boards=1</span>
+<span class="go">   State=IDLE ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A</span>
+<span class="go">   Partitions=batch,prioritized </span>
+<span class="go">   BootTime=2022-01-04T10:56:32 SlurmdStartTime=2022-01-04T10:58:45</span>
+<span class="go">   LastBusyTime=2022-01-04T11:15:03</span>
+<span class="go">   CfgTRES=cpu=64,mem=244603M,billing=64,gres/gpu=6</span>
+<span class="go">   AllocTRES=</span>
+<span class="go">   CapWatts=n/a</span>
+<span class="go">   CurrentWatts=0 AveWatts=0</span>
+<span class="go">   ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s</span>
+<span class="go">....</span>
+</code></pre></div>
+
+The above command shows the names of the nodes, partitions (batch), etc. involved in the Slurm system.
+
+## Slurm allocate resources
+
+We can then allocate resources for us. Let us say we would like to allocate one GPU (NVIDIA T4)
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>salloc<span class="w"> </span>--gres<span class="o">=</span>gpu:1
+<span class="go">salloc: Granted job allocation 606</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes a256-t4-01.srv.aau.dk are ready for job</span>
+</code></pre></div>
+
+We can then check the queue
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>squeue<span class="w"> </span>
+<span class="go">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go">               606     batch interact tlj@its.  R       0:19      1 a256-t4-01.srv.aau.dk</span>
+</code></pre></div>
+Here the state (`ST`) is "running" (` R`). If there were not enough resources, the state would be "pending" (PD).
+
+You can then run jobs with this allocation using srun - like `srun <bash command>`
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>srun<span class="w"> </span>df<span class="w"> </span>-h
+<span class="go">Filesystem                                                            Size  Used Avail Use% Mounted on</span>
+<span class="go">....</span>
+<span class="go">172.21.232.61:6789,172.21.232.14:6789,172.21.232.15:6789:/ai/aicloud  328T  943G  327T   1% /home</span>
+</code></pre></div>
+
+The important line here for now, is the shared data located in '/home' where users have their home data, e.g,
+
+<div class="highlight"><pre><span></span><code>lj@its.aau.dk@ai-fe02:~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$HOME</span>
+/home/its.aau.dk/tlj
+</code></pre></div>
+
+If you have a job on a node, you can also ssh to that node
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ssh<span class="w"> </span>a256-t4-01
+</code></pre></div>
+
+and say run
+<div class="highlight"><pre><span></span><code><span class="gp">tlj@its.aau.dk@a256-t4-01:~$ </span>nvidia-smi<span class="w"> </span>
+<span class="go">Wed Jan  5 09:51:43 2022       </span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| NVIDIA-SMI 470.86       Driver Version: 470.86       CUDA Version: 11.4     |</span>
+<span class="go">|-------------------------------+----------------------+----------------------+</span>
+<span class="go">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
+<span class="go">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span>
+<span class="go">|                               |                      |               MIG M. |</span>
+<span class="go">|===============================+======================+======================|</span>
+<span class="go">|   0  Tesla T4            Off  | 00000000:01:00.0 Off |                    0 |</span>
+<span class="go">| N/A   62C    P0    28W /  70W |      0MiB / 15109MiB |      0%      Default |</span>
+<span class="go">|                               |                      |                  N/A |</span>
+<span class="go">+-------------------------------+----------------------+----------------------+</span>
+
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| Processes:                                                                  |</span>
+<span class="go">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span>
+<span class="go">|        ID   ID                                                   Usage      |</span>
+<span class="go">|=============================================================================|</span>
+<span class="go">|  No running processes found                                                 |</span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+</code></pre></div>
+
+You can view information on your job using
+<div class="highlight"><pre><span></span><code><span class="go">scontrol show job &lt;JOBID&gt;</span>
+</code></pre></div>
+
+or additional details like the GPU IDX using
+<div class="highlight"><pre><span></span><code><span class="go">scontrol -d show job &lt;JOBID&gt;</span>
+</code></pre></div>
+
+The allocation can be relinquished with
+<div class="highlight"><pre><span></span><code><span class="go">exit</span>
+</code></pre></div>
+
+or with a Slurm cancel statement
+<div class="highlight"><pre><span></span><code><span class="go">scancel &lt;JOBID&gt;</span>
+</code></pre></div>
+
+## Slurm QoS
+
+*!!!!!! Needs update !!!!!!!!*
+
+By default, jobs are run with the 'normal' Quality-of-Service (QoS). If you need several/additional GPUs (multi GPU) or longer run time, use this query command to find out and choose the suitable QoS for your need.
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>sacctmgr<span class="w"> </span>show<span class="w"> </span>qos<span class="w"> </span><span class="nv">format</span><span class="o">=</span>name,maxtresperuser%20,maxwalldurationperjob
+<span class="go">      Name            MaxTRESPU     MaxWall</span>
+<span class="go">---------- -------------------- -----------</span>
+<span class="go">    normal    cpu=20,gres/gpu=1  2-00:00:00</span>
+<span class="go">     short    cpu=32,gres/gpu=4    00:20:00</span>
+<span class="go">   allgpus    cpu=48,gres/gpu=8 21-00:00:00</span>
+<span class="go">  1gpulong    cpu=16,gres/gpu=1 14-00:00:00</span>
+<span class="go"> admintest   cpu=96,gres/gpu=16  1-00:00:00</span>
+<span class="go">      1cpu                cpu=1    06:00:00</span>
+<span class="go">  deadline    cpu=64,gres/gpu=8 14-00:00:00 </span>
+</code></pre></div>
+
+To make an example, it is possible to allocate two GPUs by
+
+<div class="highlight"><pre><span></span><code><span class="go">salloc --qos=allgpus --gres=gpu:2</span>
+</code></pre></div>
+where 'allgpus' above can be one of the following:
+
+- normal: for one-GPU job (the default QoS).
+- short: for 1 or more small GPU jobs - possible for testing batch submission or interactive jobs.
+- allgpus: for 1 or more large GPU jobs.
+- 1gpulong: for 1 large one-GPU job.
+- admintest: special QoS only usable by administrators for full node testing.
+- 1cpu: assigned to inactive student users after each semester (no GPU).
+- deadline: a QoS where users with a hard publication deadline can apply for access to. To get access, please follow [this guide](#do-you-have-an-upcoming-deadline).
+
+Besides this, jobs in smaller QoS groups in general have a [higher priority](#priority), such that they will tend to be allocated before jobs with a lower priority. Jobs submitted in the 'deadline' QoS have the highest priority.
+
+## Getting your (Singularity) environment up
+It is possible to run everything from a single line. First pull a docker image and convert it to a singularity image
+
+<div class="highlight"><pre><span></span><code><span class="go">srun singularity pull docker://nvcr.io/nvidia/cuda:latest</span>
+</code></pre></div>
+
+This may take some time. There is now an image called 'cuda_latest.sif' that we can make use of. The address 'docker://nvcr.io/nvidia/cuda:latest' identifies where to retrieve the image on NVIDIA GPU Cloud (NGC) - more about this further down.  
+Notice that we used both Slurm (`srun`) and Singularity (`singularity`) above to retrieve an image. `srun` is for executing the actual job in AI Cloud. `singularity` must be executed on one of the compute nodes, which `srun` takes care of. You cannot execute `singularity` directly on the front-end node. `singularity` here retrieves the specified (Docker) image from NGC and automatically converts it to a Singularity image.
+
+To execute a command at the compute node with certain specified resources, we can do
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>docker://nvcr.io/nvidia/cuda:latest<span class="w"> </span>nvidia-smi
+<span class="go">INFO:    Using cached SIF image</span>
+<span class="go">Wed Jan  5 10:21:27 2022       </span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| NVIDIA-SMI 470.86       Driver Version: 470.86       CUDA Version: 11.4     |</span>
+<span class="go">|-------------------------------+----------------------+----------------------+</span>
+<span class="go">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
+<span class="go">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span>
+<span class="go">|                               |                      |               MIG M. |</span>
+<span class="go">|===============================+======================+======================|</span>
+<span class="go">|   0  Tesla T4            Off  | 00000000:01:00.0 Off |                    0 |</span>
+<span class="go">| N/A   43C    P0    26W /  70W |      0MiB / 15109MiB |      0%      Default |</span>
+<span class="go">|                               |                      |                  N/A |</span>
+<span class="go">+-------------------------------+----------------------+----------------------+</span>
+
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| Processes:                                                                  |</span>
+<span class="go">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span>
+<span class="go">|        ID   ID                                                   Usage      |</span>
+<span class="go">|=============================================================================|</span>
+<span class="go">|  No running processes found                                                 |</span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+</code></pre></div>
+
+Here `--gres=gpu:1` states that we are want to allocate one GPU. The `--nv` argument states that we are using the nvidia runtime environment.
+
+## A few words on container images
+
+*Is this still correct????*
+
+In the previous section, we saw how to retrieve an image from NGC and how to instantiate that image as a Singularity container and execute a command in it. The image was retrieved from NVIDIA GPU Cloud (NGC). NGC is NVIDIA's official repository with many different images of useful software environments for deep learning and other GPU-accelerated tasks. The images in NGC have been specially built for NVIDIA GPUs and can be very convienient to use out-of-the-box instead of having to configure your software environment from scratch yourself.
+
+NGC's container images are Docker images, but Singularity can convert them on the fly to run as Singularity containers. Docker itself is not used in AI Cloud due to security concerns in multi-user environments. You can also use images from other Docker repositories such as [Docker Hub](https://hub.docker.com/). Remember to look for images that are built with support for NVIDIA GPUs.
+
+You can read more here about how to [Build images from
+scratch](https://sylabs.io/guides/3.5/user-guide/quick_start.html#build-images-from-scratch)
+or modify images from NGC.
+
+Once images are built, they are immutable meaning that you cannot
+install additional software inside the images themselves at container
+runtime. Sometimes, especially when running Python software, it can be
+convenient to install additional packages into your runtime
+environment using `pip`. This can cause special challenges which you
+can read more about and see how to solve in [Installing Python
+packages with pip in Singularity
+containers](./examples/pip_in_containers.md). See
+also
+[Troubleshooting](TroubleShooting.md#user-content-cannot-dlopen-some-tensorrt-libraries).
+
+## Where to save your files
+
+The front-end node and compute nodes have access to a distributed file system in '/home' based on Ceph FS. To see this, first create a file on the front-end node in your home directory
+
+<div class="highlight"><pre><span></span><code><span class="go">echo &quot;I have just created this&quot; &gt; example.txt</span>
+</code></pre></div>
+
+This is available on the front-end node. But you can also "see" this on a compute node
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>srun<span class="w"> </span>cat<span class="w"> </span>example.txt
+<span class="go">I have just created this</span>
+</code></pre></div>
+
+## Using the scratch space
+
+The DGX-2 and A100 compute node has a scratch space for storing temporary data. It is a RAID0 NVME (SSD) partition with high disk I/O capacity. It can be used if need to move a significant amount of data fast. Following are two ways you can use it for your jobs:
+
+### Via interactive bash session:
+
+Since the RAID scratch space is local to each compute node, you need to specify the exact node you want to use with the `--nodelist` argument as below:
+
+<div class="highlight"><pre><span></span><code><span class="go">srun --pty --nodelist=nv-ai-01.srv.aau.dk bash -l</span>
+<span class="go">srun: job 575 has been allocated resources</span>
+
+<span class="gp">tlj@its.aau.dk@nv-ai-01:~$ </span>ls<span class="w"> </span>/raid/
+<span class="gp">tlj@its.aau.dk@nv-ai-01:~$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/raid/its.tlj<span class="w"> </span><span class="c1"># create a folder to hold your data. It&#39;s a good idea to use this path pattern: /raid/&lt;subdomain&gt;.&lt;username&gt;.</span>
+<span class="gp">tlj@its.aau.dk@nv-ai-01:~$ </span>cp<span class="w"> </span>-a<span class="w"> </span>/user/its.aau.dk/tlj/testdata<span class="w"> </span>/raid/its.tlj/
+<span class="gp">tlj@its.aau.dk@nv-ai-01:~$ exit # </span>quit<span class="w"> </span>interactive<span class="w"> </span>session.
+</code></pre></div>
+
+After the data has been copied to the `/raid` folder, you can use it by referring to the data in your code. For example:
+
+<div class="highlight"><pre><span></span><code><span class="go">srun --pty --nodelist=nv-ai-01.srv.aau.dk ls /raid/its.tlj/testdata</span>
+</code></pre></div>
+
+### Via sbatch job script
+
+You can script the whole chain of commands into an `sbatch` script
+
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>!/usr/bin/env<span class="w"> </span>bash
+<span class="gp">#</span>SBATCH<span class="w"> </span>--job-name<span class="w"> </span>MySlurmJob<span class="w"> </span><span class="c1"># CHANGE this to a name of your choice</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>--partition<span class="w"> </span>batch<span class="w"> </span><span class="c1"># equivalent to PBS batch</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>--time<span class="w"> </span><span class="m">24</span>:00:00<span class="w"> </span><span class="c1"># Run for up to 24 hours</span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>--qos<span class="o">=</span>normal<span class="w"> </span>
+<span class="gp">#</span>SBATCH<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span><span class="c1"># CHANGE this if you need more or less GPUs</span>
+
+<span class="gp">#</span><span class="c1"># Preparation</span>
+<span class="go">mkdir -p /raid/its.tlj # create a folder to hold your data. It&#39;s a good idea to use this path pattern: /raid/&lt;subdomain&gt;.&lt;username&gt;.</span>
+
+<span class="go">if [ !-d /raid/its.tlj/testdata ]; then</span>
+<span class="go">     cp -a /user/its.aau.dk/tlj/testdata /raid/its.tlj/</span>
+<span class="go">fi</span>
+
+<span class="gp">#</span><span class="c1"># Run actual analysis</span>
+<span class="gp">#</span><span class="c1"># The benefit with using multiple srun commands is that this creates sub-jobs for your sbatch script and can be used for advanced usage with SLURM (e.g. create checkpoints, recovery, ect)</span>
+<span class="go">srun singularity exec -B /raid/its.tlj/:/data myimage.sif python /path/to/my/first/python/script --arg1 /data</span>
+<span class="go">srun singularity exec -B /raid/its.tlj/:/data myimage.sif python /path/to/my/second/python/script --arg1 /data</span>
+</code></pre></div>
+
+Notice the `-B' [bind](https://sylabs.io/guides/3.8/user-guide/bind_paths_and_mounts.html) that connects data on the host to a specific path in the container. Here '/raid/its.tlj/' on the node is bind to '/data' in the container.
+
+A script such as the above can be submitted to the Slurm queue using the `sbatch` command
+<div class="highlight"><pre><span></span><code><span class="go">sbatch &lt;name-of-script&gt;</span>
+</code></pre></div>
+
+## Ways of using Slurm
+
+Just to summarise from the above examples, there are three typical was of executing work through Slurm:
+- Allocate resources: use `salloc` (see [Slurm allocate resources](#slurm-allocate-resources). This reserves the requested resources for you which you can then use when they are ready. This means you can for example log into the specified compute node(s) to use it/them interactively (you cannot do this without having allocated resources on them).
+- Run command directly through Slurm: use `srun` (see [Getting your (Singularity) environment up](#getting-your-singularity-environment-up)). This runs the specified command directly on the requested resources as soon as they are ready. The `srun` command will block until done.
+- Schedule one or more jobs to run whenever ressources become ready: use `sbatch` (example in [Via sbatch job script](#via-sbatch-job-script)). This command lets you specify the details of your job in a script which you submit to the queue via `sbatch`. This is convenient if for example you have a large job consisting of many steps or many jobs that you want to specify at once and just leave it to Slurm to get the work done when resources are ready.  
+  This is the most convenient way to run jobs once you know in advance what you need done. It allows you to specify even very large and complicated amounts of work here and now and then just leave it to Slurm to get things run as soon as resources are available. This way, you will not have to sit around and wait for it. The `sbatch` command returns immediately and you can then use `squeue` to inspect where your jobs are in the queue.
+
+## Inspecting your utilization
+It is recommended practice, after you have configured your environment/pipeline, that you inspect your GPU utilization [%], and possibly memory utilization, to see if you
+
+1. indeed are utilizing the GPU as expected.
+2. achieve a somewhat acceptable level of GPU utilization.
+
+You can do this with the `nvidia-smi` command, by executing e.g. the following in your environment. First, get an interactive resource:
+
+<div class="highlight"><pre><span></span><code><span class="go">srun --gres=gpu:1 --pty singularity shell --nv myimage.sif</span>
+</code></pre></div>
+
+Start observing with nvidia-smi:
+
+<div class="highlight"><pre><span></span><code><span class="go">nvidia-smi --query-gpu=index,timestamp,utilization.gpu,utilization.memory,memory.total,memory.used,memory.free --format=csv -l 5 &gt; util.csv &amp;</span>
+</code></pre></div>
+
+then start your (small) code in the background using e.g.
+
+<div class="highlight"><pre><span></span><code><span class="go">python .....</span>
+</code></pre></div>
+
+Afterwards have a look at the reported utilization
+
+<div class="highlight"><pre><span></span><code><span class="go">Singularity&gt; cat util.csv</span>
+<span class="go">index, timestamp, utilization.gpu [%], utilization.memory [%], memory.total [MiB], memory.used [MiB], memory.free [MiB]</span>
+<span class="go">0, 2020/11/12 13:48:11.412, 99 %, 52 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:16.415, 99 %, 90 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:21.417, 99 %, 51 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:26.419, 98 %, 61 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:31.424, 100 %, 88 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:36.427, 32 %, 33 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:41.428, 98 %, 70 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:46.435, 100 %, 91 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:51.437, 99 %, 48 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:48:56.440, 100 %, 91 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:49:01.441, 99 %, 38 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:49:06.443, 97 %, 63 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:49:11.444, 35 %, 36 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:49:16.446, 98 %, 72 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:49:21.447, 100 %, 88 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:49:26.449, 98 %, 68 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 13:49:31.451, 98 %, 68 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+</code></pre></div>
+
+Now we are certain that the code and software is set up to utilize the GPU.
+
+You can also do this by the script `getUtilByJobId` after job submission.
+
+<div class="highlight"><pre><span></span><code><span class="gp">nv-ai-fe01:~$ </span>getUtilByJobId.sh<span class="w"> </span><span class="m">83549</span>
+<span class="go">To end, do a CRTL-C</span>
+
+<span class="go">utilization.gpu</span>
+<span class="go">Percent of time over the past sample period during which one or more kernels was executing on the GPU.</span>
+<span class="go">The sample period may be between 1 second and 1/6 second depending on the product.</span>
+
+<span class="go">utilization.memory</span>
+<span class="go">Percent of time over the past sample period during which global device memory was being read or written.</span>
+<span class="go">The sample period may be between 1 second and 1/6 second depending on the product.</span>
+
+<span class="go">memory.total</span>
+<span class="go">Total installed GPU memory.</span>
+
+<span class="go">memory.used</span>
+<span class="go">Total memory allocated by active contexts.</span>
+
+<span class="go">memory.free</span>
+<span class="go">Total free memory.</span>
+<span class="go">salloc: Granted job allocation 84172</span>
+<span class="go">salloc: Waiting for resource configuration</span>
+<span class="go">salloc: Nodes nv-ai-03.srv.aau.dk are ready for job</span>
+<span class="go">tlj@its.aau.dk@nv-ai-03.srv.aau.dk&#39;s password: </span>
+<span class="go">index, timestamp, utilization.gpu [%], utilization.memory [%], memory.total [MiB], memory.used [MiB], memory.free [MiB]</span>
+<span class="go">0, 2020/11/12 14:02:14.854, 98 %, 66 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:19.858, 0 %, 0 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:24.861, 48 %, 42 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:29.863, 99 %, 72 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:34.864, 72 %, 57 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:39.868, 100 %, 68 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:44.871, 99 %, 66 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:49.872, 99 %, 66 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:54.875, 99 %, 68 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">0, 2020/11/12 14:02:59.884, 11 %, 7 %, 32480 MiB, 30994 MiB, 1486 MiB</span>
+<span class="go">^Csalloc: Relinquishing job allocation 84172</span>
+</code></pre></div>
+
+where 83549 is the Slurm JobId. If your job does not behave as intended, then please analyse the problem and try to solve the issue. It is not good practice to have allocated but not utilizing GPUs on the system.
+-->
+<h2 id="fair-usage">Fair usage</h2>
+<p>The following guidelines are put in place to ensure fair usage of the
+system for all users. The following text might be updated from time to
+time in order to provide the best possible service for as many users
+as possible.</p>
+<p>ITS/CLAAUDIA work from the following principles for fair usage:</p>
+<ul>
+<li>Good research is the success criterion and ITS/CLAAUDIA should lower
+  the barrier for allowing this.</li>
+<li>Researchers should enter on a level playing field.</li>
+<li>ITS has an administrative and technical role and should in general
+  not determine what research should have a higher priority. Students
+  are vetted with recommendation of supervisor/staff backing that this
+  is for research purposes.</li>
+<li>Aim at the most open and unrestricted access model.</li>
+</ul>
+<p>Based on these principles we kindly ask that all users consider the
+following guidelines:</p>
+<ul>
+<li>Please be mindful of your allocations and refrain from allocating
+  many resources without knowing/testing/verifying that you indeed can
+  utilise all of the allocated resources.</li>
+<li>Please be mindful and de-allocate the resources when you are no
+  longer using them. This enables other users to run their jobs.</li>
+</ul>
+<p>If in doubt, you can run:
+<div class="highlight"><pre><span></span><code><span class="go">squeue --me</span>
+</code></pre></div>
+and inspect your own job allocations. If you have allocations you are
+not using, then please cancel these resource allocations.</p>
+<p>A few key points to remember:</p>
+<ol>
+<li>Please refrain from allocating jobs that sit idle in order to
+   "reserve" ressources for you. For example <code>srun --pty bash -l</code>
+   opens an interactive (command line) job that keeps running without
+   doing anything unless you actively type in commands.<br />
+<em>This is unacceptable practice and we will cancel such inactive
+   jobs if we encounter them.</em></li>
+<li>There are typically more resources available in the evenings/nights
+   and on weekends. If possible, start your job as a batch script
+   (<code>sbatch</code>) and let it queue and rest while the computer does the
+   work. Maybe even better, if the job is not urgent, queue the job to
+   run late in the afternoon or use the <code>-b</code> or <code>--begin</code> option with
+   your batch script, e.g. add the line</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="gp">#</span>SBATCH<span class="w"> </span>--begin<span class="o">=</span><span class="m">18</span>:00:00
+</code></pre></div>
+<p>ITS/CLAAUDIA will keep analysing and observing the usage of the system
+to make the best use of the available resources based on the above
+principles and guidelines. If ITS/CLAAUDIA is in doubt, we will
+contact users and ask if the resource allocations are in line with the
+above principles and guidelines. We will be more active in periods of
+high utilization.</p>
+<!--
+## Do you have an upcoming deadline?
+If you are working towards an upcoming deadline, and find it difficult to have the resources you need, then please send an email to support@its.aau.dk with a URL (call for papers etc.) stating the deadline. We can provide some hints, help and possibly additional resources to help you meet your deadline.
+
+
+## Data deletion
+From time to time we observe if users no longer are listed in the central database. Users can be removed when the studies or employment ends. We will as a last option try to reach you by email. If this fails, we reserve the right to delete data in your home directory and on the compute node, e.g. /raid.
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - 2023 CLAAUDIA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/claaudia_aau" target="_blank" rel="noopener" title="Claaudia on Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:claaudia@aau.dk" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.claaudia.aau.dk/" target="_blank" rel="noopener" title="www.claaudia.aau.dk" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7zm-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zm186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "toc.integrate", "navigation.indexes", "navigation.sections", "content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

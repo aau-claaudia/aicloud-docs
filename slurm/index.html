@@ -1,0 +1,1323 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../introduction/">
+      
+      
+        <link rel="next" href="../singularity/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Running jobs - AI Cloud Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=barlow:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"barlow";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+     
+  <div style="background: darkslateblue;">
+    <p style="text-align: center;font-size: 17px;color: white;max-width: 800px;margin: auto;padding-left: 30px;padding-right: 30px;font-weight: 600;margin-bottom: 10px;margin-top: 10px;">This page is no longer maintained. </p>
+    <p style="text-align: center;font-size: 14px;color: white;max-width: 800px;margin: auto;padding-left: 30px;padding-right: 30px;margin-bottom: 20px;font-weight: 400;">All information and guides related to AI Cloud have been moved to 
+      <a href="https://hpc.aau.dk/ai-cloud/" style="text-decoration: underline;color: aquamarine;font-weight: 600;">https://hpc.aau.dk/ai-cloud/</a>
+      . Please visit the new site for the most up-to-date resources on AI Cloud</p>
+  </div>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bits-and-pieces-in-the-queue-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Cloud Documentation" class="md-header__button md-logo" aria-label="AI Cloud Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo_round.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Cloud Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Running jobs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aau-claaudia/aicloud-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../overview/" class="md-tabs__link">
+        
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../introduction/" class="md-tabs__link">
+        
+  
+    
+  
+  Introduction
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Running jobs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../singularity/" class="md-tabs__link">
+        
+  
+    
+  
+  Containers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/interactive_tensorflow/" class="md-tabs__link">
+          
+  
+    
+  
+  Additional examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../additional/" class="md-tabs__link">
+        
+  
+    
+  
+  Additional resources
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Cloud Documentation" class="md-nav__button md-logo" aria-label="AI Cloud Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo_round.png" alt="logo">
+
+    </a>
+    AI Cloud Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aau-claaudia/aicloud-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Running jobs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Running jobs
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bits-and-pieces-in-the-queue-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bits and pieces in the queue system
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-the-current-state-of-the-queue-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking the current state of the queue system
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking the current state of the queue system">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-the-overall-state-of-the-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking the overall state of the platform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-details-of-the-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking details of the nodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodesummary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodesummary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-a-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting a partition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Selecting a partition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-prioritized-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      The prioritized partition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      The batch partition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special partitions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-in-the-queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is in the queue?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a specific type of GPU
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requeueing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running longer jobs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running longer jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instruct-slurm-to-requeue-your-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instruct Slurm to requeue your job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpointing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use checkpointing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../singularity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../torch_amp_example/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Additional examples
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Additional examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/interactive_tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive TensorFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/pytorch_anaconda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch and Anaconda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/matlab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Matlab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi_gpu_keras/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-GPU data parallelism training with Horovod and Keras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torch_amp_example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PyTorch and automatic mixed precision with APEX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/pip_in_containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python pip in containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/mount_dir/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mount user directory on your local computer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/group_projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Group projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../additional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Running jobs</h1>
+
+<p>This section describes details of how to use the resource manager /
+queue system Slurm. We recommend reading <a href="../overview/">Overview</a> first
+and then <a href="../introduction/">Introduction</a> before delving into the
+details.</p>
+<ul>
+<li><a href="https://slurm.schedmd.com/">Official documentation for Slurm</a> - AI
+  Cloud is currently using version
+  <a href="https://slurm.schedmd.com/archive/slurm-21.08.8-2/">21.08.8-2</a>.</li>
+<li><a href="http://slurmlearning.deic.dk/">Interactive tutorial for Slurm</a> -
+  this is a tutorial made by <a href="https://www.deic.dk/">DeiC</a> to help
+  introduce HPC users to Slurm. <em>Please note that this tutorial
+  environment is not identical to our AI Cloud, but it enables you to
+  familiarise yourself with Slurm in a safe environment where you
+  cannot accicentally break anything for anyone else.</em></li>
+</ul>
+<h2 id="bits-and-pieces-in-the-queue-system">Bits and pieces in the queue system</h2>
+<p>The Slurm queue system is built around some concepts which
+are important to know in order to understand the system and how to use
+it:</p>
+<dl>
+<dt>Node</dt>
+<dd>We often refer to these as compute nodes in this documentations,
+  because this is where the computational jobs take place.<br />
+  The nodes are the individual servers in the platform; see
+  <a href="../overview/">Overview</a> for illustration and the <a href="../introduction/#overview">table in
+  Introduction</a> for details.</dd>
+<dt>Partition</dt>
+<dd>You can think of partitions as different queues for the compute
+  nodes. There are several partitions in the AI Cloud and the same
+  nodes can be present in more than one partition.<br />
+  For any one node, the different partitions it is present in can for
+  example give access to the node under different conditions. The AI
+  Cloud currently has the partitions: batch and prioritized. A few
+  additional partitions are only visible to specific users of these
+  (create, aicentre1, aicentre2).<br />
+  See more details about partitions in a later section.</dd>
+</dl>
+<!-- QoS should be added if we start using them in the new AI Cloud -->
+
+<dl>
+<dt>Resources</dt>
+<dd>Slurm manages access to resources in the nodes. The important
+  resources to know about in AI Cloud are CPUs, memory, and GPUs. Each
+  job you submit will require certain resources. These are either
+  implied by default values or explicitly requested by you when
+  submitting a job.<br />
+<em>A job can only start when Slurm can find enough of the required
+  resources available on one or more nodes. If resources are not
+  currently available, your jobs wait in queue until other jobs have
+  completed and relinquished the resources.</em></dd>
+<dt>Time limit</dt>
+<dd><a href="#selecting-a-partition">Partitions</a> may impose time limits. These limits define the longest time your job can run for in the specific partition. They can be viewed with the <code>sinfo</code> command. If your job has not ended by this time limit, it will be automatically cancelled.</dd>
+<dd><em>In the days leading up to the <a href="https://www.researcher.aau.dk/guides/research-data/high-performance-computing/terms-and-conditions-of-use-of-hpc-resources#scheduled-service-windows-for-strato-and-ai-cloud">service windows</a>, you will also be met by a time limit, which prevents you from launching jobs with end dates that surpass the date of the servicewindow.
+If the <code>time</code> parameter is not set, Slurm assumes you ask for the default maximum time for the partition.
+You will thus have to calculate how much time you have before the service window, and then submit a job with this parameter added.
+To submit a job that runs for 1 day and 8 hours, you can simply add <code>time=1-8:00:00</code> to your slurm command. 
+Additionally you can read about our recommendations for using <a href="#checkpointing">checkpointing</a> to work with time limits.</em></dd>
+</dl>
+<h2 id="checking-the-current-state-of-the-queue-system">Checking the current state of the queue system</h2>
+<p>It is often desirable to be able to see what is going on in the queue
+system, for example to get an idea if there are many other jobs in
+queue when you wish to run a job.</p>
+<h3 id="checking-the-overall-state-of-the-platform">Checking the overall state of the platform</h3>
+<p>Use the command <code>sinfo</code> to see the state of the nodes in the AI
+Cloud. Run <code>sinfo --help</code> or <code>man sinfo</code> in AI Cloud for detailed
+documentation of the command.</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<pre><code>sinfo
+
+PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+batch*         up   12:00:00      1    mix nv-ai-04
+batch*         up   12:00:00      8   idle a256-t4-[01-02],i256-a10-06,i256-a40-[01-02]...
+prioritized    up 6-00:00:00      8   idle a256-t4-[01-02],i256-a10-06,i256-a40-[01-02]...
+</code></pre>
+<p>The <code>sinfo</code> command shows basic information about partitions in the
+queue system and what the states of nodes in these partitions are.</p>
+<p>PARTITION shows which partition a line in the table relates to.
+Multiple lines can show the same partition, because different nodes
+within a partition may be in different states.</p>
+<p>AVAIL shows the availability of the <em>partition</em> where "up" is
+normal, working state where you can submit jobs to it.</p>
+<p>TIMELIMIT shows the time limit imposed by each partition.</p>
+<p>NODES shows how many nodes are in the shown state in the specific
+partition.</p>
+<p>STATE shows which state the listed nodes are in: "mix" means that
+the nodes are partially full - some jobs are running on them and
+they still have available resources; "idle" means that they are
+completely vacant and have all resources available; "allocated"
+means that they are completely occupied. Many other states are
+possible, most of which mean that something is wrong.</p>
+</details>
+<h3 id="checking-details-of-the-nodes">Checking details of the nodes</h3>
+<p>Use the command <code>scontrol show node</code> or <code>scontrol show node [node
+name]</code> to show details about all nodes or a specific node,
+respectively.  Run <code>scontrol --help</code> or <code>man scontrol</code> in AI Cloud for
+detailed documentation of the command.</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<p>scontrol show node a256-t4-01</p>
+<p>NodeName=a256-t4-01 Arch=x86_64 CoresPerSocket=16
+  CPUAlloc=12 CPUTot=64 CPULoad=0.50
+  AvailableFeatures=(null)
+  ActiveFeatures=(null)
+  Gres=gpu:t4:6
+  NodeAddr=172.21.212.130 NodeHostName=a256-t4-01.srv.aau.dk Version=21.08.8-2
+  OS=Linux 5.4.0-170-generic #188-Ubuntu SMP Wed Jan 10 09:51:01 UTC 2024
+  RealMemory=244584 AllocMem=101440 FreeMem=242152 Sockets=2 Boards=1
+  State=MIXED ThreadsPerCore=2 TmpDisk=0 Weight=10 Owner=N/A MCS_label=N/A
+  Partitions=batch,prioritized
+  BootTime=2024-01-27T15:28:12 SlurmdStartTime=2024-01-27T15:28:36
+  LastBusyTime=2024-01-29T08:40:54
+  CfgTRES=cpu=64,mem=244584M,billing=64,gres/gpu=6
+  AllocTRES=cpu=12,mem=101440M,gres/gpu=2
+  CapWatts=n/a
+  CurrentWatts=0 AveWatts=0
+  ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s</p>
+</details>
+<h3 id="nodesummary">Nodesummary</h3>
+<p>The two commands <code>sinfo</code> and <code>scontrol show node</code> provide information
+which is either too little or way too much detail in most
+situations. As an alternative, we provide the tool <code>nodesummary</code> to
+show a hopefully more intuitive overview of the used/available
+resources in AI Cloud.</p>
+<p><img alt="Screenshot of nodesummary in use." src="../assets/img/nodesummary.png" /></p>
+<h2 id="selecting-a-partition">Selecting a partition</h2>
+<h3 id="the-prioritized-partition">The <em>prioritized</em> partition</h3>
+<p>The default partition in AI Cloud is <em>prioritized</em>. If you submit a
+job without specifying a partition, e.g. <code>sbatch --gres=gpu:1
+job_script.sh</code>, your job automatically gets run in the <em>prioritized</em>
+partition. All users have access to the <em>prioritized</em> partition. As
+shown in the <code>sinfo</code> example above, this partition has a 6-day time
+limit and other jobs cannot cancel jobs in this partition.</p>
+<h3 id="batch">The <em>batch</em> partition</h3>
+<p>As shown in the <code>sinfo</code> example above, the batch partition
+has a time limit of 12 hours and furthermore, jobs can get cancelled
+(pre-empted) by other jobs running in other partitions. As a regular
+user, the batch partition is the only way you can get access to the
+special compute nodes mentioned in <a href="../introduction/#overview">Introduction -
+Overview</a> which belong to particular
+research groups. Except for those compute nodes, the <em>batch</em> partition
+is not very interesting to use due to the pre-emption feature.</p>
+<p>In order to use the <em>batch</em> partition, you must specify it for
+your jobs with the "--partition" or "-p" option:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<pre><code>sbatch -p batch --gres=gpu:1 job_script.sh
+</code></pre>
+<p>Using the "-p" option to specify a partition for a batch job.</p>
+</details>
+<p>A more advanced way you can work with the <em>batch</em> partition is to
+enable requeueing of your jobs. That way your jobs would be able to
+automatically continue running at a later point if they happen to get
+preempted by higher-priority jobs. See <a href="#requeueing">running longer
+jobs</a> for more details about this principle.</p>
+<h3 id="special-partitions">Special partitions</h3>
+<p>If you belong to one of the research groups with your own server in AI
+Cloud, you have been informed personally how to get first-priority
+access to it.</p>
+<p>Currently, these servers are associated with the partitions: <em>create</em>,
+<em>aicentre1</em>, and <em>aicentre2</em>. By submitting your jobs to your group's
+partition, you can run jobs on the server, even if it requires
+cancelling jobs of users in the <em>batch</em> partition to provide you the
+requested resources. For example, users from VAP lab at CREATE can use
+their server nv-ai-04 by submitting jobs to the <em>create</em>
+partition:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<pre><code>sbatch -p create --gres=gpu:1 job_script.sh
+</code></pre>
+<p>Using the "-p" option to access a special partition. Only designated users of these partitions can access them.</p>
+</details>
+<p>The special partitions have no time limit.</p>
+<h2 id="what-is-in-the-queue">What is in the queue?</h2>
+<p>When using the cluster, you typically wish to see an overview of what
+is currently in the queue. For example to see how many jobs might be
+waiting ahead of you or to get an overview of your own jobs.</p>
+<p>The command <code>squeue</code> can be used to get a general overview:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<pre><code>squeue
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+31623     batch     DRSC xxxxxxxx  R    6:45:14      1 i256-a10-10
+31693     batch singular yyyyyyyy  R      24:20      1 i256-a40-01
+31694     batch singular yyyyyyyy  R      24:20      1 i256-a40-01
+31695     batch singular yyyyyyyy  R      24:20      1 i256-a40-01
+31696     batch singular yyyyyyyy  R      24:20      1 i256-a40-01
+31502 prioritiz runQHGK. zzzzzzzz PD       0:00      1 (Dependency)
+31504 prioritiz runQHGK. zzzzzzzz PD       0:00      1 (Dependency)
+</code></pre>
+</details>
+<p>The column JOBID shows the ID number of each job in queue. PARTITION
+shows which partition each job is running in. NAME is the name of the
+job which can be specified by the user creating it. USER is the
+username of the user who created the job. ST is the current state of
+each job; for example "R" means a job is running and "PD" means
+pending. There are other states as well - see <code>man squeue</code> for more
+details (under "JOB STATE CODES"). TIME shows how long each job has
+been running. NODES shows how many nodes are involved in each job
+allocation. Finally, NODELIST shows which node(s) each job is running
+on, or alternatively, why it is not running yet.</p>
+<p>Showing your own jobs only:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<pre><code>squeue --me
+</code></pre>
+</details>
+<p><code>squeue</code> can show many other details about jobs as well. Run <code>man
+squeue</code> to see detailed documentation on how to do this.</p>
+<h2 id="specific-gpu">Using a specific type of GPU</h2>
+<p>In some cases your work requires a specific type of GPU. It could be,
+for example, that you need at least 20 GB of GPU RAM available. In
+that case at T4 GPU does not meet the requirement. It could also be
+that you know that an A10 GPU would be sufficient for your job, so
+there is no need to allocate an A40 GPU to it.</p>
+<p>In cases like these, you can specify a specific type of GPU to
+allocate to your job. This is done by adding a GPU type <em>label</em> to the
+"--gres" option to the <code>sbatch</code> or <code>srun</code> commands.</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<pre><code>sbatch --gres=gpu:a10:1 my_job_script.sh
+</code></pre>
+<p>The <code>--gres</code> option lets you specify the type of GPU(s) to
+allocate to your job. In this example, the specification "gpu:a10:1"
+means that you are asking for 1 A10 GPU.</p>
+<p>If you merely use "--gres=gpu:1" you will be allocated an arbitrary
+available GPU in the cluster.</p>
+</details>
+<p>Please see the <a href="../introduction/#overview">overview table</a> in
+Introduction for the types of GPU that you can specify with this
+option. For an NVIDIA T4 GPU, the corresponding label for the "--gres"
+option is "t4", so the name of the GPU type in lower-case letters.</p>
+<h2 id="requeueing">Running longer jobs</h2>
+<p>In some cases, you need to run jobs that take longer than the 6 days
+which is the maximum run-time of jobs in the <em>prioritized</em>
+partition. The way to do this is to configure your jobs to be
+re-queued if they run out of time. There are two necessary ingredients
+to making this work:</p>
+<ol>
+<li>Instruct Slurm that your job should be requeued if it gets stopped.</li>
+<li>Program/configure your job workload to use checkpointing of working
+   data so that the work can continue from the latest checkpoint when
+   it gets the opportunity to start again.</li>
+</ol>
+<h3 id="instruct-slurm-to-requeue-your-job">Instruct Slurm to requeue your job</h3>
+<p>Note that this only makes sense if you have programmed or configured
+your workload to use checkpointing so that it is able to continue from
+where it last stopped. If this is not the case, your job would merely
+start over from the beginning when requeued and you could end up with
+a job that keeps starting over forever but never really finishes.</p>
+<p>To instruct Slurm that your job can be requeued if stopped (due to for
+example time-out or pre-emption as mentioned above in
+<a href="#batch"><em>batch</em></a>), add the parameter <code>--requeue</code> to the <code>sbatch</code>
+command when submitting your job:</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<pre><code>sbatch --requeue --gres=gpu:t4:1 job_script.sh
+</code></pre>
+<p>Using the "--requeue" option to instruct Slurm that your job can be requeued</p>
+</details>
+<p>We advise that you request a specific type of GPU (for example T4
+above) or a specific node when working with requeueable jobs, since we
+cannot guarantee what would happen if your job initially started
+running with one type of GPU and then subsequently attempted to
+continue from a checkpoint with a different type of GPU.</p>
+<h3 id="checkpointing">Use checkpointing</h3>
+<p>Checkpointing means that you configure or program your workload to
+store its working data so far to a temporary location on disk at
+regular intervals. When the workload starts running, it should first
+check if it has an already stored checkpoint on disk, and continue from
+there if it finds one.</p>
+<p>This way, if your job suddenly gets stopped, you can start it again
+and it automatically continues running from its latest saved
+checkpoint.</p>
+<p>How to implement checkpointing depends on the details of how your
+workload has been programmed. If you have programmed your workload
+from scratch yourself, the general recipe is to add the following
+functionality to your program:</p>
+<ol>
+<li>Look for an exisiting checkpoint file.</li>
+<li>If the file exists; load it and continue work from there.</li>
+<li>If not; start the work from scratch.</li>
+<li>While working; save the necessary internal data and output data so
+   far to a checkpoint file at regular time intervals.</li>
+<li>When the program completes without errors; save the final output
+   data the way you would normally save your output data and delete
+   the checkpoint file.</li>
+</ol>
+<p>For example, if your program stores a checkpoint every 15 minutes, you
+would only risk losing up to 15 minutes of work if the job gets
+stopped. All of the prior work is stored in your most recent
+checkpoint which your workload can automatically load and continue
+from.</p>
+<p>Some popular libraries often used in AI Cloud have built-in features
+you can use for checkpointing:</p>
+<ul>
+<li><strong>TensorFlow</strong> provides a <a href="https://www.tensorflow.org/guide/checkpoint">guide
+  here</a> on how to use
+  checkpointing in TensorFlow model training.<br />
+  Similarly, the Keras interface also has <a href="https://keras.io/api/callbacks/model_checkpoint/">this
+  mechanism</a> that
+  can be used to implement checkpointing.</li>
+<li><strong>PyTorch</strong> provides a <a href="https://pytorch.org/tutorials/recipes/recipes/saving_and_loading_a_general_checkpoint.html">guide
+  here</a>
+  on how to use checkpointing in PyTorch model training.</li>
+</ul>
+<p><em>You are welcome to suggest additions to this list if you know useful
+checkpointing mechanisms for other software that can be used on AI
+Cloud.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 - 2023 CLAAUDIA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/claaudia_aau" target="_blank" rel="noopener" title="Claaudia on Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:claaudia@aau.dk" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.claaudia.aau.dk/" target="_blank" rel="noopener" title="www.claaudia.aau.dk" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7zm-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zm186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "toc.integrate", "navigation.indexes", "navigation.sections", "content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
