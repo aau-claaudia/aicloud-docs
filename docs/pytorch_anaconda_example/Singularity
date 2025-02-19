@@ -1,5 +1,0 @@
-BootStrap: docker
-From: nvcr.io/nvidia/pytorch:21.12-py3
-
-%post
-  /opt/conda/bin/conda install -c anaconda beautifulsoup4
