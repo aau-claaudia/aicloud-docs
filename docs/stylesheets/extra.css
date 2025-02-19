@@ -3,3 +3,14 @@
   --md-primary-fg-color--light: #594fbf;
   --md-primary-fg-color--dark:  #54616e;
 }
+.md-header, .md-container {
+  display: none !important;
+}
+.refer {
+  background: darkslateblue;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
